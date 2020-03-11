@@ -11,10 +11,10 @@
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-list-ul"></i>&nbsp;Manage Teachers</a>
         <ul class="collapse list-unstyled" id="homeSubmenu">
           <li>
-            <a href="#">Add new teacher</a>
+            <a href="/addteacher">Add new teacher</a>
           </li>
           <li>
-            <a href="#">See teacher's info</a>
+            <a href="/teacherinfo">See teacher's info</a>
           </li>
           
         </ul>
@@ -23,10 +23,10 @@
         <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-list-ul"></i>&nbsp;Manage Students</a>
         <ul class="collapse list-unstyled" id="pageSubmenu1">
           <li>
-            <a href="#">Add new student</a>
+            <a href="/addstudent">Add new student</a>
           </li>
           <li>
-            <a href="#">See teacher's info</a>
+            <a href="/studentinfo">See teacher's info</a>
           </li>
         </ul>
       </li>

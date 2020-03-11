@@ -59,3 +59,19 @@ Route::get('lecturematerials', function () {
 Route::get('studentmark', function () {
     return view('pages/studentmark');
 });
+
+Route::get('addteacher', function () {
+    return view('pages/addteacher');
+});
+
+Route::get('teacherinfo', function () {
+    return view('pages/teacherinfo');
+});
+
+Route::get('addstudent', function () {
+    return view('pages/addstudent');
+});
+
+Route::get('studentinfo', function () {
+    return view('pages/studentinfo');
+});

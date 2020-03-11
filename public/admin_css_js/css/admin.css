@@ -164,3 +164,28 @@ a:focus {
     color: white !important;
     font-weight: bold !important;
 }
+
+
+/* Teachers begin   */
+
+.form_addteacher{
+    padding: 2% !important;
+}
+
+
+
+
+.btn_edit{
+    background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn_edit:hover {
+  background-color: RoyalBlue;
+}
+
+/*Teachers end */
