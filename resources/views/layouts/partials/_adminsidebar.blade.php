@@ -34,34 +34,58 @@
         <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-book-reader"></i>&nbsp;Attendances</a>
         <ul class="collapse list-unstyled" id="pageSubmenu2">
           <li>
-            <a href="#">CSE 1</a>
+            <a href="/atfistsemester">Fisrt Semester</a>
           </li>
           <li>
-            <a href="#">CSE 2</a>
+            <a href="/atsecondsemester">Second Semester</a>
           </li>
           <li>
-            <a href="#">CSE 3</a>
+            <a href="/atthirdsemester">Third Semester</a>
           </li>
           <li>
-            <a href="#">CSE 4</a>
-            </li>
+            <a href="/atfourthsemester">Fourth Semester</a>
+          </li>
+           <li>
+            <a href="/atfifthsemester">Fifth Semester</a>
+          </li>
+          <li>
+            <a href="/atsixthsemester">Sixth Semester</a>
+          </li>
+          <li>
+            <a href="/atseventhsemester">Seventh Semester</a>
+          </li>
+          <li>
+            <a href="/ateightsemester">Eighth Semester</a>
+          </li>
           </ul>
         </li>
         <li>
           <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-calculator"></i> &nbsp;CGPA Results</a>
           <ul class="collapse list-unstyled" id="pageSubmenu3">
-            <li>
-              <a href="#">CSE 1</a>
-            </li>
-            <li>
-              <a href="#">CSE 2</a>
-            </li>
-            <li>
-              <a href="#">CSE 3</a>
-            </li>
-            <li>
-              <a href="#">CSE 4</a>
-              </li>
+             <li>
+            <a href="/resultfistsemester">Fisrt Semester</a>
+          </li>
+          <li>
+            <a href="/resultsecondsemester">Second Semester</a>
+          </li>
+          <li>
+            <a href="/resultthirdsemester">Third Semester</a>
+          </li>
+          <li>
+            <a href="/resultfourthsemester">Fourth Semester</a>
+          </li>
+           <li>
+            <a href="/resultfifthsemester">Fifth Semester</a>
+          </li>
+          <li>
+            <a href="/resultsixthsemester">Sixth Semester</a>
+          </li>
+          <li>
+            <a href="/resultseventhsemester">Seventh Semester</a>
+          </li>
+          <li>
+            <a href="/resulteightsemester">Eighth Semester</a>
+          </li>
             </ul>
           </li>
           <li>
