@@ -475,7 +475,7 @@ input[type=text], input[type=password] {
   
 /*---------------------------------------------------- */
 
-/*============== studentsidebar-area css end ===============*/
+/*============== studentsidebar-area css begin ===============*/
 
 .link_studentsidebar{
    text-decoration: none !important;
@@ -485,3 +485,14 @@ input[type=text], input[type=password] {
 
 /*============== studentsidebar-area css end ===============*/
 /*---------------------------------------------------- */
+
+
+
+/*============== studentresult-area css begin ===============*/
+
+.student_result{
+    padding: 1% !important;
+}
+
+
+/*============== studentresult-area css end ===============*/

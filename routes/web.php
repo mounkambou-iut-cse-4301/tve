@@ -135,6 +135,16 @@ Route::get('resultsixthsemester', function () {
 Route::get('resultseventhsemester', function () {
     return view('pages/resultseventhsemester');
     
-});Route::get('resulteightsemester', function () {
+});
+
+Route::get('resulteightsemester', function () {
     return view('pages/resulteightsemester');
+});
+
+Route::get('studentresult', function () {
+    return view('pages/studentresult');
+});
+
+Route::get('studentatendance', function () {
+    return view('pages/studentatendance');
 });
