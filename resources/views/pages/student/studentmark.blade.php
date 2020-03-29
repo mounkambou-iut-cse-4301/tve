@@ -84,6 +84,15 @@
                                 <td>john</td>
                                 <td>john</td>
                             </tr>
+                              <tr>
+                                <td>Attendance</td>
+                                <td>Doe</td>
+                                <td>john</td>
+                                <td>john</td>
+                                <td>Doe</td>
+                                <td>john</td>
+                                <td>john</td>
+                            </tr>
                             <tr>
                                 <td>Total</td>
                                 <td>Doe</td>

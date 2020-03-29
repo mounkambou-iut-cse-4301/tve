@@ -17,17 +17,17 @@ Route::get('/', function () {
 
 
 Route::get('admin', function () {
-    return view('pages/adminlogin');
+    return view('pages/admin/adminlogin');
 });
 
 
 Route::get('admindashboard', function () {
-    return view('pages/admindashboard');
+    return view('pages/admin/admindashboard');
 });
 
 
 Route::get('login', function () {
-    return view('pages/login');
+    return view('pages/student/login');
 });
 
 
@@ -52,99 +52,103 @@ Route::get('fourthyeardetail', function () {
 
 
 Route::get('lecturematerials', function () {
-    return view('pages/lecturematerials');
+    return view('pages/student/lecturematerials');
 });
 
 
 Route::get('studentmark', function () {
-    return view('pages/studentmark');
+    return view('pages/student/studentmark');
 });
 
 Route::get('addteacher', function () {
-    return view('pages/addteacher');
+    return view('pages/admin/addteacher');
 });
 
 Route::get('teacherinfo', function () {
-    return view('pages/teacherinfo');
+    return view('pages/admin/teacherinfo');
 });
 
 Route::get('addstudent', function () {
-    return view('pages/addstudent');
+    return view('pages/admin/addstudent');
 });
 
 Route::get('studentinfo', function () {
-    return view('pages/studentinfo');
+    return view('pages/admin/studentinfo');
 });
 
 Route::get('atfistsemester', function () {
-    return view('pages/atfistsemester');
+    return view('pages/admin/atfistsemester');
 });
 
 Route::get('atsecondsemester', function () {
-    return view('pages/atsecondsemester');
+    return view('pages/admin/atsecondsemester');
 });
 
 Route::get('atthirdsemester', function () {
-    return view('pages/atthirdsemester');
+    return view('pages/admin/atthirdsemester');
 });
 
 Route::get('atfourthsemester', function () {
-    return view('pages/atfourthsemester');
+    return view('pages/admin/atfourthsemester');
 });
 
 Route::get('atfifthsemester', function () {
-    return view('pages/atfifthsemester');
+    return view('pages/admin/atfifthsemester');
 });
 
 Route::get('atsixthsemester', function () {
-    return view('pages/atsixthsemester');
+    return view('pages/admin/atsixthsemester');
 });
 
 Route::get('atseventhsemester', function () {
-    return view('pages/atseventhsemester');
+    return view('pages/admin/atseventhsemester');
 });
 
 Route::get('ateightsemester', function () {
-    return view('pages/ateightsemester');
+    return view('pages/admin/ateightsemester');
 });
 
 Route::get('resultfistsemester', function () {
-    return view('pages/resultfistsemester');
+    return view('pages/admin/resultfistsemester');
 });
 
 Route::get('resultsecondsemester', function () {
-    return view('pages/resultsecondsemester');
+    return view('pages/admin/resultsecondsemester');
 });
 
 Route::get('resultthirdsemester', function () {
-    return view('pages/resultthirdsemester');
+    return view('pages/admin/resultthirdsemester');
 });
 
 Route::get('resultfourthsemester', function () {
-    return view('pages/resultfourthsemester');
+    return view('pages/admin/resultfourthsemester');
 });
 
 Route::get('resultfifthsemester', function () {
-    return view('pages/resultfifthsemester');
+    return view('pages/admin/resultfifthsemester');
 });
 
 Route::get('resultsixthsemester', function () {
-    return view('pages/resultsixthsemester');
+    return view('pages/admin/resultsixthsemester');
 });
 
 Route::get('resultseventhsemester', function () {
-    return view('pages/resultseventhsemester');
+    return view('pages/admin/resultseventhsemester');
     
 });
 
 Route::get('resulteightsemester', function () {
-    return view('pages/resulteightsemester');
+    return view('pages/admin/resulteightsemester');
 });
 
 Route::get('studentresult', function () {
-    return view('pages/studentresult');
+    return view('pages/student/studentresult');
 });
 
 Route::get('studentatendance', function () {
-    return view('pages/studentatendance');
+    return view('pages/student/studentatendance');
+});
+
+Route::get('teachermaterial', function () {
+    return view('pages/teacher/teachermaterial');
 });
