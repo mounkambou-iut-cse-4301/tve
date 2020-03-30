@@ -7,7 +7,6 @@
         <tr>
           <th>Id</th>
           <th>Name</th>
-          <th>GPA</th>
           <th>CGPA</th>
         </tr>
       </thead>
@@ -15,13 +14,11 @@
         <tr>
           <td>190040001</td>
           <td>Abdel kader</td>
-          <td>3.54</td>
           <td>3.76</td>
         </tr>
         <tr>
           <td>190040002</td>
           <td>Abdel karim Mounkabou</td>
-          <td>3.54</td>
           <td>3.76</td>
         </tr>
       </tbody>

@@ -20,7 +20,7 @@
 					<td><a href="/studentresult" class="link_studentsidebar">CGPA</a></td>
 				</tr>
 				<tr class="table-success">
-					<td><a href="" class="link_studentsidebar">Setting</a></td>
+					<td><a href="/studentsetting" class="link_studentsidebar">Setting</a></td>
 					
 				</tr>
 			</tbody>

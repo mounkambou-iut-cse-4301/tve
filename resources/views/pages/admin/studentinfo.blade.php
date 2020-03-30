@@ -8,101 +8,24 @@
         <th>Student's Id</th>
         <th>Student's Name</th>
         <th>Student's Email</th>
-          <th>Semester </th>
-        <th>Student's Courses </th>
-        <th>Student's Lab Courses </th>
+        <th>Semester </th>
         <th>Edit </th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td rowspan="6">John</td>
-        <td rowspan="6">john@example.com</td>
-        <td rowspan="6">John</td>
-        <td rowspan="6">2</td>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-        <td rowspan="6"><button class="btn btn_edit"><i class="fa fa-edit"></i></button></td>
+        <td>18762265</td>
+        <td>john@example.com</td>
+        <td>John</td>
+        <td>2</td>
+        <td><button class="btn btn_edit"><i class="fa fa-edit"></i></button></td>
       </tr>
-      <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-
-       <tr>
-        <td rowspan="6">John</td>
-        <td rowspan="6">john@example.com</td>
-        <td rowspan="6">John</td>
-        <td rowspan="6">2</td>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-        <td rowspan="6"><button class="btn btn_edit"><i class="fa fa-edit"></i></button></td>
-      </tr>
-      <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-
-       <tr>
-        <td rowspan="6">John</td>
-        <td rowspan="6">john@example.com</td>
-        <td rowspan="6">John</td>
-        <td rowspan="6">2</td>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-        <td rowspan="6"><button class="btn btn_edit"><i class="fa fa-edit"></i></button></td>
-      </tr>
-      <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
-      </tr>
-       <tr>
-        <td>Doe</td>
-        <td>CSE 4144</td>
+         <tr>
+        <td>26725638</td>
+        <td>john@example.com</td>
+        <td>John</td>
+        <td>2</td>
+        <td><button class="btn btn_edit"><i class="fa fa-edit"></i></button></td>
       </tr>
       
     </tbody>

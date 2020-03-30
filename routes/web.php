@@ -145,10 +145,26 @@ Route::get('studentresult', function () {
     return view('pages/student/studentresult');
 });
 
+Route::get('studentsetting', function () {
+    return view('pages/student/studentsetting');
+});
+
 Route::get('studentatendance', function () {
     return view('pages/student/studentatendance');
 });
 
 Route::get('teachermaterial', function () {
     return view('pages/teacher/teachermaterial');
+});
+
+Route::get('teacherattendance', function () {
+    return view('pages/teacher/teacherattendance');
+});
+
+Route::get('teachermark', function () {
+    return view('pages/teacher/teachermark');
+});
+
+Route::get('teachersetting', function () {
+    return view('pages/teacher/teachersetting');
 });

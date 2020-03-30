@@ -26,7 +26,7 @@
             <a href="/addstudent">Add new student</a>
           </li>
           <li>
-            <a href="/studentinfo">See teacher's info</a>
+            <a href="/studentinfo">See student's info</a>
           </li>
         </ul>
       </li>
