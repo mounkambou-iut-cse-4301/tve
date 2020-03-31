@@ -4,7 +4,7 @@
 		<table class="table">
 			<tbody>
 				<tr class="table-primary">
-					<td><a href="" class="link_studentsidebar">Dashboard</a></td>
+					<td><a href="/teacherdashboard" class="link_studentsidebar">Dashboard</a></td>
 				</tr>
 				<tr class="table-success">
 					<td><a href="/teachermaterial" class="link_studentsidebar">Upload Materials</a></td>

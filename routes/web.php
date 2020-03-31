@@ -153,6 +153,10 @@ Route::get('studentatendance', function () {
     return view('pages/student/studentatendance');
 });
 
+Route::get('studentdashboard', function () {
+    return view('pages/student/studentdashboard');
+});
+
 Route::get('teachermaterial', function () {
     return view('pages/teacher/teachermaterial');
 });
@@ -167,4 +171,12 @@ Route::get('teachermark', function () {
 
 Route::get('teachersetting', function () {
     return view('pages/teacher/teachersetting');
+});
+
+Route::get('teacherdashboard', function () {
+    return view('pages/teacher/teacherdashboard');
+});
+
+Route::get('teacherlogin', function () {
+    return view('pages/teacher/teacherlogin');
 });
