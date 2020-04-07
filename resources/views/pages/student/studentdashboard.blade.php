@@ -6,23 +6,23 @@
         @include('layouts/partials/_studentsidebar')
         <div class="col-lg-9">
             <div class="card">
-                <div class="card-header"><h4>Student Dashboard</h4></div>
+                <div class="card-header"><h4>Registered courses</h4></div>
                 <div class="card-body">
                     <h2>Choose your courses</h2>
                     <form action="/action_page.php">
                         <div class="form-check">
                             <label class="form-check-label" for="check1">
-                                <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>Option 1
+                                <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>CSE 3231: data structure (3 credit)
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label" for="check2">
-                                <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something">Option 2
+                                <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something">CSE 3231: data structure (3 credit)
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input">Option 3
+                                <input type="checkbox" class="form-check-input">CSE 3231: data structure (3 credit)
                             </label>
                         </div><br>
                         <button type="submit" class="btn btn-primary">Submit</button>

@@ -11,97 +11,63 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Class Test</th>
-                                <th>CSE 3232</th>
-                                <th>CSE 3232</th>
-                                <th>CSE 3232</th>
-                                <th>CSE 3232</th>
-                                <th>CSE 3232</th>
-                                <th>CSE 3232</th>
+                                <th>St Id</th>
+                                <th>CT-1</th>
+                                <th>CT-2</th>
+                                <th>CT-3</th>
+                                <th>CT-4</th>
+                                <th>3 Highest</th>
+                                <th>Mid</th>
+                                <th>Final</th>
+                                <th>Att</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>CT-1</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
+                                <td>CSE 4343</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>3</td>
+                                <td>10</td>
+                                <td>30</td>
+                                <td>45</td>
+                                <td>80</td>
+                                <td>30</td>
                             </tr>
                             <tr>
-                                <td>CT-2</td>
-                                 <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
+                                <td>CSE 4343</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>3</td>
+                                <td>10</td>
+                                <td>30</td>
+                                <td>45</td>
+                                <td>80</td>
+                                <td>30</td>
                             </tr>
                             <tr>
-                                <td>CT-3</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                            </tr>
-                               <tr>
-                                <td>CT-4</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
+                                <td>CSE 4343</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>3</td>
+                                <td>10</td>
+                                <td>30</td>
+                                <td>45</td>
+                                <td>80</td>
+                                <td>30</td>
                             </tr>
                             <tr>
-                                <td>3 Highest Values</td>
-                                 <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
+                                <td>CSE 4343</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>3</td>
+                                <td>10</td>
+                                <td>30</td>
+                                <td>45</td>
+                                <td>80</td>
+                                <td>30</td>
                             </tr>
-                            <tr>
-                                <td>Mid-Semester Exam</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                            </tr>
-                            <tr>
-                                <td>Final Exam</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                            </tr>
-                              <tr>
-                                <td>Attendance</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                            </tr>
-                            <tr>
-                                <td>Total</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                                <td>Doe</td>
-                                <td>john</td>
-                                <td>john</td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>

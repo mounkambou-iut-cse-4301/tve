@@ -30,6 +30,9 @@
           </li>
         </ul>
       </li>
+       <li>
+        <a href="/unassignecourses"><i class="fas fa-book-open"></i>&nbsp;Unassigned courses</a>
+      </li>
       <li>
         <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-book-reader"></i>&nbsp;Attendances</a>
         <ul class="collapse list-unstyled" id="pageSubmenu2">
@@ -45,7 +48,7 @@
           <li>
             <a href="/atfourthsemester">Fourth Semester</a>
           </li>
-           <li>
+          <li>
             <a href="/atfifthsemester">Fifth Semester</a>
           </li>
           <li>
@@ -57,12 +60,12 @@
           <li>
             <a href="/ateightsemester">Eighth Semester</a>
           </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-calculator"></i> &nbsp;CGPA Results</a>
-          <ul class="collapse list-unstyled" id="pageSubmenu3">
-             <li>
+        </ul>
+      </li>
+      <li>
+        <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-bookmark"></i> &nbsp;CGPA Results</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu3">
+          <li>
             <a href="/resultfistsemester">Fisrt Semester</a>
           </li>
           <li>
@@ -74,7 +77,7 @@
           <li>
             <a href="/resultfourthsemester">Fourth Semester</a>
           </li>
-           <li>
+          <li>
             <a href="/resultfifthsemester">Fifth Semester</a>
           </li>
           <li>
@@ -86,14 +89,15 @@
           <li>
             <a href="/resulteightsemester">Eighth Semester</a>
           </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#"><i class="fas fa-info"></i>&nbsp;Info About Student</a>
-             <li>
-            <a href="#"><i class="fas fa-mail-bulk"></i>&nbsp;Email</a>
-          </li>
-          </li>
-          
         </ul>
-      </nav>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-info"></i>&nbsp;Info About Student</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-mail-bulk"></i>&nbsp;Email</a>
+      </li>
+      
+      
+    </ul>
+  </nav>

@@ -72,6 +72,10 @@ Route::get('addstudent', function () {
     return view('pages/admin/addstudent');
 });
 
+Route::get('unassignecourses', function () {
+    return view('pages/admin/unassignecourses');
+});
+
 Route::get('studentinfo', function () {
     return view('pages/admin/studentinfo');
 });
@@ -163,6 +167,10 @@ Route::get('teachermaterial', function () {
 
 Route::get('teacherattendance', function () {
     return view('pages/teacher/teacherattendance');
+});
+
+Route::get('teacherattendancedetails', function () {
+    return view('pages/teacher/teacherattendancedetails');
 });
 
 Route::get('teachermark', function () {
