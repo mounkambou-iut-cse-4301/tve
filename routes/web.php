@@ -10,6 +10,7 @@
 |
 */
 use App\course;
+use App\student;
 Route::get('/', function () {
 
 return view('welcome');
@@ -30,41 +31,10 @@ Route::get('login', function () {
 return view('pages/student/login');
 });
 
-
-Route::get('firstyeardetail', function () {
-$courses_first=course::where('course_sem','1')->get();
-$courses_second=course::where('course_sem','2')->get();
-return view('pages/firstyeardetail')
-->with('course_fi',$courses_first)
-->with('course_se',$courses_second);
-});
-
-
-Route::get('secondyeardetail', function () {
-$courses_thirth=course::where('course_sem','3')->get();
-$courses_fourth=course::where('course_sem','4')->get();
-return view('pages/secondyeardetail')
-->with('course_th',$courses_thirth)
-->with('course_fo',$courses_fourth);
-});
-
-
-Route::get('thirdyeardetail', function () {
-$courses_fifth=course::where('course_sem','5')->get();
-$courses_sixth=course::where('course_sem','6')->get();
-return view('pages/thirdyeardetail')
-->with('course_fi',$courses_fifth)
-->with('course_si',$courses_sixth);
-});
-
-
-Route::get('fourthyeardetail', function () {
-$courses_seventh=course::where('course_sem','7')->get();
-$courses_eighth=course::where('course_sem','8')->get();
-return view('pages/fourthyeardetail')
-->with('course_sev',$courses_seventh)
-->with('course_ei',$courses_eighth);
-});
+Route::get('/firstyeardetail','controller@firstyeardetail');
+Route::get('/secondyeardetail','controller@secondyeardetail');
+Route::get('/thirdyeardetail','controller@thirdyeardetail');
+Route::get('/fourthyeardetail','controller@fourthyeardetail');
 
 
 Route::get('lecturematerials', function () {
@@ -91,16 +61,14 @@ Route::get('addstudent', function () {
 return view('pages/admin/addstudent');
 });
 
+Route::post('/insertNewStudent','AdminController@insertNewStudent');
+
 
 Route::get('unassignecourses', function () {
 return view('pages/admin/unassignecourses');
 });
 
-
-Route::get('studentinfo', function () {
-return view('pages/admin/studentinfo');
-});
-
+Route::get('/studentinfo','AdminController@studentinfo');
 
 Route::get('atfistsemester', function () {
 return view('pages/admin/atfistsemester');

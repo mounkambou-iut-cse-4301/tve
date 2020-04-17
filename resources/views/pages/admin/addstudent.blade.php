@@ -5,26 +5,27 @@
     <div class="col-lg-2"></div>
     <div class="col-lg-8">
       <div class="card form_addteacher">
-        <form action="" >
+        <form action="/insertNewStudent" method="post" class="validated" >
           <div class="form-group">
-            <label for="Id_student">Id:</label>
-            <input type="number" class="form-control" id="Id_student" placeholder="Enter Student's Id" name="Id_student">
+            {{csrf_field()}}
+            <label for="student_id">Id:</label>
+            <input type="number" class="form-control" id="student_id" placeholder="Enter Student's Id" name="student_id" required>
           </div>
           <div class="form-group">
             <label for="student_pass">Password:</label>
-            <input type="password" class="form-control" id="student_pass" placeholder="Enter Student's Password" name="student_pass">
+            <input type="password" class="form-control" id="student_pass" placeholder="Enter Student's Password" name="student_pass" required>
           </div>
           <div class="form-group">
             <label for="student_name">Name:</label>
-            <input type="text" class="form-control" id="student_name" placeholder="Enter Student's Name" name="student_name">
+            <input type="text" class="form-control" id="student_name" placeholder="Enter Student's Name" name="student_name" required>
           </div>
           <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" name="Email">
+            <label for="student_email">Email:</label>
+            <input type="email" class="form-control" id="student_email" placeholder="Enter email" name="student_email" required>
           </div>
           <div class="form-group">
             <label for="student_sem">Semester:</label>
-            <input type="number" class="form-control" id="student_sem" name="student_sem">
+            <input type="number" class="form-control" id="student_sem" name="student_sem" required>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
