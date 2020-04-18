@@ -15,33 +15,17 @@
       </tr>
     </thead>
     <tbody>
+      @foreach($s_teacher as $t_info )
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td>John</td>
+        <td>{{$t_info->teacher_id}}</td>
+        <td>{{$t_info->teacher_name}}</td>
+        <td>{{$t_info->teacher_email}}</td>
+        <td>{{$t_info->teacher_office}}</td>
         <td>Doe</td>
         <td>john@example.com</td>
         <td><button class="btn btn_edit"><i class="fa fa-edit"></i></button></td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td><button class="btn btn_edit"><i class="fa fa-edit"></i></button></td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td><button class="btn btn_edit"><i class="fa fa-edit"></i></button></td>
-      </tr>
+      @endforeach
     </tbody>
   </table>
 </div>

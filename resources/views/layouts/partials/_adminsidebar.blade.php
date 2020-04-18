@@ -14,6 +14,9 @@
             <a href="/addteacher">Add new teacher</a>
           </li>
           <li>
+            <a href="/assigncourses">Assign Courses</a>
+          </li>
+          <li>
             <a href="/teacherinfo">See teacher's info</a>
           </li>
           

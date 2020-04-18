@@ -46,21 +46,23 @@ Route::get('studentmark', function () {
 return view('pages/student/studentmark');
 });
 
+Route::get('assigncourses', function () {
+return view('pages/admin/assigncourses');
+});
+
 
 Route::get('addteacher', function () {
 return view('pages/admin/addteacher');
 });
+Route::post('/insertNewTeacher','AdminController@insertNewTeacher');
+Route::get('/teacherinfo','AdminController@teacherinfo');
 
-
-Route::get('teacherinfo', function () {
-return view('pages/admin/teacherinfo');
-});
 
 
 Route::get('addstudent', function () {
 return view('pages/admin/addstudent');
 });
-
+Route::get('/studentinfo','AdminController@studentinfo');
 Route::post('/insertNewStudent','AdminController@insertNewStudent');
 
 
@@ -68,7 +70,6 @@ Route::get('unassignecourses', function () {
 return view('pages/admin/unassignecourses');
 });
 
-Route::get('/studentinfo','AdminController@studentinfo');
 
 Route::get('atfistsemester', function () {
 return view('pages/admin/atfistsemester');
