@@ -188,4 +188,17 @@ a:focus {
   background-color: RoyalBlue;
 }
 
+.btn_trash{
+    background-color: red;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn_trash:hover {
+  background-color: #8B0000;
+}
+
 /*Teachers end */

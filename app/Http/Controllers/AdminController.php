@@ -100,7 +100,7 @@ class AdminController extends Controller
       function teachcourse(Request $re)
       {
       	
-      	$teach_course=teach::all();
+      	$teach_course=DB::select('select * from teachs');
 	// dd($teach_course);
       	return view('pages/admin/teachcourses')->with('tch_course',$teach_course);
       }

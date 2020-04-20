@@ -7,6 +7,7 @@
         <tr>
           <th>Teacher Id</th>
           <th>Course Id</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -14,6 +15,7 @@
         <tr>
           <td>{{$tch_cse->teacher_fk_teach}}</td>
           <td>{{$tch_cse->course_fk_teach}}</td>
+           <td><button class="btn btn_trash"><i class="fa fa-trash"></i></button></td>
         </tr>
         @endforeach
       </tbody>
