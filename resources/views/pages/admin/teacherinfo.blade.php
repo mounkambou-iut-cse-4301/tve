@@ -9,8 +9,6 @@
         <th>Teacher's Name</th>
         <th>Teacher's Email</th>
         <th>Teacher's Office</th>
-        <th>Teacher's Course 1 </th>
-        <th>Teacher's Course 2 </th>
         <th>Edit </th>
       </tr>
     </thead>
@@ -21,8 +19,6 @@
         <td>{{$t_info->teacher_name}}</td>
         <td>{{$t_info->teacher_email}}</td>
         <td>{{$t_info->teacher_office}}</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
         <td><button class="btn btn_edit"><i class="fa fa-edit"></i></button></td>
       </tr>
       @endforeach

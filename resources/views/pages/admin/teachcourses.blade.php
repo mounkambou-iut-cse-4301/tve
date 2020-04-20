@@ -1,19 +1,19 @@
-@extends('layouts/adminmaster',['title'=>'Unassigned courses'])
+@extends('layouts/adminmaster',['title'=>'Teach courses'])
 @section('content')
 <div class="container">
   <div class="card form_addteacher">
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
+          <th>Teacher Id</th>
           <th>Course Id</th>
-          <th>semester</th>
         </tr>
       </thead>
       <tbody>
-        @foreach($un_course as $u_course)
+        @foreach($tch_course as $tch_cse)
         <tr>
-          <td>{{$u_course->course_id}}</td>
-          <td>{{$u_course->course_sem}}</td>
+          <td>{{$tch_cse->teacher_fk_teach}}</td>
+          <td>{{$tch_cse->course_fk_teach}}</td>
         </tr>
         @endforeach
       </tbody>

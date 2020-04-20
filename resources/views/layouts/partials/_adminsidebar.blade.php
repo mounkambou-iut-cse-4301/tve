@@ -14,9 +14,6 @@
             <a href="/addteacher">Add new teacher</a>
           </li>
           <li>
-            <a href="/assigncourses">Assign Courses</a>
-          </li>
-          <li>
             <a href="/teacherinfo">See teacher's info</a>
           </li>
           
@@ -32,6 +29,12 @@
             <a href="/studentinfo">See student's info</a>
           </li>
         </ul>
+      </li>
+       <li>
+        <a href="/assigncourses"><i class="fas fa-book-open"></i>&nbsp;Assign Courses</a>
+      </li>
+        <li>
+        <a href="/teachcourses"><i class="fas fa-book-open"></i>&nbsp;Teach Courses</a>
       </li>
        <li>
         <a href="/unassignecourses"><i class="fas fa-book-open"></i>&nbsp;Unassigned courses</a>

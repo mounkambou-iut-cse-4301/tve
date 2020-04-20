@@ -5,9 +5,13 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use App\teach;
 use DB;
+
 use App\student;
 use App\teacher;
+use App\course;
+
 class AdminController extends Controller
 {
 	function insertNewStudent(Request $req)
@@ -21,6 +25,8 @@ class AdminController extends Controller
 	DB::table('students')->insert($data);
 	return redirect('\addstudent');
       }
+
+
     function studentinfo(Request $req)
       {
         $see_student=student::all();
@@ -52,4 +58,50 @@ class AdminController extends Controller
         return view('pages/admin/teacherinfo')
         ->with('s_teacher',$see_teacher);
        }
+
+       function select_courses(Request $re)
+       {
+
+       	if($re->isMethod('get'))
+
+       	{
+                	$sel_courses=course::all();
+       	$sel_t=teacher::all();
+       	return view('pages/admin/assigncourses')
+       	->with('sel_courses',$sel_courses)
+       	->with('sel_t',$sel_t);
+
+       	}
+
+       	if($re->isMethod('post')){
+         
+
+        $teacher_fk_teach=$re->input('teacher_fk_teach');
+       	$course_fk_teach=$re->input('course_fk_teach');
+       	$data=array('teacher_fk_teach'=>$teacher_fk_teach,'course_fk_teach'=>$course_fk_teach);
+       	DB::table('teachs')->insert($data);
+
+        DB::table('courses')->where('course_id',$course_fk_teach)
+                          ->update(['course_select'=>'1']);
+
+          return redirect('\assigncourses');
+
+       	}
+   
+       	
+       }
+
+      function unassignecourses(Request $re)
+      {
+      	$unas_course=course::where('course_select','0')->orderByRaw('course_sem ASC')->get();
+      	return view('pages/admin/unassignecourses')->with('un_course',$unas_course);
+      }
+
+      function teachcourse(Request $re)
+      {
+      	
+      	$teach_course=teach::all();
+	// dd($teach_course);
+      	return view('pages/admin/teachcourses')->with('tch_course',$teach_course);
+      }
 }

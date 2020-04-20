@@ -11,8 +11,11 @@
 */
 use App\course;
 use App\student;
-Route::get('/', function () {
+use App\teach;
 
+
+
+Route::get('/', function () {
 return view('welcome');
 });
 
@@ -46,9 +49,8 @@ Route::get('studentmark', function () {
 return view('pages/student/studentmark');
 });
 
-Route::get('assigncourses', function () {
-return view('pages/admin/assigncourses');
-});
+
+Route::match(['get','post'],'/assigncourses','AdminController@select_courses');
 
 
 Route::get('addteacher', function () {
@@ -66,9 +68,9 @@ Route::get('/studentinfo','AdminController@studentinfo');
 Route::post('/insertNewStudent','AdminController@insertNewStudent');
 
 
-Route::get('unassignecourses', function () {
-return view('pages/admin/unassignecourses');
-});
+Route::get('/unassignecourses','AdminController@unassignecourses');
+
+Route::get('/teachcourses','AdminController@teachcourse');
 
 
 Route::get('atfistsemester', function () {
