@@ -26,6 +26,7 @@
       
     </tbody>
   </table>
+   <div>{{$s_student->links()}}</div>
 </div>
 
 </div>

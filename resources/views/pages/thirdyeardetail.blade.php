@@ -33,6 +33,7 @@
                          @endforeach
                     </tbody>
                 </table>
+                <div>{{$course_fi->links()}}</div>
                 </div>
                 <div class="col-md-6">
                     <br>
@@ -56,6 +57,7 @@
                          @endforeach
                     </tbody>
                 </table>
+                <div>{{$course_si->links()}}</div>
                 </div>
             </div>
         </div>

@@ -5,6 +5,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades;
 use App\teach;
 use DB;
 
@@ -29,7 +30,7 @@ class AdminController extends Controller
 
     function studentinfo(Request $req)
       {
-        $see_student=student::all();
+        $see_student=DB::table('students')->paginate(10);
         return view('pages/admin/studentinfo')
         ->with('s_student',$see_student);
        }
@@ -54,7 +55,7 @@ class AdminController extends Controller
 
        function teacherinfo(Request $req)
       {
-        $see_teacher=teacher::all();
+        $see_teacher=DB::table('teachers')->paginate(10);
         return view('pages/admin/teacherinfo')
         ->with('s_teacher',$see_teacher);
        }
@@ -93,14 +94,14 @@ class AdminController extends Controller
 
       function unassignecourses(Request $re)
       {
-      	$unas_course=course::where('course_select','0')->orderByRaw('course_sem ASC')->get();
+      	$unas_course=course::where('course_select','0')->orderByRaw('course_sem ASC')->paginate(10);
       	return view('pages/admin/unassignecourses')->with('un_course',$unas_course);
       }
 
       function teachcourse(Request $re)
       {
       	
-      	$teach_course=DB::select('select * from teachs');
+      	$teach_course=DB::table('teachs')->paginate(10);
 	// dd($teach_course);
       	return view('pages/admin/teachcourses')->with('tch_course',$teach_course);
       }

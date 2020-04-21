@@ -20,6 +20,7 @@
         @endforeach
       </tbody>
     </table>
+    <div>{{$tch_course->links()}}</div>
   </div>
 </div>
 @endsection

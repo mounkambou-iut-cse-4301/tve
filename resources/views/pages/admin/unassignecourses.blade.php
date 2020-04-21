@@ -18,6 +18,7 @@
         @endforeach
       </tbody>
     </table>
+    <div>{{$un_course->links()}}</div>
   </div>
 </div>
 @endsection
