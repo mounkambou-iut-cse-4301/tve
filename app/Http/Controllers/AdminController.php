@@ -12,9 +12,15 @@ use DB;
 use App\student;
 use App\teacher;
 use App\course;
+use App\admin;
 
 class AdminController extends Controller
 {
+   // public function __construct()
+   //    {
+   //    	$this->middleware('checkAdmin');
+   //    }
+
 	function insertNewStudent(Request $req)
      {
 	$student_id=$req->input('student_id');
@@ -105,4 +111,23 @@ class AdminController extends Controller
 	// dd($teach_course);
       	return view('pages/admin/teachcourses')->with('tch_course',$teach_course);
       }
+
+
+      function LoginAdmin(Request $re)
+      {
+      	$admin_name=$re->input('admin_name');
+      	$admin_pass=$re->input('admin_pass');
+
+          $checkAdmin_login=DB::table('admins')->where('admin_name',$admin_name)
+                                               ->where('admin_pass',$admin_pass)->get();
+
+          if(count($checkAdmin_login)>0)
+          {
+          	return view('pages/admin/admindashboard');
+          }else  {
+          	return redirect('/admin')->with('message','Name or Password is wrong');
+          }
+      }
+
+
 }

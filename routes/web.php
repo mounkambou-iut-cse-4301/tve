@@ -20,38 +20,26 @@ return view('welcome');
 });
 
 
-Route::get('admin', function () {
-return view('pages/admin/adminlogin');
-});
-
-
-Route::get('admindashboard', function () {
-return view('pages/admin/admindashboard');
-});
-
-
-Route::get('login', function () {
-return view('pages/student/login');
-});
-
 Route::get('/firstyeardetail','controller@firstyeardetail');
 Route::get('/secondyeardetail','controller@secondyeardetail');
 Route::get('/thirdyeardetail','controller@thirdyeardetail');
 Route::get('/fourthyeardetail','controller@fourthyeardetail');
 
 
-Route::get('lecturematerials', function () {
-return view('pages/student/lecturematerials');
+
+
+
+Route::get('admin', function () {
+return view('pages/admin/adminlogin');
 });
+Route::post('/LoginAdmin','AdminController@LoginAdmin');
 
 
-Route::get('studentmark', function () {
-return view('pages/student/studentmark');
+Route:: group (['middleware'=>['checkAdmin']],function(){
+
+Route::get('admindashboard', function () {
+ return view('pages/admin/admindashboard');
 });
-
-
-Route::match(['get','post'],'/assigncourses','AdminController@select_courses');
-
 
 Route::get('addteacher', function () {
 return view('pages/admin/addteacher');
@@ -59,6 +47,7 @@ return view('pages/admin/addteacher');
 Route::post('/insertNewTeacher','AdminController@insertNewTeacher');
 Route::get('/teacherinfo','AdminController@teacherinfo');
 
+Route::match(['get','post'],'/assigncourses','AdminController@select_courses');
 
 
 Route::get('addstudent', function () {
@@ -71,6 +60,8 @@ Route::post('/insertNewStudent','AdminController@insertNewStudent');
 Route::get('/unassignecourses','AdminController@unassignecourses');
 
 Route::get('/teachcourses','AdminController@teachcourse');
+
+});
 
 
 Route::get('atfistsemester', function () {
@@ -152,11 +143,21 @@ Route::get('resulteightsemester', function () {
 return view('pages/admin/resulteightsemester');
 });
 
+Route::get('login', function () {
+return view('pages/student/login');
+});
+
+Route::get('lecturematerials', function () {
+return view('pages/student/lecturematerials');
+});
 
 Route::get('studentresult', function () {
 return view('pages/student/studentresult');
 });
 
+Route::get('studentmark', function () {
+return view('pages/student/studentmark');
+});
 
 Route::get('studentsetting', function () {
 return view('pages/student/studentsetting');
