@@ -20,12 +20,14 @@
 						<div class="dropdown-menu " aria-labelledby="dropdownMenuLink" >
 							<a class="dropdown-item" href="#">Edit profile</a>
 							<a class="dropdown-item" href="#">Change password</a>
-							<a class="dropdown-item" href="#">Logout</a>
+							
+							<a class="dropdown-item" href="">Logout</a>
+
 						</div>
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link nav-pages" href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
+					<a class="nav-link nav-pages" href="/logoutAdmin"><i class="fas fa-sign-out-alt"></i>Logout</a>
 				</li>
 			</ul>
 		</div>

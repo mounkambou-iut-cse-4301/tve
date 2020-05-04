@@ -36,8 +36,13 @@
 							<li class="nav-item"><a class="nav-link text_nav" href="/secondyeardetail">CSE 2</a></li>
 							<li class="nav-item"><a class="nav-link text_nav" href="/thirdyeardetail">CSE 3</a></li>
 							<li class="nav-item"><a class="nav-link text_nav" href="/fourthyeardetail">CSE 4</a></li>
+							 @guest
 							<li class="nav-item"><a class="nav-link text_nav" href="/teacherlogin">Login As Teacher</a></li>
 							<li class="nav-item"><a class="nav-link text_nav" href="/login">Login As Student</a></li>
+                            @endguest
+                            @auth
+                            <a href="#">Logout</a>
+                            @endauth
 						</ul>
 					</div>
 				</div>

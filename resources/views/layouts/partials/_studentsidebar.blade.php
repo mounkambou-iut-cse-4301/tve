@@ -1,8 +1,8 @@
 <div class="col-lg-3">
 	<div class="card">
-		<div class="card-header"><h4>abdel karim</h4></div>
+		<div class="card-header"></div>
 		<table class="table">
-			<tbody>
+			<tbody><br><br>
 				<tr class="table-primary">
 					<td><a href="/studentdashboard" class="link_studentsidebar">Dashboard</a></td>
 				</tr>
