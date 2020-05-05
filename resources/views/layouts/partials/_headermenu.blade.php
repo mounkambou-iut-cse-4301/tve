@@ -41,7 +41,8 @@
 							<li class="nav-item"><a class="nav-link text_nav" href="/login">Login As Student</a></li>
                             @endguest
                             @auth
-                            <a href="#">Logout</a>
+                            <li class="nav-item"><a class="nav-link text_nav" href="/logout_s_t">Logout</a></li>
+                           
                             @endauth
 						</ul>
 					</div>

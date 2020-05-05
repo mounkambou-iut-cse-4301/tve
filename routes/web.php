@@ -103,12 +103,20 @@ return view('pages/admin/resulteightsemester');
 
 
 // student part begin
+
+Route::get('/logout_s_t','StudentController@logout_s_t');
+
 Route::get('/login','StudentController@login');
+
 Route::post('/StudentLogin','StudentController@StudentLogin');
+
+
 Route::match(['get','post'],'/studentdashboard','StudentController@studentdashboard');
+
 Route::get('lecturematerials', function () {
 return view('pages/student/lecturematerials');
 });
+
 Route::get('studentresult', function () {
 return view('pages/student/studentresult');
 });

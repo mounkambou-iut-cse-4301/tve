@@ -3,9 +3,9 @@
 		<div class="card-header"></div>
 		<table class="table">
 			<tbody><br><br>
-				<tr class="table-primary">
+				<!-- <tr class="table-primary">
 					<td><a href="/studentdashboard" class="link_studentsidebar">Dashboard</a></td>
-				</tr>
+				</tr> -->
 				<tr class="table-success">
 					<td><a href="/lecturematerials" class="link_studentsidebar">Lecture Materials</a></td>
 				</tr>

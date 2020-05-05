@@ -10,17 +10,19 @@
                 <div class="card-body">
                    <!--  <h1 style="text-align: center;"><b>Hello Abdel Karim Mounkambou</b></h1> -->
                     <h2>Choose your courses</h2>
-                    <form action="/" method="post" class="validated">
+                    <form action="/studentdashboard" method="post" class="validated">
+                       {{csrf_field()}}
                         @foreach($Courses as $cour)
+
                         <div class="form-check">
                             <label class="form-check-label" >
-                                <input type="checkbox" class="form-check-input"  name="{{$cour->course_id}}" value="{{$cour->course_id}}" >{{$cour->course_id}}: {{$cour->course_name}} ({{$cour->course_credit credit}})
+                                <input type="checkbox" class="form-check-input"  name="select_course[]" value="{{$cour->course_id}}" >{{$cour->course_id}}: {{$cour->course_name}} ({{$cour->course_credit }} credit)
                             </label>
                         </div>
                         @endforeach
                        
                         <br>
-                      {{Auth:user()->name}}
+                      
                         <button type="submit" class="btn btn-primary">Submit</button>
                         
                     </form>
