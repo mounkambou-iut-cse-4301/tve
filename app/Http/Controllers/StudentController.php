@@ -35,7 +35,7 @@ class StudentController extends Controller
             $user=User::find($st_log->user_fk_student);
           	 
           	Auth::login($user);
-          	$sudent_sel=coursetake::where('student_fk_take',$student_id)->first();
+          	$sudent_sel=coursetake::where('student_fk_take',$student_id)->where('take_sem',$st_log->student_sem)->first();
             if($sudent_sel !=null){
                 return view('pages/student/welcome_studentdashboard')->with('st_log',$st_log);
             }else{

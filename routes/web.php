@@ -130,7 +130,19 @@ Route::get('studentatendance', function () {
 return view('pages/student/studentatendance');
 });
 // student part end
+
+
+
+
+
+
 // teacher part begin
+
+
+Route::get('/teacherlogin','TeacherController@teacherlogin');
+Route::post('/login_teacher','TeacherController@login_teacher');
+Route::match(['get','post'],'teacherdashboard','TeacherController@teacherdashboard');
+
 Route::get('teachermaterial', function () {
 return view('pages/teacher/teachermaterial');
 });
@@ -146,10 +158,6 @@ return view('pages/teacher/teachermark');
 Route::get('teachersetting', function () {
 return view('pages/teacher/teachersetting');
 });
-Route::get('teacherdashboard', function () {
-return view('pages/teacher/teacherdashboard');
-});
-Route::get('teacherlogin', function () {
-return view('pages/teacher/teacherlogin');
-});
+
+
 // teacher part end

@@ -1,4 +1,4 @@
-@extends('layouts/master',['title'=>'Login'])
+@extends('layouts/master',['title'=>'Login teacher'])
 @section('content')
 <!--================Login start =================-->
 <div class="login_background" style='background-image:url("img/teacherlogin1.jpg") !important;'>
@@ -6,17 +6,17 @@
         <div class="row"><br>
             <div class="col-sm-7"></div>
             <div class="col-sm-5"><br>
-                <form action="" method="post" class="form_login">
+                <form action="/login_teacher" method="post" class="form_login validated">
                     <div class="img_login_container">
                         <img src="img/Fingerprint.jpg" alt="image" class="img_finger">
                     </div>
                     <div class="container_login">
                         {{csrf_field()}}
                         <h5 style="color: red; text-align: center;background-color: #333333;"><b> {{ session('message') }}</b></h5>
-                        <label for="unid"><b>UserId</b></label>
-                        <input type="text" placeholder="Enter UserId" name="unid" required>
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
+                        <label for="teacher_id"><b>UserId</b></label><br>
+                        <input type="number" placeholder="Enter UserId" name="teacher_id" id="teacher_id" required style="width: 100%;"><br><br>
+                        <label for="teacher_pass"><b>Password</b></label><br>
+                        <input type="password" placeholder="Enter Password" name="teacher_pass" id="teacher_pass" required>
                         <label>
                             <input type="checkbox" checked="checked" name="remember"> Remember me
                         </label>
