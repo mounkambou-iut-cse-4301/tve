@@ -12,7 +12,7 @@
                     </div>
                     <div class="container_login">
                         {{csrf_field()}}
-                        <h5 style="color: red; text-align: center;background-color: #333333;"><b> {{ session('message') }}</b></h5>
+                         <p><span class="badge badge-danger" style="text-align: center ">{{ session('message') }}</span></p>
                         <label for="admin_id"><b style="color: black">Admin_Id</b></label><br>
                         <input type="number" id="admin_id" placeholder="Enter Admin_Id" name="admin_id" required style="width: 100%"><br><br>
                         <label for="admin_pass"><b style="color: black">Password</b></label>

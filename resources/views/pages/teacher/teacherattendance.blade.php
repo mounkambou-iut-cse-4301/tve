@@ -8,7 +8,9 @@
             <div class="card">
                 <div class="card-header"><h4>Attendance</h4></div>
                 <div class="card-body">
-                    <form class="">
+                    <form action="/teacher_attendance" method="post" class="validated">
+                        @csrf
+                         <span class="badge badge-success" style="text-align: center ">{{ session('message') }}</span>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -17,30 +19,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($stu as $st_id)
                                 <tr>
                                     <div class="form-group">
-                                        <td><label for="email">160040022 :</label></td>
-                                        <td><input type="number" class="form-control" id="email" placeholder="Enter email" name="email"></td>
+                                        <td><input type="number" class="form-control" name="st_id[]" value="{{$st_id->student_fk_take}}" readonly></td>
+                                        <td><input type="number" class="form-control"  name="attendance[]"></td>
                                     </div>
                                 </tr>
-                                 <tr>
-                                    <div class="form-group">
-                                        <td><label for="email">160040023 :</label></td>
-                                        <td><input type="number" class="form-control" id="email" placeholder="Enter email" name="email"></td>
-                                    </div>
-                                </tr>
-                                 <tr>
-                                    <div class="form-group">
-                                        <td><label for="email">160040024 :</label></td>
-                                        <td><input type="number" class="form-control" id="email" placeholder="Enter email" name="email"></td>
-                                    </div>
-                                </tr>
-                                 <tr>
-                                    <div class="form-group">
-                                        <td><label for="email">160040025 :</label></td>
-                                        <td><input type="number" class="form-control" id="email" placeholder="Enter email" name="email"></td>
-                                    </div>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <button type="submit" class="btn btn-primary">Submit</button>

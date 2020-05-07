@@ -12,64 +12,23 @@
                             <thead>
                                 <tr>
                                     <th>Student Id</th>
-                                    <th>23/01/2020</th>
-                                    <th>24/01/2020</th>
-                                    <th>25/01/2020</th>
-                                    <th>23/02/2020</th>
-                                    <th>23/05/2020</th>
-                                    <th>25/01/2020</th>
-                                    <th>23/02/2020</th>
-                                    <th>23/05/2020</th>
+                                    <th>Date</th>
+                                    <th>Presence</th>
+                                 
                                 </tr>
                             </thead>
                             <tbody>
+                                  @foreach($att_details as $att_detail)
                                 <tr>
-                                    <td>16004001</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                     <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>0</td>
+                                    <td>{{$att_detail->student_fk_att}}</td>
+                                    <td>{{$att_detail->att_date}}</td>
+                                    <td>{{$att_detail->att_presence}}</td>
                                 </tr>
-                                   <tr>
-                                    <td>16004002</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                     <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                   <tr>
-                                    <td>16004003</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                     <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                       <tr>
-                                    <td>16004004</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                     <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                </tr>
-                                </tr>
+                                  @endforeach
                                 
                             </tbody>
                         </table>
+                         <div>{{$att_details->links()}}</div>
                 </div>
             </div>
         </div>

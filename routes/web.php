@@ -143,15 +143,15 @@ Route::get('/teacherlogin','TeacherController@teacherlogin');
 Route::post('/login_teacher','TeacherController@login_teacher');
 Route::match(['get','post'],'teacherdashboard','TeacherController@teacherdashboard');
 
+Route::post('/teacher_attendance','TeacherController@teacher_attendance');
+Route::get('/teacherattendance','TeacherController@teacherattendance');
+Route::get('/teacherattendancedetails','TeacherController@teacherattendancedetails');
+
 Route::get('teachermaterial', function () {
 return view('pages/teacher/teachermaterial');
 });
-Route::get('teacherattendance', function () {
-return view('pages/teacher/teacherattendance');
-});
-Route::get('teacherattendancedetails', function () {
-return view('pages/teacher/teacherattendancedetails');
-});
+
+
 Route::get('teachermark', function () {
 return view('pages/teacher/teachermark');
 });

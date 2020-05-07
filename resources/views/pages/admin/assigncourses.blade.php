@@ -8,7 +8,7 @@
         <form action="/assigncourses" method="post">
         <div class="form-group">
           @csrf
-          <h5 style="color: green; text-align: center;"><b> {{ session('message') }}</b></h5>
+          <span class="badge badge-success" style="text-align: center ">{{ session('message') }}</span>
           <label for="teacher_fk_teach">Teacher's Id:</label>
           <select class="form-control" id="teacher_fk_teach" name="teacher_fk_teach">
            @foreach($sel_t as $s_t )
