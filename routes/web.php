@@ -110,6 +110,8 @@ Route::get('/login','StudentController@login');
 
 Route::post('/StudentLogin','StudentController@StudentLogin');
 
+Route::get('/studentatendance','StudentController@studentatendance');
+
 
 Route::match(['get','post'],'/studentdashboard','StudentController@studentdashboard');
 
@@ -126,9 +128,7 @@ return view('pages/student/studentmark');
 Route::get('studentsetting', function () {
 return view('pages/student/studentsetting');
 });
-Route::get('studentatendance', function () {
-return view('pages/student/studentatendance');
-});
+
 // student part end
 
 

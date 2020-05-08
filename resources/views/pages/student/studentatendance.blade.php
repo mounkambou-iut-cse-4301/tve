@@ -12,24 +12,23 @@
                             <thead>
                                 <tr>
                                     <th>course Id</th>
-                                    <th>23/01/2020</th>
-                                    <th>24/01/2020</th>
-                                    <th>25/01/2020</th>
-                                    <th>23/02/2020</th>
-                                    <th>23/05/2020</th>
+                                    <th>Date</th>
+                                    <th>Presence</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($student_att as $st_att)
                                 <tr>
-                                    <td>CSE 2312</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                     <td>1</td>
-                                    <td>1</td>
+                                    <td>{{$st_att->course_fk_att}}</td>
+                                    <td>{{$st_att->att_date}}</td>
+                                    <td>{{$st_att->att_presence}}</td>
+                                
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
+                        <div>{{$student_att->links()}}</div>
                 </div>
             </div>
         </div>

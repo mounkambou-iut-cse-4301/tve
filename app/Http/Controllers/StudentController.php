@@ -18,6 +18,7 @@ use App\course;
 use App\admn;
 use App\User;
 use App\coursetake;
+use App\attendance;
 class StudentController extends Controller
 {
     function login(Request $req){
@@ -75,6 +76,14 @@ class StudentController extends Controller
             }
         	return view('pages/student/welcome_studentdashboard')->with('st_log',$st_log);
         }
+    }
+    
+
+    function studentatendance(Request $re){
+        $st_log=student::where('user_fk_student',Auth::user()->id)->first();
+    	$student_att=attendance::where('student_fk_att',$st_log->student_id)->orderBy('att_date')->paginate(6);
+    	
+    	return view('pages/student/studentatendance')->with('student_att',$student_att);
     }
 
 
