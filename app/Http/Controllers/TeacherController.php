@@ -97,13 +97,54 @@ class TeacherController extends Controller
     }
 
 
-    function teacherattendancedetails(Request $req){
+    function teacherattendance_select(Request $req){
+    	if($req->isMethod('get')){
+    		$st_sort=attendance::where('course_fk_att',$req->session()->get('course'))->groupBy('att_date')->get();
+    		$st=coursetake::where('course_fk_take',$req->session()->get('course'))->get();
+            // dump($st);
+            // dd($st);
 
-    	$att_details=attendance::where('course_fk_att',$req->session()->get('course'))->paginate(7);
+    	 return view('pages/teacher/teacherattendance_select')->with('st_sort',$st_sort)
+    	                                                      ->with('st',$st); 
+    	}
+    	if($req->isMethod('post')){
+    		$sort_st_id=(int)$req->input('sort_st_id');
+    		$sort_st_date=$req->input('sort_st_date');
+    		// dd($sort_st_id);
+
+    		$att_details=attendance::where('course_fk_att',$req->session()->get('course'))
+    		                       ->where('student_fk_att',$sort_st_id)
+    		                       ->where('att_date',$sort_st_date)->paginate(5);
+
+    	   $att_count=attendance::where('course_fk_att',$req->session()->get('course'))
+    		                       ->where('student_fk_att',$sort_st_id)->get();
+
+    		$att_pre=attendance::where('course_fk_att',$req->session()->get('course'))
+    		                     ->where('student_fk_att',$sort_st_id)
+    		                     ->where('att_presence',1)->get();
+    		
+            $att_coun=count($att_count);
+            $att_pr=count($att_pre);
+
+            $percentage=($att_pr*100)/$att_coun;
+            
+
+
+           return view('pages/teacher/teacherattendancedetails')->with('att_details',$att_details)->with('percentage',$percentage);
+    	}
+    }
+
+    
+
+    function teachermark(Request $req){
+
+    	if($req->isMethod('get')){
+
+    		 $st=coursetake::where('course_fk_take',$req->session()->get('course'))->get();
+    		 $st_att=attendance::where('course_fk_att',$req->session()->get('course'))->get();
+    		 // dd($st->student_fk_take);
+    		return view('pages/teacher/teachermark')->with('st',$st);
+    	}
     	
-
-
-           return view('pages/teacher/teacherattendancedetails')->with('att_details',$att_details);
-
     }
 }

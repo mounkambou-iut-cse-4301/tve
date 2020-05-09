@@ -10,7 +10,7 @@
 					<td><a href="/lecturematerials" class="link_studentsidebar">Lecture Materials</a></td>
 				</tr>
 				<tr class="table-primary">
-					<td><a href="/studentatendance" class="link_studentsidebar">Attendances</a></td>
+					<td><a href="/studentatendance_select" class="link_studentsidebar">Attendances</a></td>
 					
 				</tr>
 				<tr class="table-success">

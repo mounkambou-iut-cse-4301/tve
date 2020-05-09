@@ -12,7 +12,7 @@
 					
 				</tr>
 				<tr class="table-success">
-					<td><a href="/teacherattendancedetails" class="link_studentsidebar">Att Details</a></td>
+					<td><a href="/teacherattendance_select" class="link_studentsidebar">Att Details</a></td>
 					
 				</tr>
 				<tr class="table-primary">

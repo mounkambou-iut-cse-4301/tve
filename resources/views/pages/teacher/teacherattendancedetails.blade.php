@@ -8,27 +8,31 @@
             <div class="card">
                 <div class="card-header"><h4>Attendance Details</h4></div>
                 <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Student Id</th>
-                                    <th>Date</th>
-                                    <th>Presence</th>
-                                 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                  @foreach($att_details as $att_detail)
-                                <tr>
-                                    <td>{{$att_detail->student_fk_att}}</td>
-                                    <td>{{$att_detail->att_date}}</td>
-                                    <td>{{$att_detail->att_presence}}</td>
-                                </tr>
-                                  @endforeach
+                    <div class="alert alert-info">
+                        <strong>This student has {{$percentage}}% of atttendance in your course.</strong>
+                    </div>
+                    <br>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Student Id</th>
+                                <th>Date</th>
+                                <th>Presence</th>
                                 
-                            </tbody>
-                        </table>
-                         <div>{{$att_details->links()}}</div>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($att_details as $att_detail)
+                            <tr>
+                                <td>{{$att_detail->student_fk_att}}</td>
+                                <td>{{$att_detail->att_date}}</td>
+                                <td>{{$att_detail->att_presence}}</td>
+                            </tr>
+                            @endforeach
+                            
+                        </tbody>
+                    </table>
+                    <div>{{$att_details->links()}}</div>
                 </div>
             </div>
         </div>

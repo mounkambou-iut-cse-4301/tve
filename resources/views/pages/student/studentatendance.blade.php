@@ -8,27 +8,31 @@
             <div class="card">
                 <div class="card-header"><h4>Attendance</h4></div>
                 <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>course Id</th>
-                                    <th>Date</th>
-                                    <th>Presence</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($student_att as $st_att)
-                                <tr>
-                                    <td>{{$st_att->course_fk_att}}</td>
-                                    <td>{{$st_att->att_date}}</td>
-                                    <td>{{$st_att->att_presence}}</td>
+                    
+                    <div class="alert alert-info">
+                        <strong>You have {{$percentage}}% of atttendance in this course.</strong>
+                    </div><br>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Course Id</th>
+                                <th>Date</th>
+                                <th>Presence</th>
                                 
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <div>{{$student_att->links()}}</div>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($att_details as $att_detail)
+                            <tr>
+                                <td>{{$att_detail->course_fk_att}}</td>
+                                <td>{{$att_detail->att_date}}</td>
+                                <td>{{$att_detail->att_presence}}</td>
+                            </tr>
+                            @endforeach
+                            
+                        </tbody>
+                    </table>
+                    
                 </div>
             </div>
         </div>

@@ -81,11 +81,51 @@ class StudentController extends Controller
 
     function studentatendance(Request $re){
         $st_log=student::where('user_fk_student',Auth::user()->id)->first();
-    	$student_att=attendance::where('student_fk_att',$st_log->student_id)->orderBy('att_date')->paginate(6);
+    	$student_att=attendance::where('student_fk_att',$st_log->student_id)->orderBy('att_date', 'DESC')->paginate(6);
     	
     	return view('pages/student/studentatendance')->with('student_att',$student_att);
     }
 
+
+    function studentatendance_select(Request $req){
+         $student=student::where('user_fk_student',Auth::user()->id)->first();
+        if($req->isMethod('get')){
+           
+           $course_sort=attendance::where('student_fk_att', $student->student_id)
+                                  ->groupBy('course_fk_att')->get();
+
+            $date_sort=attendance::where('student_fk_att', $student->student_id)
+                                  ->groupBy('att_date')->get();
+                                  
+
+            return view('pages/student/studentatendance_select')->with('course_sort',$course_sort)->with('date_sort',$date_sort);
+        }
+        if($req->isMethod('post')){
+           $sort_st_course=$req->input('sort_st_course');
+           $sort_course_date=$req->input('sort_course_date');
+
+           $att_details=attendance::where('course_fk_att',$sort_st_course)
+                                   ->where('student_fk_att',$student->student_id)
+                                   ->where('att_date', $sort_course_date)->get();
+
+          $att_count=attendance::where('course_fk_att',$sort_st_course)
+                                   ->where('student_fk_att',$student->student_id)->get();
+
+            $att_pre=attendance::where('course_fk_att',$sort_st_course)
+                                 ->where('student_fk_att',$student->student_id)
+                                 ->where('att_presence',1)->get();
+
+            $att_coun=count($att_count);
+            $att_pr=count($att_pre);
+
+            $percentage=($att_pr*100)/$att_coun;
+
+          return view('pages/student/studentatendance')->with('att_details',$att_details)
+                                                       ->with('percentage',$percentage);
+
+        }
+        
+    }
 
 
 }

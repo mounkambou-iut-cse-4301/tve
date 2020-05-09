@@ -110,8 +110,7 @@ Route::get('/login','StudentController@login');
 
 Route::post('/StudentLogin','StudentController@StudentLogin');
 
-Route::get('/studentatendance','StudentController@studentatendance');
-
+Route::match(['get','post'],'/studentatendance_select','StudentController@studentatendance_select');
 
 Route::match(['get','post'],'/studentdashboard','StudentController@studentdashboard');
 
@@ -145,16 +144,17 @@ Route::match(['get','post'],'teacherdashboard','TeacherController@teacherdashboa
 
 Route::post('/teacher_attendance','TeacherController@teacher_attendance');
 Route::get('/teacherattendance','TeacherController@teacherattendance');
-Route::get('/teacherattendancedetails','TeacherController@teacherattendancedetails');
+
+Route::match(['get','post'],'teacherattendance_select','TeacherController@teacherattendance_select');
+Route::match(['get','post'],'teachermark','TeacherController@teachermark');
+
 
 Route::get('teachermaterial', function () {
 return view('pages/teacher/teachermaterial');
 });
 
 
-Route::get('teachermark', function () {
-return view('pages/teacher/teachermark');
-});
+
 Route::get('teachersetting', function () {
 return view('pages/teacher/teachersetting');
 });

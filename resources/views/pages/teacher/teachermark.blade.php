@@ -8,7 +8,8 @@
             <div class="card">
                 <div class="card-header"><h4>Marks</h4></div>
                 <div class="card-body">
-                    <form class="">
+                    <form action="/teachermark" method="post" class="validated" >
+                        {{csrf_field()}}
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -23,9 +24,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($st as $stu)
                                 <tr>
                                     <div class="form-group">
-                                        <td>160040022: 34%</td>
+                                        
+                                        <td>{{$stu->student_fk_take}}</td>
+                                        
                                         <td><input type="number" step="0.1" class="form-control" name="email"></td>
                                          <td><input type="number" class="form-control" name="email"></td>
                                          <td><input type="number" class="form-control" name="email"></td>
@@ -35,30 +39,7 @@
                                          <td><input type="number" class="form-control" name="email"></td>
                                     </div>
                                 </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <td>160040022: 34%</td>
-                                        <td><input type="number" step="0.1" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <td>160040022: 34%</td>
-                                        <td><input type="number" step="0.1" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                    </div>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <button type="submit" class="btn btn-primary">Submit</button>
