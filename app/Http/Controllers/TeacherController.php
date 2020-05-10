@@ -137,14 +137,61 @@ class TeacherController extends Controller
     
 
     function teachermark(Request $req){
+    	$st=coursetake::where('course_fk_take',$req->session()->get('course'))
+    		               ->whereNull('quiz1')
+    		               ->whereNull('quiz2')
+    		               ->whereNull('quiz3')
+    		               ->whereNull('quiz4')
+    		               ->whereNull('mid')
+    		               ->whereNull('final')
+    		               ->whereNull('att_mark')->get();
 
-    	if($req->isMethod('get')){
+        if(count($st)>0){
 
-    		 $st=coursetake::where('course_fk_take',$req->session()->get('course'))->get();
-    		 $st_att=attendance::where('course_fk_att',$req->session()->get('course'))->get();
-    		 // dd($st->student_fk_take);
-    		return view('pages/teacher/teachermark')->with('st',$st);
-    	}
+
+
+    	    if($req->isMethod('get')){
+
+    		
+    		      $st_att=attendance::where('course_fk_att',$req->session()->get('course'))->get();
+    		       // dd($st->student_fk_take);
+    		      return view('pages/teacher/teachermark')->with('st',$st);
+    	    }
+    	    if($req->isMethod('post')){
+    		      $st_id=$req->input('st_id');
+    		      $quiz1=$req->input('quiz1');
+    		      $quiz2=$req->input('quiz2');
+    		      $quiz3=$req->input('quiz3');
+    		      $quiz4=$req->input('quiz4');
+    		      $mid=$req->input('mid');
+    		      $final=$req->input('final');
+    		      $attendance=$req->input('attendance');
+
+                
+    		       $count=count($st_id);
+             
+                   for($i=0;$i<$count;$i++){
+                    	$insert_mark=coursetake::where('course_fk_take',$req->session()->get('course'))
+             	                       ->where('student_fk_take',(int)$st_id[$i])
+             	                       ->update([
+             	                       	     'quiz1'=>(double)$quiz1[$i],
+             	                             'quiz2'=>(double)$quiz2[$i],
+             	                             'quiz3'=>(double)$quiz3[$i],
+             	                             'quiz4'=>(double)$quiz4[$i],
+             	                             'mid'=>(double)$mid[$i],
+             	                             'final'=>(double)$final[$i],
+             	                             'att_mark'=>(double)$attendance[$i],
+             	                   ]);
+      
+
+                    }
+    		
+             return view('pages/teacher/teachermark_empty');
+    	    }
+
+      }else{
+      	return view('pages/teacher/teachermark_empty');
+      }
     	
     }
 }

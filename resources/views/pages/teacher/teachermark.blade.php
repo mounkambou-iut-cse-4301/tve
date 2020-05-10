@@ -10,6 +10,7 @@
                 <div class="card-body">
                     <form action="/teachermark" method="post" class="validated" >
                         {{csrf_field()}}
+                         <span class="badge badge-success" style="text-align: center ">{{ session('message') }}</span>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -26,17 +27,18 @@
                             <tbody>
                                 @foreach($st as $stu)
                                 <tr>
-                                    <div class="form-group">
+                                    <div class="form-group" >
                                         
-                                        <td>{{$stu->student_fk_take}}</td>
+                                       
+                                        <td><input type="number" class="form-control" name="st_id[]" value="{{$stu->student_fk_take}}" readonly style="width: 155%; padding-left: 0%; padding-right: 0%;"></td>
                                         
-                                        <td><input type="number" step="0.1" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
-                                         <td><input type="number" class="form-control" name="email"></td>
+                                        <td><input type="number" step=".01" class="form-control" name="quiz1[]" style="margin-left: 20%;"></td>
+                                        <td><input type="number" step=".01" class="form-control" name="quiz2[]"></td>
+                                        <td><input type="number" step=".01" class="form-control" name="quiz3[]"></td>
+                                        <td><input type="number" step=".01" class="form-control" name="quiz4[]"></td>
+                                        <td><input type="number" step=".01" class="form-control" name="mid[]"></td>
+                                        <td><input type="number" class="form-control" step=".01" name="final[]"></td>
+                                        <td><input type="number" step=".01" class="form-control" name="attendance[]"></td>
                                     </div>
                                 </tr>
                                 @endforeach

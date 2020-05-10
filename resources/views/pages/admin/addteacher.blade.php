@@ -8,7 +8,7 @@
         <form action="/insertNewTeacher" method="post" class="validated">
           <div class="form-group">
             {{csrf_field()}}
-            <p><span class="badge badge-success" style="text-align: center ">{{ session('message') }}</span></p>
+            <p><span class="badge badge-success" style="text-align: center ">{{ session('message') }}</span></p><br>
             <label for="teacher_id">Id:</label>
             <input type="number" class="form-control" id="teacher_id" placeholder="Enter Teacher's Id" name="teacher_id" required>
           </div>
