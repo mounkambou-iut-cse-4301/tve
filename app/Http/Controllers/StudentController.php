@@ -128,4 +128,39 @@ class StudentController extends Controller
     }
 
 
+    
+    function studentmark(Request $req){
+
+      $st=student::where('user_fk_student',Auth::user()->id)->first();
+
+      $student_mark=coursetake::where('student_fk_take',$st->student_id)
+                               ->where('take_sem',$st->student_sem)->paginate(6);
+      // dd($student_mark);
+      return view('pages/student/studentmark')->with('student_mark',$student_mark);
+    }
+
+    
+    function studentresult(Request $req){
+      $st=student::where('user_fk_student',Auth::user()->id)->first();
+      
+      $take=coursetake::where('student_fk_take',$st->student_id)
+                               ->where('take_sem',$st->student_sem)->get();
+                            
+              
+              $data=array();
+            
+              foreach($take as $tk){
+                 $highest= highest($tk);
+                 $mfa = $tk->mid + $tk->final + $tk->att_mark;
+                 $sum = $highest + $mfa;
+
+                 $grade = course::where('course_id',$tk->course_fk_take)->first();
+                 $data = array_merge($data, array($tk->course_fk_take=>getGrade($sum,$grade->course_credit)));
+                 
+                 
+              }
+                  return view('pages/student/studentresult')->with('data',$data);
+    }
+
+
 }

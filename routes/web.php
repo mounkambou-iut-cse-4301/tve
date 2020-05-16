@@ -114,16 +114,15 @@ Route::match(['get','post'],'/studentatendance_select','StudentController@studen
 
 Route::match(['get','post'],'/studentdashboard','StudentController@studentdashboard');
 
+Route::get('/studentmark','StudentController@studentmark');
+
+Route::get('/studentresult','StudentController@studentresult');
+
 Route::get('lecturematerials', function () {
 return view('pages/student/lecturematerials');
 });
 
-Route::get('studentresult', function () {
-return view('pages/student/studentresult');
-});
-Route::get('studentmark', function () {
-return view('pages/student/studentmark');
-});
+
 Route::get('studentsetting', function () {
 return view('pages/student/studentsetting');
 });

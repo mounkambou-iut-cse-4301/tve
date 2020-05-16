@@ -37,7 +37,12 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ], 
+        "files":[
+           "app/helpers/helperquiz.php",
+            "app/helpers/helpergetgrade.php"
         ]
+         
     },
     "autoload-dev": {
         "psr-4": {

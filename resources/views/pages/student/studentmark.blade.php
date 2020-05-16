@@ -8,10 +8,10 @@
             <div class="card">
                 <div class="card-header"><h4>Marks</h4></div>
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>St Id</th>
+                                <th>Courses</th>
                                 <th>CT-1</th>
                                 <th>CT-2</th>
                                 <th>CT-3</th>
@@ -23,53 +23,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>CSE 4343</td>
-                                <td>12</td>
-                                <td>13</td>
-                                <td>3</td>
-                                <td>10</td>
-                                <td>30</td>
-                                <td>45</td>
-                                <td>80</td>
-                                <td>30</td>
-                            </tr>
-                            <tr>
-                                <td>CSE 4343</td>
-                                <td>12</td>
-                                <td>13</td>
-                                <td>3</td>
-                                <td>10</td>
-                                <td>30</td>
-                                <td>45</td>
-                                <td>80</td>
-                                <td>30</td>
-                            </tr>
-                            <tr>
-                                <td>CSE 4343</td>
-                                <td>12</td>
-                                <td>13</td>
-                                <td>3</td>
-                                <td>10</td>
-                                <td>30</td>
-                                <td>45</td>
-                                <td>80</td>
-                                <td>30</td>
-                            </tr>
-                            <tr>
-                                <td>CSE 4343</td>
-                                <td>12</td>
-                                <td>13</td>
-                                <td>3</td>
-                                <td>10</td>
-                                <td>30</td>
-                                <td>45</td>
-                                <td>80</td>
-                                <td>30</td>
-                            </tr>
+                            @foreach($student_mark as $st_mark)
                             
+                            <tr>
+                                <td>{{$st_mark->course_fk_take}}</td>
+                                <td>{{$st_mark->quiz1}}</td>
+                                <td>{{$st_mark->quiz2}}</td>
+                                <td>{{$st_mark->quiz3}}</td>
+                                <td>{{$st_mark->quiz4}}</td>
+                                <td>{{highest($st_mark)}}</td>
+                                <td>{{$st_mark->mid}}</td>
+                                <td>{{$st_mark->final}}</td>
+                                <td>{{$st_mark->att_mark}}</td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
+                    <div>{{$student_mark->links()}}</div>
                 </div>
             </div>
         </div>

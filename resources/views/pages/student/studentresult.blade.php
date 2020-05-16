@@ -19,42 +19,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($data as $key => $dt)
                             <tr>
-                                <td>CSE 4104</td>
-                                <td>eNGINEERING Drawing Lab</td>
-                                <td>0.75</td>
-                                <td>A+</td>
+                                <td>{{ $key }}</td>
+                                <td>{{courseName($key)}}</td>
+                                <td>{{coursecredit($key)}}</td>
+                                <td>{{$dt}}</td>
                             </tr>
-                            <tr>
-                                <td>CSE 4104</td>
-                                <td>eNGINEERING Drawing Lab</td>
-                                <td>0.75</td>
-                                <td>A+</td>
-                            </tr>
-                            <tr>
-                                <td>CSE 4104</td>
-                                <td>eNGINEERING Drawing Lab</td>
-                                <td>0.75</td>
-                                <td>A+</td>
-                            </tr>
-                            <tr>
-                                <td>CSE 4104</td>
-                                <td>eNGINEERING Drawing Lab</td>
-                                <td>0.75</td>
-                                <td>A+</td>
-                            </tr>
-                            <tr>
-                                <td>CSE 4104</td>
-                                <td>eNGINEERING Drawing Lab</td>
-                                <td>0.75</td>
-                                <td>A+</td>
-                            </tr>
-                            <tr>
-                                <td>CSE 4104</td>
-                                <td>eNGINEERING Drawing Lab</td>
-                                <td>0.75</td>
-                                <td>A+</td>
-                            </tr>
+                            @endforeach
+                           
                         </tbody>
                     </table>
                
