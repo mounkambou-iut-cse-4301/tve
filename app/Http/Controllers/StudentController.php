@@ -19,6 +19,7 @@ use App\admn;
 use App\User;
 use App\coursetake;
 use App\attendance;
+use App\grade;
 class StudentController extends Controller
 {
     function login(Request $req){
@@ -66,12 +67,19 @@ class StudentController extends Controller
         	$st_log=student::where('user_fk_student',Auth::user()->id)->first();
         	
         	$count=count($re->input('select_course'));
-        	
+        
         	for($i=0; $i<$count; $i++){
                 $select_course= coursetake::create([
                   'student_fk_take'=>$st_log->student_id,
                   'course_fk_take'=>$re->input('select_course')[$i],
                   'take_sem'=>$st_log->student_sem,
+                ]);
+
+                $grade_table=grade::create([
+                  'course_fk_grade'=>$re->input('select_course')[$i],
+                  'student_fk_grade'=>$st_log->student_id,
+                  'grade_sem'=>$st_log->student_sem,
+
                 ]);
             }
         	return view('pages/student/welcome_studentdashboard')->with('st_log',$st_log);

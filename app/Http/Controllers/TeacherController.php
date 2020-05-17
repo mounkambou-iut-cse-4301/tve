@@ -18,6 +18,7 @@ use App\admn;
 use App\User;
 use App\attendance;
 use App\coursetake;
+use App\grade;
 
 class TeacherController extends Controller
 {
@@ -171,6 +172,24 @@ class TeacherController extends Controller
     		       $count=count($st_id);
              
                    for($i=0;$i<$count;$i++){
+                   
+
+                       if((double)$quiz1[$i]<=(double)$quiz2[$i] && (double)$quiz1[$i]<=(double)$quiz3[$i] && (double)$quiz1[$i]<=(double)$quiz4[$i]){
+                           $high=(double)$quiz2[$i]+(double)$quiz3[$i]+(double)$quiz4[$i];
+                        }
+                        elseif((double)$quiz2[$i]<=(double)$quiz1[$i] && (double)$quiz2[$i]<=(double)$quiz3[$i] && (double)$quiz2[$i]<=(double)$quiz4[$i]){
+                           $high=(double)$quiz1[$i]+(double)$quiz3[$i]+(double)$quiz4[$i];
+                        }
+                         elseif((double)$quiz3[$i]<=(double)$quiz1[$i] && (double)$quiz3[$i]<=(double)$quiz2[$i] && (double)$quiz3[$i]<=(double)$quiz4[$i]){
+                           $high=(double)$quiz1[$i]+(double)$quiz2[$i]+(double)$quiz4[$i];
+                        }
+                         elseif((double)$quiz4[$i]<=(double)$quiz1[$i] && (double)$quiz4[$i]<=(double)$quiz2[$i] && (double)$quiz4[$i]<=(double)$quiz3[$i]){
+                           $high=(double)$quiz1[$i]+(double)$quiz2[$i]+(double)$quiz3[$i];
+                        }
+
+                        $sum=$high+(double)$mid[$i]+(double)$final[$i]+(double)$attendance[$i];
+                        // dd($sum);
+
                     	$insert_mark=coursetake::where('course_fk_take',$req->session()->get('course'))
              	                       ->where('student_fk_take',(int)$st_id[$i])
              	                       ->update([
@@ -182,6 +201,12 @@ class TeacherController extends Controller
              	                             'final'=>(double)$final[$i],
              	                             'att_mark'=>(double)$attendance[$i],
              	                   ]);
+                         $course=course::where('course_id',$req->session()->get('course'))->first();
+                        $insert_grade=grade::where('course_fk_grade',$req->session()->get('course'))->where('student_fk_grade',(int)$st_id[$i])
+                              ->update([
+                                  'grade_store'=>getGrade($sum,$course->course_credit),
+
+                              ]);
       
 
                     }
