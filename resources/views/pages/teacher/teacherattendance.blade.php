@@ -23,7 +23,7 @@
                                 <tr>
                                     <div class="form-group">
                                         <td><input type="number" class="form-control" name="st_id[]" value="{{$st_id->student_fk_take}}" readonly></td>
-                                        <td><input type="number" class="form-control"  name="attendance[]"></td>
+                                        <td><input type="number" min="0" max="1" class="form-control"  name="attendance[]"></td>
                                     </div>
                                 </tr>
                                 @endforeach

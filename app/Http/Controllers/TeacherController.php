@@ -54,7 +54,7 @@ class TeacherController extends Controller
     	$select_course=$req->input('select_course');
     	// dd($select_course);
     	$req->session()->put('course',$select_course);
-    	
+   
 
     	$t_log=teacher::where('user_fk_teacher',Auth::user()->id)->first();
     	$course_log=DB::table('teachs')->where('teacher_fk_teach',$t_log->teacher_id)
@@ -81,7 +81,7 @@ class TeacherController extends Controller
            $attendance=$req->input('attendance');
            $now = new DateTime();
             
-             
+             $co=course::where('course_id',$req->session()->get('course'))->first();
 
            $count=count($st_id);
            for($i=0; $i<$count; $i++){
@@ -90,6 +90,7 @@ class TeacherController extends Controller
                    'student_fk_att'=>(int) $req->input('st_id')[$i],
                    'att_date'=>$now->format('Y-m-d'),
                    'att_presence'=>$req->input('attendance')[$i],
+                   'sem'=>$co->course_sem,
               
                ]);
            }

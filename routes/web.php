@@ -43,11 +43,10 @@ Route::get('/studentinfo','AdminController@studentinfo');
 Route::post('/insertNewStudent','AdminController@insertNewStudent');
 Route::get('/unassignecourses','AdminController@unassignecourses');
 Route::get('/teachcourses','AdminController@teachcourse');
+Route::get('/atfistsemester','AdminController@atfistsemester');
 
 
-Route::get('atfistsemester', function () {
-return view('pages/admin/atfistsemester');
-});
+
 Route::get('atsecondsemester', function () {
 return view('pages/admin/atsecondsemester');
 });
@@ -69,9 +68,10 @@ return view('pages/admin/atseventhsemester');
 Route::get('ateightsemester', function () {
 return view('pages/admin/ateightsemester');
 });
-Route::get('resultfistsemester', function () {
-return view('pages/admin/resultfistsemester');
-});
+
+
+Route::get('/resultfistsemester','AdminController@resultfistsemester');
+
 Route::get('resultsecondsemester', function () {
 return view('pages/admin/resultsecondsemester');
 });

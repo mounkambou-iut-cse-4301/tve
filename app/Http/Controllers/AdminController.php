@@ -10,13 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 use DB;
 use App\teach;
-
-
 use App\student;
 use App\teacher;
 use App\course;
 use App\admn;
 use App\User;
+use App\coursetake;
+use App\attendance;
+use App\grade;
 
 class AdminController extends Controller
 {
@@ -184,6 +185,19 @@ class AdminController extends Controller
        	return view('welcome');
        }
       
+
+       function resultfistsemester(Request $req){
+
+            return view('pages/admin/resultfistsemester');
+       }
+
+     
+
+      function atfistsemester(Request $req){
+       
+
+         return view('pages/admin/atfistsemester');
+      }
 
 
 }

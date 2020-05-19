@@ -69,6 +69,7 @@ class StudentController extends Controller
         	$count=count($re->input('select_course'));
         
         	for($i=0; $i<$count; $i++){
+            $credit=course::where('course_id',$re->input('select_course')[$i])->first();
                 $select_course= coursetake::create([
                   'student_fk_take'=>$st_log->student_id,
                   'course_fk_take'=>$re->input('select_course')[$i],
@@ -79,6 +80,7 @@ class StudentController extends Controller
                   'course_fk_grade'=>$re->input('select_course')[$i],
                   'student_fk_grade'=>$st_log->student_id,
                   'grade_sem'=>$st_log->student_sem,
+                  'credit'  =>$credit->course_credit,
 
                 ]);
             }
@@ -167,7 +169,28 @@ class StudentController extends Controller
                  
                  
               }
-                  return view('pages/student/studentresult')->with('data',$data);
+
+             $gpa=grade::where('student_fk_grade',$st->student_id)
+                        ->where('grade_sem',$st->student_sem)->get();
+
+             $grade_credit=0;
+             $total_credit=grade::where('student_fk_grade',$st->student_id)
+                        ->where('grade_sem',$st->student_sem)->sum('credit');
+
+              
+
+             foreach ($gpa as $gp) {
+               $grade_credit=$grade_credit+calgpa($gp->grade_store,$gp->credit);
+             }
+            
+            $gpa=($grade_credit/$total_credit);
+            
+            $gpa=number_format($gpa,2);
+
+              
+
+                  return view('pages/student/studentresult')->with('data',$data)
+                                                            ->with('gpa',$gpa);
     }
 
 

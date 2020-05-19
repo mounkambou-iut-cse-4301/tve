@@ -33,12 +33,12 @@
                                         <td><input type="number" class="form-control" name="st_id[]" value="{{$stu->student_fk_take}}" readonly style="width: 155%; padding-left: 0%; padding-right: 0%;"></td>
                                         
                                         <td><input type="number" step=".01" class="form-control" name="quiz1[]" style="margin-left: 20%;"></td>
-                                        <td><input type="number" step=".01" class="form-control" name="quiz2[]"></td>
-                                        <td><input type="number" step=".01" class="form-control" name="quiz3[]"></td>
-                                        <td><input type="number" step=".01" class="form-control" name="quiz4[]"></td>
-                                        <td><input type="number" step=".01" class="form-control" name="mid[]"></td>
-                                        <td><input type="number" class="form-control" step=".01" name="final[]"></td>
-                                        <td><input type="number" step=".01" class="form-control" name="attendance[]"></td>
+                                        <td><input type="number" min="0" step=".01" class="form-control" name="quiz2[]"></td>
+                                        <td><input type="number" min="0" step=".01" class="form-control" name="quiz3[]"></td>
+                                        <td><input type="number" min="0" step=".01" class="form-control" name="quiz4[]"></td>
+                                        <td><input type="number" min="0" step=".01" class="form-control" name="mid[]"></td>
+                                        <td><input type="number"  min="0" class="form-control" step=".01" name="final[]"></td>
+                                        <td><input type="number" min="0" step=".01" class="form-control" name="attendance[]"></td>
                                     </div>
                                 </tr>
                                 @endforeach

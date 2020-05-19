@@ -53,5 +53,36 @@ if(!function_exists('coursecredit')){
 	}
 }
 
+if(!function_exists('calgpa')){
+	function calgpa($grade,$credit){
+		if($grade=='A+'){
+			return 4.00*$credit;
+		}
+		elseif($grade=='A'){
+			return 3.75*$credit;
+		}
+		elseif($grade=='A-'){
+			return 3.50*$credit;
+		}
+		elseif($grade=='B+'){
+			return 3.25*$credit;
+		}
+		elseif($grade=='B'){
+			return 3.00*$credit;
+		}
+		elseif($grade=='B-'){
+			return 2.75*$credit;
+		}
+		elseif($grade=='C+'){
+			return 2.50*$credit;
+		}
+		elseif($grade=='C'){
+			return 2.25*$credit;
+		}
+		elseif($grade=='D'){
+			return 2.00*$credit;
+		}
+	}
+}
 
 ?>
