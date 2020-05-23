@@ -39,34 +39,8 @@
        <li>
         <a href="/unassignecourses"><i class="fas fa-book-open"></i>&nbsp;Unassigned courses</a>
       </li>
-      <li>
-        <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-book-reader"></i>&nbsp;Attendances</a>
-        <ul class="collapse list-unstyled" id="pageSubmenu2">
-          <li>
-            <a href="/atfistsemester">Fisrt Semester</a>
-          </li>
-          <li>
-            <a href="/atsecondsemester">Second Semester</a>
-          </li>
-          <li>
-            <a href="/atthirdsemester">Third Semester</a>
-          </li>
-          <li>
-            <a href="/atfourthsemester">Fourth Semester</a>
-          </li>
-          <li>
-            <a href="/atfifthsemester">Fifth Semester</a>
-          </li>
-          <li>
-            <a href="/atsixthsemester">Sixth Semester</a>
-          </li>
-          <li>
-            <a href="/atseventhsemester">Seventh Semester</a>
-          </li>
-          <li>
-            <a href="/ateightsemester">Eighth Semester</a>
-          </li>
-        </ul>
+       <li>
+        <a href="/attendances"><i class="fas fa-book-reader"></i>&nbsp;Attendances</a>
       </li>
       <li>
         <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-bookmark"></i> &nbsp;CGPA Results</a>

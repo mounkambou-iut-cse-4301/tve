@@ -18,6 +18,8 @@ use App\User;
 use App\coursetake;
 use App\attendance;
 use App\grade;
+use App\result;
+use App\percentage_attendance;
 
 class AdminController extends Controller
 {
@@ -188,15 +190,146 @@ class AdminController extends Controller
 
        function resultfistsemester(Request $req){
 
-            return view('pages/admin/resultfistsemester');
+        
+       
+        $st=student::where('student_sem',1)->get();
+        
+          foreach ($st as $stu) {
+            $grade_credit=0;
+            $gpa=0;
+            $grade=grade::where('student_fk_grade',$stu->student_id)
+                         ->where('grade_sem',1)->get();
+
+            $total_credit=grade::where('student_fk_grade',$stu->student_id)
+                         ->where('grade_sem',1)->sum('credit');
+
+
+            
+            count($grade);
+
+            for($i=0;$i<count($grade);$i++){
+              
+               $grade_credit=$grade_credit+calgpa($grade[$i]->grade_store,$grade[$i]->credit);
+            }
+            
+            $gpa=($grade_credit/$total_credit); 
+            $gpa=number_format($gpa,2);
+            
+            $check=result::where('student_fk_result',$stu->student_id)
+                          ->where('sem_result',1)->first();
+
+            if($check==null){
+
+              $inser_gpa=result::create([
+                  'student_fk_result'=>$stu->student_id,
+                  'gpa_result'=> $gpa,
+                  'cgpa_result'=>$gpa,
+                  'sem_result'=>1,
+
+              ]);
+            }
+            
+           
+          }
+          $array_gpa=result::where('sem_result',1)->paginate(6);
+
+            return view('pages/admin/resultfistsemester')->with('array_gpa',$array_gpa);
        }
 
      
 
-      function atfistsemester(Request $req){
+      function attendances(Request $req){
        
+         if($req->isMethod('get')){
+           $course_sort=coursetake::groupBy('course_fk_take')->get();
+            return view('pages/admin/attendances_select')->with('course_sort',$course_sort);
+         }
+         if($req->isMethod('post')){
+          $sort_st_course=$req->input('sort_st_course');
+          $sort_st_range=$req->input('sort_st_range');
 
-         return view('pages/admin/atfistsemester');
+         
+           $student=student::all();
+           
+          
+           foreach ($student as $st) {
+               $attendance=attendance::where('course_fk_att',$sort_st_course)
+                                     ->where('student_fk_att',$st->student_id)->get();
+
+               $presence=attendance::where('course_fk_att',$sort_st_course)
+                                     ->where('student_fk_att',$st->student_id)
+                                     ->where('att_presence',1)->get();
+
+               $total_att=count($attendance);
+               $total_presence=count($presence);
+               if($total_att==0 || $total_presence==0){
+                 $percentage=0;
+               }else{
+                  $percentage=($total_presence*100)/$total_att;
+               }
+               $percentage=number_format($percentage,2);
+
+               $check_per=percentage_attendance::where('student_fk_percentage',$st->student_id)
+                                               ->where('course_fk_percentage',$sort_st_course)
+                                               ->where('semester',$st->student_sem)->first();
+
+              if($check_per==null){
+                $insert_percentage=percentage_attendance::create([
+                   'student_fk_percentage'=>$st->student_id,
+                   'course_fk_percentage'=>$sort_st_course,
+                   'percentage'=>$percentage,
+                   'semester'=>$st->student_sem,
+                   'block_attendance'=>0,
+               ]);
+              }
+               
+           }
+
+              $sort_st_range=(double)$sort_st_range;
+
+           if($sort_st_range<50){
+             $sel_percentage=percentage_attendance::where('course_fk_percentage',$sort_st_course)
+                                                  ->where('student_block',0)
+                                                  ->where('percentage','<',50)->paginate(7);
+              if(count($sel_percentage)>0){
+                $post=1;
+              }else{
+                $post=0;
+              }
+             $status='danger';
+           }
+           elseif ($sort_st_range>=50 && $sort_st_range<75) {
+             $sel_percentage=percentage_attendance::where('course_fk_percentage',$sort_st_course)
+                                                ->where('percentage','>=',50)
+                                                ->where('student_block',0)
+                                                ->where('percentage','<',75)->paginate(7);
+               if(count($sel_percentage)>0){
+                $post=1;
+               }else{
+                $post=0;
+               }
+             $status='warning';
+           }
+           elseif ($sort_st_range>=75) {
+             $sel_percentage=percentage_attendance::where('course_fk_percentage',$sort_st_course)
+                                                ->where('student_block',0)
+                                                ->where('percentage','>=',75)->paginate(7);
+                if(count($sel_percentage)>0){
+                $post=1;
+                }else{
+                $post=0;
+                }
+             $status='success';
+           }
+           
+          
+           
+
+           return view('pages/admin/attendances_result')->with('sel_percentage',$sel_percentage)
+                                                        ->with('status',$status)
+                                                        ->with('post',$post);
+         }
+        
       }
 
 

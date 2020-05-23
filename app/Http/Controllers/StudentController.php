@@ -20,6 +20,7 @@ use App\User;
 use App\coursetake;
 use App\attendance;
 use App\grade;
+use App\result;
 class StudentController extends Controller
 {
     function login(Request $req){
@@ -186,11 +187,42 @@ class StudentController extends Controller
             $gpa=($grade_credit/$total_credit);
             
             $gpa=number_format($gpa,2);
+            
+            $check=result::where('student_fk_result',$st->student_id)
+                         ->where('sem_result',$st->student_sem)->first();
 
+            if($check==null){
+               $check_again=result::where('student_fk_result',$st->student_id)->get();
+              $cpga=0;
+               if(count($check_again)>0){
+                
+                 foreach ($check_again as $check_ag) {
+                    $cpga=$cgpa+$check_ag->gpa_result;
+                 }
+                
+               }
+               $cgpa=($cpga+ $gpa)/(count($check_again)+1);
+
+                 $insert=result::create([
+                    'student_fk_result'=> $st->student_id,
+                    'gpa_result'  =>$gpa,
+                    'cgpa_result' =>$cgpa,
+                    'sem_result'=>$st->student_sem,
+                 ]);
+
+                 $update=result::where('student_fk_result',$st->student_id)
+                              ->update([
+                                'cgpa_result' =>$cgpa,
+                              ]);
+             
+            }
+
+     $student_gpa=result::where('student_fk_result',$st->student_id)
+                        ->where('sem_result',$st->student_sem)->first();
               
 
                   return view('pages/student/studentresult')->with('data',$data)
-                                                            ->with('gpa',$gpa);
+                                                            ->with('student_gpa',$student_gpa);
     }
 
 

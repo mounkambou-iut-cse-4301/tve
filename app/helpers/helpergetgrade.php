@@ -1,5 +1,6 @@
 <?php
 use App\course;
+use App\student;
 if(!function_exists('getGrade')){
 	function getGrade($sum,$grade){
 		$cal=$sum/$grade;
@@ -85,4 +86,16 @@ if(!function_exists('calgpa')){
 	}
 }
 
+
+if(!function_exists('getName')){
+	function getName($name){
+
+         $student=student::where('student_id',$name)->first();
+         return $student->student_name;
+	}
+ }
+
+
+
+ 
 ?>

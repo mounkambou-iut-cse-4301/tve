@@ -34,10 +34,10 @@
                 <div class="card-header">
                     <table class="table">
                         <tr>
-                            <td><h5>Grade Point Average (GPA) For This Semester : <b>{{$gpa}}</b></h5></td>
+                            <td><h5>Grade Point Average (GPA) For This Semester : <b>{{$student_gpa->gpa_result}}</b></h5></td>
                         </tr>
                         <tr>
-                              <td><h5>Cumulative Grade Point Average (CGPA) : <b>{{$gpa}}</b></h5></td>
+                              <td><h5>Cumulative Grade Point Average (CGPA) : <b>{{$student_gpa->cgpa_result}}</b></h5></td>
                         </tr>
                     </table>
                 </div>

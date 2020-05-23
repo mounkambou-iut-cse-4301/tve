@@ -43,32 +43,7 @@ Route::get('/studentinfo','AdminController@studentinfo');
 Route::post('/insertNewStudent','AdminController@insertNewStudent');
 Route::get('/unassignecourses','AdminController@unassignecourses');
 Route::get('/teachcourses','AdminController@teachcourse');
-Route::get('/atfistsemester','AdminController@atfistsemester');
-
-
-
-Route::get('atsecondsemester', function () {
-return view('pages/admin/atsecondsemester');
-});
-Route::get('atthirdsemester', function () {
-return view('pages/admin/atthirdsemester');
-});
-Route::get('atfourthsemester', function () {
-return view('pages/admin/atfourthsemester');
-});
-Route::get('atfifthsemester', function () {
-return view('pages/admin/atfifthsemester');
-});
-Route::get('atsixthsemester', function () {
-return view('pages/admin/atsixthsemester');
-});
-Route::get('atseventhsemester', function () {
-return view('pages/admin/atseventhsemester');
-});
-Route::get('ateightsemester', function () {
-return view('pages/admin/ateightsemester');
-});
-
+Route::match(['get','post'],'/attendances','AdminController@attendances');
 
 Route::get('/resultfistsemester','AdminController@resultfistsemester');
 
