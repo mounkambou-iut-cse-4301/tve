@@ -333,4 +333,49 @@ class AdminController extends Controller
       }
 
 
+      function manage_access(Request $req){
+        $result=result::where('block_result',1)->get();
+        if(count($result)>0){
+          $status_result=1;
+        }
+        elseif(count($result)<=0){
+          $status_result=0;
+        }
+
+        $mark=coursetake::where('block_mark',1)->get();
+        if(count($mark)>0){
+          $status_mark=1;
+        }
+        elseif(count($mark)<=0){
+          $status_mark=0;
+        }
+
+        $attendance=percentage_attendance::where('block_attendance',1)->get();
+        if(count($attendance)>0){
+          $status_att=1;
+        }
+        elseif(count($attendance)<=0){
+          $status_att=0;
+        }
+        return view('pages/admin/manage_access')->with('status_result',$status_result)
+                                       ->with('status_mark',$status_mark)
+                                       ->with('status_att',$status_att);
+      }
+
+      // function lock_result (Request $req){
+      //   $result=result::where('block_result',1)->get();
+      //   if(count($result)>0){
+          
+      //     $status=1;
+      //      return view('pages/admin/manage_access')->with('status',$status);
+      //    }
+      //    else{
+      //      $status=0;
+      //      return view('pages/admin/manage_access')->with('status',$status);
+      //    }
+
+       
+      // }
+
+
 }

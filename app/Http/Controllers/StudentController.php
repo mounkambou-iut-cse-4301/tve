@@ -217,12 +217,51 @@ class StudentController extends Controller
              
             }
 
-     $student_gpa=result::where('student_fk_result',$st->student_id)
+             $student_gpa=result::where('student_fk_result',$st->student_id)
                         ->where('sem_result',$st->student_sem)->first();
               
 
                   return view('pages/student/studentresult')->with('data',$data)
                                                             ->with('student_gpa',$student_gpa);
+    }
+
+
+    function studentsetting (Request $req){
+
+  
+         $stu=student::where('user_fk_student',Auth::user()->id)->first();
+         
+         return view('pages/student/studentsetting')->with('stu',$stu);
+      
+    }
+
+      function student_changepassword (Request $req){
+          $stu=student::where('user_fk_student',Auth::user()->id)->first(); 
+          $st_pass=$req->input('st_pass');
+          $st_pass1=$req->input('st_pass1');
+          $st_pass2=$req->input('st_pass2');
+
+
+         if($req->isMethod('get')){
+           return view('pages/student/student_changepassword');
+      
+         }
+          if($req->isMethod('post')){
+             if( $st_pass==$stu->student_pass && $st_pass1==$st_pass2 ){
+                $update=student::where('student_id',$stu->student_id)
+                            ->update([
+                                 'student_pass'=>$st_pass1,
+                            ]);
+               
+                return redirect('studentsetting');
+             }else{
+
+              
+               return redirect('student_changepassword')->with('message','The current password is wrong or the new password does not match with the confirm password');
+             }
+             
+          }
+         
     }
 
 

@@ -20,8 +20,10 @@
 					<td><a href="/studentresult" class="link_studentsidebar">CGPA</a></td>
 				</tr>
 				<tr class="table-success">
-					<td><a href="/studentsetting" class="link_studentsidebar">Setting</a></td>
-					
+					<td><a href="/studentsetting" class="link_studentsidebar">Personnal Info</a></td>	
+				</tr>
+				<tr class="table-primary">
+					<td><a href="/student_changepassword" class="link_studentsidebar">Change Password</a></td>	
 				</tr>
 			</tbody>
 		</table>

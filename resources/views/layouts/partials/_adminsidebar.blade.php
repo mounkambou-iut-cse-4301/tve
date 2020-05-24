@@ -39,6 +39,9 @@
        <li>
         <a href="/unassignecourses"><i class="fas fa-book-open"></i>&nbsp;Unassigned courses</a>
       </li>
+        <li>
+        <a href="/manage_access"><i class="fas fa-info"></i>&nbsp; Manage Access</a>
+      </li>
        <li>
         <a href="/attendances"><i class="fas fa-book-reader"></i>&nbsp;Attendances</a>
       </li>

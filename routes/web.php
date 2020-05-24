@@ -46,6 +46,8 @@ Route::get('/teachcourses','AdminController@teachcourse');
 Route::match(['get','post'],'/attendances','AdminController@attendances');
 
 Route::get('/resultfistsemester','AdminController@resultfistsemester');
+Route::get('/manage_access','AdminController@manage_access');
+Route::get('/lock_result','AdminController@lock_result');
 
 Route::get('resultsecondsemester', function () {
 return view('pages/admin/resultsecondsemester');
@@ -92,15 +94,14 @@ Route::match(['get','post'],'/studentdashboard','StudentController@studentdashbo
 Route::get('/studentmark','StudentController@studentmark');
 
 Route::get('/studentresult','StudentController@studentresult');
+Route::get('/studentsetting','StudentController@studentsetting');
+Route::match(['get','post'],'/student_changepassword','StudentController@student_changepassword');
 
 Route::get('lecturematerials', function () {
 return view('pages/student/lecturematerials');
 });
 
 
-Route::get('studentsetting', function () {
-return view('pages/student/studentsetting');
-});
 
 // student part end
 
@@ -122,6 +123,9 @@ Route::get('/teacherattendance','TeacherController@teacherattendance');
 Route::match(['get','post'],'teacherattendance_select','TeacherController@teacherattendance_select');
 Route::match(['get','post'],'teachermark','TeacherController@teachermark');
 
+Route::get('/teachersetting','TeacherController@teachersetting');
+
+Route::match(['get','post'],'teacher_changepassword','TeacherController@teacher_changepassword');
 
 Route::get('teachermaterial', function () {
 return view('pages/teacher/teachermaterial');
@@ -129,9 +133,7 @@ return view('pages/teacher/teachermaterial');
 
 
 
-Route::get('teachersetting', function () {
-return view('pages/teacher/teachersetting');
-});
+
 
 
 // teacher part end

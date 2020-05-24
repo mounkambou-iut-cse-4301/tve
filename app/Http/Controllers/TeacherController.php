@@ -220,4 +220,37 @@ class TeacherController extends Controller
       }
     	
     }
+    
+    function teachersetting(Request $req){
+      $te=teacher::where('user_fk_teacher',Auth::user()->id)->first();
+      $teach=DB::table('teachs')->where('teacher_fk_teach',$te->teacher_id)->get();
+     
+      return view('pages/teacher/teachersetting')->with('te',$te)
+                                                 ->with('teach',$teach);
+    }
+
+    function teacher_changepassword (Request $req){
+       $te=teacher::where('user_fk_teacher',Auth::user()->id)->first();
+          $st_pass=$req->input('st_pass');
+          $st_pass1=$req->input('st_pass1');
+          $st_pass2=$req->input('st_pass2');
+       if($req->isMethod('get')){
+           return view('pages/teacher/teacher_changepassword');
+      
+         }
+       if($req->isMethod('post')){
+          if( $st_pass==$te->teacher_pass && $st_pass1==$st_pass2 ){
+                $update=teacher::where('teacher_id',$te->teacher_id)
+                            ->update([
+                                 'teacher_pass'=>$st_pass1,
+                            ]);
+               
+                return redirect('teachersetting');
+             }else{
+
+              
+               return redirect('teacher_changepassword')->with('message','The current password is wrong or the new password does not match with the confirm password');
+             }
+       }
+    }
 }

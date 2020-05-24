@@ -8,25 +8,38 @@
             <div class="card">
                 <div class="card-header"><h4>Setting</h4></div>
                 <div class="card-body">
-                    <form action="">
-                        <div class="form-group">
-                            <label for="usr">Email:</label>
-                            <input type="text" class="form-control" id="usr" name="username">
-                        </div>
-                         <div class="form-group">
-                            <label for="usr">Office:</label>
-                            <input type="text" class="form-control" id="usr" name="username">
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Change Password:</label>
-                            <input type="password" class="form-control" id="pwd" name="password">
-                        </div>
-                          <div class="form-group">
-                            <label for="pwd">Confirm Password:</label>
-                            <input type="password" class="form-control" id="pwd" name="password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <td>{{$te->teacher_id}}</td>
+                            </tr>
+                            <tr>
+                                <th>Name</th>
+                                <td>{{$te->teacher_name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{$te->teacher_email}}</td>
+                            </tr>
+                            <tr>
+                                <th>Office</th>
+                                <td>{{$te->teacher_office}}</td>
+                            </tr>
+                            @foreach($teach as $tea)
+                            <tr>
+                                <th>Course Teach</th>
+                                <td>
+                                    
+                                    {{$tea->course_fk_teach}}
+                                </td>
+                            </tr>
+                            @endforeach
+                            
+                            
+                        </thead>
+                        
+                    </table>
                 </div>
             </div>
         </div>
