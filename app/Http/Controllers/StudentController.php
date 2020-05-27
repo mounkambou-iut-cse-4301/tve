@@ -291,14 +291,14 @@ class StudentController extends Controller
       }
     }
 
-    function download( $name){
-      // dd($name);
-      $file=public_path()."name";
-      $headers=array(
-       'Content-Type:application/pdf',
-      );
-      return Response::download($file,"image",$headers);
-    }
+    // function download( $name){
+    //   // dd($name);
+    //   $file=public_path()."name";
+    //   $headers=array(
+    //    'Content-Type:application/pdf',
+    //   );
+    //   return Response::download($file,"image",$headers);
+    // }
 
 
 }
