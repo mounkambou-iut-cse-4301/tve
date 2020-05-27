@@ -19,7 +19,7 @@
 					<td><a href="/teachermark" class="link_studentsidebar">Marks</a></td>
 				</tr>
 				<tr class="table-success">
-					<td><a href="#" class="link_studentsidebar">Statistics</a></td>
+					<td><a href="/teacher_statistic" class="link_studentsidebar">Statistics</a></td>
 					
 				</tr>
 				<tr class="table-primary">

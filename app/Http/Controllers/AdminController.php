@@ -225,6 +225,7 @@ class AdminController extends Controller
                   'gpa_result'=> $gpa,
                   'cgpa_result'=>$gpa,
                   'sem_result'=>1,
+                  'block_result'=>0,
 
               ]);
             }
@@ -362,20 +363,65 @@ class AdminController extends Controller
                                        ->with('status_att',$status_att);
       }
 
-      // function lock_result (Request $req){
-      //   $result=result::where('block_result',1)->get();
-      //   if(count($result)>0){
-          
-      //     $status=1;
-      //      return view('pages/admin/manage_access')->with('status',$status);
-      //    }
-      //    else{
-      //      $status=0;
-      //      return view('pages/admin/manage_access')->with('status',$status);
-      //    }
+      function lock_result (Request $req){
+         $result_lock=DB::table('results')->update([
+             'block_result'=>1,
 
+         ]);
+         
+         return redirect('/manage_access');
        
-      // }
+      }
+
+      function lock_open_result (Request $req){
+         $result_lock=DB::table('results')->update([
+             'block_result'=>0,
+
+         ]);
+
+         return redirect('/manage_access');
+       
+      }
+
+     function lock_attendance (Request $req){
+         $result_lock=DB::table('percentage_attendances')->update([
+             'block_attendance'=>1,
+
+         ]);
+         
+         return redirect('/manage_access');
+       
+      }
+
+    function lock_open_attendance (Request $req){
+         $result_lock=DB::table('percentage_attendances')->update([
+             'block_attendance'=>0,
+
+         ]);
+         
+         return redirect('/manage_access');
+       
+      }
+
+    function lock_mark (Request $req){
+         $result_lock=DB::table('coursetakes')->update([
+             'block_mark'=>1,
+
+         ]);
+         
+         return redirect('/manage_access');
+       
+      }
+
+   function lock_open_mark (Request $req){
+         $result_lock=DB::table('coursetakes')->update([
+             'block_mark'=>0,
+
+         ]);
+         
+         return redirect('/manage_access');
+       
+      }
 
 
 }

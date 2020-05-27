@@ -9,11 +9,15 @@
                 <div class="card-header"><h4>Marks</h4></div>
                 
                 <div class="card-body">
-                    
-                    
-                    <div class="alert alert-info">
+                    @if($status==1)
+                    <div class="alert alert-info"  style="text-align: center;">
+                        <strong>Whoops, Sorry but you can not give marks in this period.</strong>
+                    </div>
+                    @elseif($status==0)
+                    <div class="alert alert-info"  style="text-align: center;">
                         <strong>You have already submited the marks.</strong>
                     </div>
+                    @endif
                     
                 </div>
             </div>

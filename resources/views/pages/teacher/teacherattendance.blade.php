@@ -8,6 +8,11 @@
             <div class="card">
                 <div class="card-header"><h4>Attendance</h4></div>
                 <div class="card-body">
+                    @if($status==1)
+                    <div class="alert alert-info" style="text-align: center;">
+                        <strong>Whoops, Sorry but you can not take attendances in this period .</strong>
+                    </div>
+                    @elseif($status==0)
                     <form action="/teacher_attendance" method="post" class="validated">
                         @csrf
                          <span class="badge badge-success" style="text-align: center ">{{ session('message') }}</span>
@@ -31,6 +36,7 @@
                         </table>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    @endif
                 </div>
             </div>
         </div>

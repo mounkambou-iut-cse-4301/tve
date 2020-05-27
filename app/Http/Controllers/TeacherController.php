@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use symphony\component\HttpFoundation\File\UploadedFile;
 use DateTime;
 use DB;
 use App\teach;
@@ -19,6 +20,8 @@ use App\User;
 use App\attendance;
 use App\coursetake;
 use App\grade;
+use App\percentage_attendance;
+use App\material;
 
 class TeacherController extends Controller
 {
@@ -69,11 +72,18 @@ class TeacherController extends Controller
 
     
      function teacherattendance (Request $req){
-     	
-    	
-        $st=coursetake::where('course_fk_take',$req->session()->get('course'))->get();
-        
-    	return view('pages/teacher/teacherattendance')->with('stu',$st);
+      $check=percentage_attendance::where('block_attendance',1)->get();
+      if(count($check)>0){
+        $status=1;
+        return view('pages/teacher/teacherattendance')->with('status',$status);
+      }
+      else{
+         $st=coursetake::where('course_fk_take',$req->session()->get('course'))->get();
+         $status=0;
+         return view('pages/teacher/teacherattendance')->with('stu',$st)
+                                                       ->with('status',$status);
+      } 	
+       
     }
 
     function teacher_attendance (Request $req){
@@ -103,8 +113,7 @@ class TeacherController extends Controller
     	if($req->isMethod('get')){
     		$st_sort=attendance::where('course_fk_att',$req->session()->get('course'))->groupBy('att_date')->get();
     		$st=coursetake::where('course_fk_take',$req->session()->get('course'))->get();
-            // dump($st);
-            // dd($st);
+            
 
     	 return view('pages/teacher/teacherattendance_select')->with('st_sort',$st_sort)
     	                                                      ->with('st',$st); 
@@ -112,7 +121,7 @@ class TeacherController extends Controller
     	if($req->isMethod('post')){
     		$sort_st_id=(int)$req->input('sort_st_id');
     		$sort_st_date=$req->input('sort_st_date');
-    		// dd($sort_st_id);
+    		
 
     		$att_details=attendance::where('course_fk_att',$req->session()->get('course'))
     		                       ->where('student_fk_att',$sort_st_id)
@@ -139,6 +148,14 @@ class TeacherController extends Controller
     
 
     function teachermark(Request $req){
+      $check=coursetake::where('block_mark',1)->get();
+      if(count($check)>0){
+        $status=1;
+          return view('pages/teacher/teachermark_empty')->with('status',$status);
+      }
+      else{
+        $status=0;
+
     	$st=coursetake::where('course_fk_take',$req->session()->get('course'))
     		               ->whereNull('quiz1')
     		               ->whereNull('quiz2')
@@ -156,7 +173,7 @@ class TeacherController extends Controller
 
     		
     		      $st_att=attendance::where('course_fk_att',$req->session()->get('course'))->get();
-    		       // dd($st->student_fk_take);
+    		     
     		      return view('pages/teacher/teachermark')->with('st',$st);
     	    }
     	    if($req->isMethod('post')){
@@ -189,7 +206,7 @@ class TeacherController extends Controller
                         }
 
                         $sum=$high+(double)$mid[$i]+(double)$final[$i]+(double)$attendance[$i];
-                        // dd($sum);
+                    
 
                     	$insert_mark=coursetake::where('course_fk_take',$req->session()->get('course'))
              	                       ->where('student_fk_take',(int)$st_id[$i])
@@ -201,6 +218,7 @@ class TeacherController extends Controller
              	                             'mid'=>(double)$mid[$i],
              	                             'final'=>(double)$final[$i],
              	                             'att_mark'=>(double)$attendance[$i],
+
              	                   ]);
                          $course=course::where('course_id',$req->session()->get('course'))->first();
                         $insert_grade=grade::where('course_fk_grade',$req->session()->get('course'))->where('student_fk_grade',(int)$st_id[$i])
@@ -212,14 +230,17 @@ class TeacherController extends Controller
 
                     }
     		
-             return view('pages/teacher/teachermark_empty');
+             return view('pages/teacher/teachermark_empty')->with('status',$status);
     	    }
 
       }else{
-      	return view('pages/teacher/teachermark_empty');
+      	return view('pages/teacher/teachermark_empty')->with('status',$status);
       }
-    	
+
+
     }
+    	
+  }
     
     function teachersetting(Request $req){
       $te=teacher::where('user_fk_teacher',Auth::user()->id)->first();
@@ -252,5 +273,57 @@ class TeacherController extends Controller
                return redirect('teacher_changepassword')->with('message','The current password is wrong or the new password does not match with the confirm password');
              }
        }
+    }
+
+    function teacher_statistic(Request $req){
+      $Aplus=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','A+')->get());
+      $Aminus=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','A-')->get());
+      $A=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','A')->get());
+
+     $Bplus=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','B+')->get());
+     $Bminus=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','B-')->get());
+     $B=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','B')->get());
+
+     $Cplus=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','C+')->get());
+     $C=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','C')->get());
+     $D=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','D')->get());
+        
+     
+      return view('pages/teacher/teacher_statistic')->with('Aplus',$Aplus)
+                                                    ->with('A',$A)
+                                                    ->with('Aminus',$Aminus)
+                                                    ->with('Bplus',$Bplus)
+                                                    ->with('B',$B)
+                                                    ->with('Bminus',$Bminus)
+                                                    ->with('Cplus',$Cplus)
+                                                    ->with('C',$C)
+                                                    ->with('D',$D);
+    }
+
+   
+    function teachermaterial(Request $req){
+      if($req->isMethod('get')){
+         return view('pages/teacher/teachermaterial');
+      }
+
+      if($req->isMethod('post')){
+       
+        $lecture=$req->input('lecture');
+         $file_name=$req->input('file_name');
+          $file=$req->file('file');
+          
+        
+          $file->storePubliclyAs('upload',$file_name,'public');
+         
+
+         $insert=material::create([
+               'course_fk_material'=> $req->session()->get('course'),
+               'lecture'=>$lecture,
+               'file_name'=>$file_name,
+
+         ]);
+
+       return redirect('\teachermaterial')->with('message','File Uploaded  successfully');
+      }
     }
 }

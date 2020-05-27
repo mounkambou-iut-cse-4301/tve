@@ -21,6 +21,8 @@ use App\coursetake;
 use App\attendance;
 use App\grade;
 use App\result;
+use App\material;
+
 class StudentController extends Controller
 {
     function login(Request $req){
@@ -75,6 +77,7 @@ class StudentController extends Controller
                   'student_fk_take'=>$st_log->student_id,
                   'course_fk_take'=>$re->input('select_course')[$i],
                   'take_sem'=>$st_log->student_sem,
+                  'block_mark'=>0,
                 ]);
 
                 $grade_table=grade::create([
@@ -152,6 +155,14 @@ class StudentController extends Controller
 
     
     function studentresult(Request $req){
+     $check=result::where('block_result',1)->get();
+     if(count($check)>0){
+
+        $status=1;
+        return view('pages/student/studentresult')->with('status',$status);
+     }
+     else{
+
       $st=student::where('user_fk_student',Auth::user()->id)->first();
       
       $take=coursetake::where('student_fk_take',$st->student_id)
@@ -208,6 +219,7 @@ class StudentController extends Controller
                     'gpa_result'  =>$gpa,
                     'cgpa_result' =>$cgpa,
                     'sem_result'=>$st->student_sem,
+                    'block_result'=>0,
                  ]);
 
                  $update=result::where('student_fk_result',$st->student_id)
@@ -220,9 +232,11 @@ class StudentController extends Controller
              $student_gpa=result::where('student_fk_result',$st->student_id)
                         ->where('sem_result',$st->student_sem)->first();
               
-
+            $status=0;
                   return view('pages/student/studentresult')->with('data',$data)
+                                                            ->with('status',$status)
                                                             ->with('student_gpa',$student_gpa);
+      }
     }
 
 
@@ -262,6 +276,28 @@ class StudentController extends Controller
              
           }
          
+    }
+
+    function lecturematerials(Request $req){
+      if($req->isMethod('get')){
+         $stu=student::where('user_fk_student',Auth::user()->id)->first();
+         $course=coursetake::where('student_fk_take',$stu->student_id)->where('take_sem',$stu->student_sem)->get();
+        return view('pages/student/lecturematerials_select')->with('course',$course);
+      }
+      if($req->isMethod('post')){
+        $course=$req->input('sort_st_course');
+        $select=material::where('course_fk_material',$course)->get();
+         return view('pages/student/lecturematerials')->with('select',$select);
+      }
+    }
+
+    function download( $name){
+      dd($name);
+      $file=public_path()."name";
+      $headers=array(
+       'Content-Type:application/pdf',
+      );
+      return Response::download($file,"image",$headers);
     }
 
 

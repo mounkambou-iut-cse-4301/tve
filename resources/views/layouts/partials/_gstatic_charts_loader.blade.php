@@ -1,0 +1,1 @@
+<script src="{{ asset('js/gstatic_charts_loader.js')}}" ></script>

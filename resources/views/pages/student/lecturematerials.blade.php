@@ -17,21 +17,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($select as $sel)
                             <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>john@example.com</td>
+                                <td>{{$sel->course_fk_material}}</td>
+                                <td>{{$sel->lecture}}</td>
+                                <td>
+                                    <a href="{{route('download', $sel->file_name) }}" style="">Dowload Now</a>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>Mary</td>
-                                <td>Moe</td>
-                                <td>mary@example.com</td>
-                            </tr>
-                            <tr>
-                                <td>July</td>
-                                <td>Dooley</td>
-                                <td>july@example.com</td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

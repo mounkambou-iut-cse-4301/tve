@@ -48,6 +48,12 @@ Route::match(['get','post'],'/attendances','AdminController@attendances');
 Route::get('/resultfistsemester','AdminController@resultfistsemester');
 Route::get('/manage_access','AdminController@manage_access');
 Route::get('/lock_result','AdminController@lock_result');
+Route::get('/lock_open_result','AdminController@lock_open_result');
+Route::get('/lock_attendance','AdminController@lock_attendance');
+Route::get('/lock_open_attendance','AdminController@lock_open_attendance');
+Route::get('/lock_mark','AdminController@lock_mark');
+Route::get('/lock_open_mark','AdminController@lock_open_mark');
+
 
 Route::get('resultsecondsemester', function () {
 return view('pages/admin/resultsecondsemester');
@@ -96,10 +102,12 @@ Route::get('/studentmark','StudentController@studentmark');
 Route::get('/studentresult','StudentController@studentresult');
 Route::get('/studentsetting','StudentController@studentsetting');
 Route::match(['get','post'],'/student_changepassword','StudentController@student_changepassword');
+Route::match(['get','post'],'/lecturematerials','StudentController@lecturematerials');
 
-Route::get('lecturematerials', function () {
-return view('pages/student/lecturematerials');
-});
+Route::get('/download/{$name}','StudentController@dowload');
+
+
+
 
 
 
@@ -126,10 +134,11 @@ Route::match(['get','post'],'teachermark','TeacherController@teachermark');
 Route::get('/teachersetting','TeacherController@teachersetting');
 
 Route::match(['get','post'],'teacher_changepassword','TeacherController@teacher_changepassword');
+Route::get('/teacher_statistic','TeacherController@teacher_statistic');
 
-Route::get('teachermaterial', function () {
-return view('pages/teacher/teachermaterial');
-});
+Route::match(['get','post'],'teachermaterial','TeacherController@teachermaterial');
+
+
 
 
 

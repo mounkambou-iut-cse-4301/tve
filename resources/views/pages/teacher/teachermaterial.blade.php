@@ -6,22 +6,26 @@
         @include('layouts/partials/_teachersidebar')
         <div class="col-lg-9">
             <div class="card">
-                <div class="card-header"><h4>Lectures Materials</h4></div>
+                <div class="card-header"><h4>Upload Materials</h4></div>
                 <div class="card-body">
-                    <form action="">
+                    <form action="/teachermaterial" method="post" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                        <p><span class="badge badge-success" style="text-align: center ">{{ session('message') }}</span></p><br>
                         <div class="form-group">
-                            <label for="usr">Course:</label>
-                            <input type="text" class="form-control" id="usr" name="username">
+                            <label for="lecture"><b>Lecture:</b></label>
+                            <input type="text" class="form-control" id="lecture" name="lecture" required>
+                        </div>
+
+                            <label for="file_name"><b>File Name:</b></label>
+                            <input type="text" class="form-control" id="file_name" name="file_name" required>
                         </div>
                         <div class="form-group">
-                            <label for="pwd">Lecture:</label>
-                            <input type="password" class="form-control" id="pwd" name="password">
+                            
+                            <input type="file" id="file" name="file" required style="padding-left: 5%">
                         </div>
                         <div class="form-group">
-                        
-                            <input type="file" id="pwd" name="password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%">Upload</button>
+                    </div>
                     </form>
                 </div>
             </div>
