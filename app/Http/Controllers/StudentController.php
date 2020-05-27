@@ -292,7 +292,7 @@ class StudentController extends Controller
     }
 
     function download( $name){
-      dd($name);
+      // dd($name);
       $file=public_path()."name";
       $headers=array(
        'Content-Type:application/pdf',
