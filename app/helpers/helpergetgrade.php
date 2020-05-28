@@ -1,6 +1,7 @@
 <?php
 use App\course;
 use App\student;
+use App\teacher;
 if(!function_exists('getGrade')){
 	function getGrade($sum,$grade){
 		$cal=$sum/$grade;
@@ -94,7 +95,13 @@ if(!function_exists('getName')){
          return $student->student_name;
 	}
  }
+if(!function_exists('teacherName')){
+	function teacherName($id){
 
+         $teacher=teacher::where('teacher_id',$id)->first();
+         return $teacher->teacher_name;
+	}
+ }
 
 
  

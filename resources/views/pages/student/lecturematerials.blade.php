@@ -22,7 +22,7 @@
                                 <td>{{$sel->course_fk_material}}</td>
                                 <td>{{$sel->lecture}}</td>
                                 <td>
-                                    <a href="{{route('download', $sel->file_name) }}" style="">Dowload Now</a>
+                                    <a href="/download?name={{$sel->file_name}}"style="">Dowload Now</a>
                                 </td>
                             </tr>
                             @endforeach

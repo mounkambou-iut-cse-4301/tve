@@ -1,4 +1,5 @@
 @extends('layouts/master',['title'=>'Attendance'])
+
 @section('content')
 <br><br><br><br><br><br><br>
 <div class="container mt-3">
@@ -26,7 +27,13 @@
                             <tr>
                                 <td>{{$att_detail->course_fk_att}}</td>
                                 <td>{{$att_detail->att_date}}</td>
-                                <td>{{$att_detail->att_presence}}</td>
+                                <td>
+                                    @if($att_detail->att_presence==1)
+                                    <i class="fas fa-check" ></i>
+                                    @elseif($att_detail->att_presence==0)
+                                    <i class="fas fa-times"></i>
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
                             
