@@ -8,11 +8,17 @@
             <div class="card">
                 <div class="card-header"><h4>Lectures Materials</h4></div>
                 <div class="card-body">
+                    @if($status==0)
+                       <div class="alert alert-info" style="text-align: center;">
+                        <strong>Whoops, Sorry This teacher did not upload any File.</strong>
+                    </div>
+                    @elseif($status==1)
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Courses</th>
                                 <th>Lectures</th>
+                                <th>Comments</th>
                                 <th>Files</th>
                             </tr>
                         </thead>
@@ -21,13 +27,20 @@
                             <tr>
                                 <td>{{$sel->course_fk_material}}</td>
                                 <td>{{$sel->lecture}}</td>
+                                <td>{{$sel->comment}}</td>
                                 <td>
-                                    <a href="/download?name={{$sel->file_name}}"style="">Dowload Now</a>
+                                    <a href="upload/{{$sel->filename}}" download="{{$sel->filename}}">
+                                        <button type="button" class="btn btn-primary"><i class="fa fa-download"></i>
+                                        Dowload
+                                        
+                                        </button>
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    @endif
                 </div>
             </div>
         </div>

@@ -133,6 +133,7 @@ class StudentController extends Controller
             $att_pr=count($att_pre);
 
             $percentage=($att_pr*100)/$att_coun;
+            $percentage=number_format($percentage,2);
 
           return view('pages/student/studentatendance')->with('att_details',$att_details)
                                                        ->with('percentage',$percentage);
@@ -286,20 +287,20 @@ class StudentController extends Controller
       }
       if($req->isMethod('post')){
         $course=$req->input('sort_st_course');
-        $select=material::where('course_fk_material',$course)->get();
-         return view('pages/student/lecturematerials')->with('select',$select);
+        $select=material::where('course_fk_material',$course)->orderBy('created_at', 'DESC')->get();
+        if(count($select)>0){
+          $status=1;
+         return view('pages/student/lecturematerials')->with('select',$select)
+                                                      ->with('status',$status);
+        }else{
+          $status=0;
+         return view('pages/student/lecturematerials')->with('select',$select)
+                                                      ->with('status',$status);
+        }
       }
     }
 
-    function download(Request $re){
-      $name= $re->input('name');
 
-      $file=public_path()."/upload/lab1";
-      // $headers=array(
-      //  'Content-Type:application/pdf',
-      // );
-      return Response::download($file,"lab1");
-    }
 
 
 }

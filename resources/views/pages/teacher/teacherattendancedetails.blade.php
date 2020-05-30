@@ -26,7 +26,13 @@
                             <tr>
                                 <td>{{$att_detail->student_fk_att}}</td>
                                 <td>{{$att_detail->att_date}}</td>
-                                <td>{{$att_detail->att_presence}}</td>
+                                <td>
+                                    @if($att_detail->att_presence==1)
+                                    <i class="fas fa-check" style="color: green" ></i>
+                                    @elseif($att_detail->att_presence==0)
+                                    <i class="fas fa-times" style="color: red" ></i>
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
                             

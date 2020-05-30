@@ -16,8 +16,8 @@
                             <input type="text" class="form-control" id="lecture" name="lecture" required>
                         </div>
 
-                            <label for="file_name"><b>File Name:</b></label>
-                            <input type="text" class="form-control" id="file_name" name="file_name" required>
+                            <label for="comment"><b>Comment:</b></label>
+                            <input type="text" class="form-control" id="comment" name="comment" required>
                         </div>
                         <div class="form-group">
                             

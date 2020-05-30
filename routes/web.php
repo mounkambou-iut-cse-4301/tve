@@ -104,7 +104,7 @@ Route::get('/studentsetting','StudentController@studentsetting');
 Route::match(['get','post'],'/student_changepassword','StudentController@student_changepassword');
 Route::match(['get','post'],'/lecturematerials','StudentController@lecturematerials');
 
-Route::get('/download','StudentController@download');
+
 
 
 

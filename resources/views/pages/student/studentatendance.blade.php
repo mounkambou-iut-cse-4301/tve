@@ -29,9 +29,9 @@
                                 <td>{{$att_detail->att_date}}</td>
                                 <td>
                                     @if($att_detail->att_presence==1)
-                                    <i class="fas fa-check" ></i>
+                                    <i class="fas fa-check" style="color: green" ></i>
                                     @elseif($att_detail->att_presence==0)
-                                    <i class="fas fa-times"></i>
+                                    <i class="fas fa-times" style="color: red" ></i>
                                     @endif
                                 </td>
                             </tr>

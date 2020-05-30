@@ -139,7 +139,7 @@ class TeacherController extends Controller
 
             $percentage=($att_pr*100)/$att_coun;
             
-
+            $percentage=number_format($percentage,2);
 
            return view('pages/teacher/teacherattendancedetails')->with('att_details',$att_details)->with('percentage',$percentage);
     	}
@@ -309,21 +309,22 @@ class TeacherController extends Controller
       if($req->isMethod('post')){
        
         $lecture=$req->input('lecture');
-         $file_name=$req->input('file_name');
-          $file=$req->file('file');
+         $comment=$req->input('comment');
+          $filename=$req->file->getClientOriginalName();
           
-        
-          $file->storePubliclyAs('upload',$file_name,'public');
+       
+         $req->file->storePubliclyAs('upload',$filename,'public');
          
 
          $insert=material::create([
                'course_fk_material'=> $req->session()->get('course'),
                'lecture'=>$lecture,
-               'file_name'=>$file_name,
+               'comment'=>$comment,
+               'filename'=>$filename,
 
          ]);
 
-       return redirect('\teachermaterial')->with('message','File Uploaded  successfully');
+       return redirect('\teachermaterial')->with('message','File Uploaded successfully');
       }
     }
 }
