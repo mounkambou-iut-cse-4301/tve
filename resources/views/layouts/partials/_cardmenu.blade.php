@@ -4,38 +4,22 @@
 		<div class="row">
 			<div class="col-sm-3"><br><br><br>
 				<div class="card" >
-					<img class="card-img-top" src="img/cse1.jpg" alt="CSE image" style="width:100%; height: 100px;">
-					<div class="card-body">
-						<h4 class="card-title">CSE 1</h4>
-						<a href="/firstyeardetail" class="btn" style="background-color:#008B8B">See Details</a>
-					</div>
+					<a href="/firstyeardetail" class="btn"><img class="card-img-top" src="img/cse1.png" alt="CSE image" style="width:100%; height: 100px;"></a>
 				</div><br><br><br>
 			</div>
 			<div class="col-sm-3"><br><br><br>
-				<div class="card">
-					<img class="card-img-top" src="img/cse2.jpg" alt="CSE image" style="width:100%; height: 100px;">
-					<div class="card-body">
-						<h4 class="card-title">CSE 2</h4>
-						<a href="/secondyeardetail" class="btn" style="background-color:#008B8B">See Details</a>
-					</div>
+				<div class="card" >
+					<a href="/firstyeardetail" class="btn"><img class="card-img-top" src="img/cse2.png" alt="CSE image" style="width:100%; height: 100px;"></a>
 				</div><br><br><br>
 			</div>
 			<div class="col-sm-3"><br><br><br>
-				<div class="card">
-					<img class="card-img-top" src="img/cse3.jpg" alt="CSE image" style="width:100%; height: 100px;">
-					<div class="card-body">
-						<h4 class="card-title">CSE 3</h4>
-						<a href="/thirdyeardetail" class="btn" style="background-color:#008B8B">See Details</a>
-					</div>
+				<div class="card" >
+					<a href="/firstyeardetail" class="btn"><img class="card-img-top" src="img/cse3.png" alt="CSE image" style="width:100%; height: 100px;"></a>
 				</div><br><br><br>
 			</div>
 			<div class="col-sm-3"><br><br><br>
-				<div class="card">
-					<img class="card-img-top" src="img/cse4.jpg" alt="CSE image" style="width:100%; height: 100px;">
-					<div class="card-body">
-						<h4 class="card-title">CSE 4</h4>
-						<a href="/fourthyeardetail" class="btn" style="background-color:#008B8B">See Details</a>
-					</div>
+				<div class="card" >
+					<a href="/firstyeardetail" class="btn"><img class="card-img-top" src="img/cse4.png" alt="CSE image" style="width:100%; height: 100px;"></a>
 				</div><br><br><br>
 			</div>
 
