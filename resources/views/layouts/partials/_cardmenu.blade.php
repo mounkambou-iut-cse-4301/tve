@@ -1,6 +1,6 @@
 <!--================card start =================-->
-
-<div class="container">
+<div>
+<div class="container" >
 		<div class="row">
 			<div class="col-sm-3"><br><br><br>
 				<div class="card" >
@@ -26,5 +26,5 @@
 
 		</div>
 	</div>
-
+</div>
 	<!--================card End =================-->

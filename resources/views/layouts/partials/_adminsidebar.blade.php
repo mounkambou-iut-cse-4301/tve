@@ -7,6 +7,35 @@
     </div>
     <ul class="list-unstyled components">
       <a href="#"><p><i class="fas fa-landmark"></i>&nbsp;Dashboard</p></a>
+       <li>
+        <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-bookmark"></i> &nbsp;CGPA Results</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu3">
+          <li>
+            <a href="/resultfistsemester">Fisrt Semester</a>
+          </li>
+          <li>
+            <a href="/resultsecondsemester">Second Semester</a>
+          </li>
+          <li>
+            <a href="/resultthirdsemester">Third Semester</a>
+          </li>
+          <li>
+            <a href="/resultfourthsemester">Fourth Semester</a>
+          </li>
+          <li>
+            <a href="/resultfifthsemester">Fifth Semester</a>
+          </li>
+          <li>
+            <a href="/resultsixthsemester">Sixth Semester</a>
+          </li>
+          <li>
+            <a href="/resultseventhsemester">Seventh Semester</a>
+          </li>
+          <li>
+            <a href="/resulteightsemester">Eighth Semester</a>
+          </li>
+        </ul>
+      </li>
       <li >
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-list-ul"></i>&nbsp;Manage Teachers</a>
         <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -45,35 +74,7 @@
        <li>
         <a href="/attendances"><i class="fas fa-book-reader"></i>&nbsp;Attendances</a>
       </li>
-      <li>
-        <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-bookmark"></i> &nbsp;CGPA Results</a>
-        <ul class="collapse list-unstyled" id="pageSubmenu3">
-          <li>
-            <a href="/resultfistsemester">Fisrt Semester</a>
-          </li>
-          <li>
-            <a href="/resultsecondsemester">Second Semester</a>
-          </li>
-          <li>
-            <a href="/resultthirdsemester">Third Semester</a>
-          </li>
-          <li>
-            <a href="/resultfourthsemester">Fourth Semester</a>
-          </li>
-          <li>
-            <a href="/resultfifthsemester">Fifth Semester</a>
-          </li>
-          <li>
-            <a href="/resultsixthsemester">Sixth Semester</a>
-          </li>
-          <li>
-            <a href="/resultseventhsemester">Seventh Semester</a>
-          </li>
-          <li>
-            <a href="/resulteightsemester">Eighth Semester</a>
-          </li>
-        </ul>
-      </li>
+     
       <li>
         <a href="#"><i class="fas fa-info"></i>&nbsp;Info About Student</a>
       </li>

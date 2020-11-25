@@ -365,7 +365,7 @@ class AdminController extends Controller
 
       function lock_result (Request $req){
          $result_lock=DB::table('results')->update([
-             'block_result'=>1,
+             'block_result'=>0,
 
          ]);
          
@@ -375,7 +375,7 @@ class AdminController extends Controller
 
       function lock_open_result (Request $req){
          $result_lock=DB::table('results')->update([
-             'block_result'=>0,
+             'block_result'=>1,
 
          ]);
 
@@ -385,7 +385,7 @@ class AdminController extends Controller
 
      function lock_attendance (Request $req){
          $result_lock=DB::table('percentage_attendances')->update([
-             'block_attendance'=>1,
+             'block_attendance'=>0,
 
          ]);
          
@@ -395,7 +395,7 @@ class AdminController extends Controller
 
     function lock_open_attendance (Request $req){
          $result_lock=DB::table('percentage_attendances')->update([
-             'block_attendance'=>0,
+             'block_attendance'=>1,
 
          ]);
          
@@ -405,7 +405,7 @@ class AdminController extends Controller
 
     function lock_mark (Request $req){
          $result_lock=DB::table('coursetakes')->update([
-             'block_mark'=>1,
+             'block_mark'=>0,
 
          ]);
          
@@ -415,7 +415,7 @@ class AdminController extends Controller
 
    function lock_open_mark (Request $req){
          $result_lock=DB::table('coursetakes')->update([
-             'block_mark'=>0,
+             'block_mark'=>1,
 
          ]);
          

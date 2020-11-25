@@ -4,9 +4,9 @@
 			<div class="container">
 				<div class="float-left">
 					<ul class="list header_social">
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#"><i class="fa fa-facebook" style="color:white"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"  style="color:white"></i></a></li>
+						<li><a href="#"><i class="fa fa-instagram"  style="color:white"></i></a></li>
 
 					</ul>
 				</div>
