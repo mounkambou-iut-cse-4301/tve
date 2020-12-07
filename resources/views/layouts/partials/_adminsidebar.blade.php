@@ -1,9 +1,7 @@
 <!-- Sidebar  -->
 <nav id="sidebar" >
   <div class="sidebar-header ">
-    <a href="" ><img src="img/logo.png" alt="logo"
-      class="d-none d-md-inline-block" width="200em"><img src="" alt="logo"
-      class="d-inline-block d-md-none " ><span class="sr-only"></span></a>
+  <img src="img/logo_cse1.png" alt="Logo"  style="width: 90% !important">
     </div>
     <ul class="list-unstyled components">
       <a href="#"><p><i class="fas fa-landmark"></i>&nbsp;Dashboard</p></a>

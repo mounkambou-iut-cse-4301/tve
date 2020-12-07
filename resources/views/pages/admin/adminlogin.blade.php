@@ -17,9 +17,6 @@
                         <input type="number" id="admin_id" placeholder="Enter Admin_Id" name="admin_id" required style="width: 100%"><br><br>
                         <label for="admin_pass"><b style="color: black">Password</b></label>
                         <input type="password" id="admin_pass" placeholder="Enter Password" name="admin_pass" required>
-                        <label>
-                            <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
                         <button type="submit" class="button_login">Login</button>
                     </div>
                 </form>
