@@ -13,10 +13,10 @@
                     <div class="container_login">
                         {{csrf_field()}}
                          <p><span class="badge badge-danger" style="text-align: center ">{{ session('message') }}</span></p>
-                        <label for="admin_id"><b style="color: black">Admin_Id</b></label><br>
-                        <input type="number" id="admin_id" placeholder="Enter Admin_Id" name="admin_id" required style="width: 100%"><br><br>
-                        <label for="admin_pass"><b style="color: black">Password</b></label>
-                        <input type="password" id="admin_pass" placeholder="Enter Password" name="admin_pass" required>
+                        <label for="admin_id"><b style="color: white">Admin_Id</b></label><br>
+                        <input type="number" id="admin_id" placeholder="Enter Admin_Id" name="admin_id" required  style="width: 100%; height:40px !important;"><br><br>
+                        <label for="admin_pass"><b style="color: white">Password</b></label>
+                        <input type="password" id="admin_pass" placeholder="Enter Password" name="admin_pass" required  style="width: 100%; height:40px !important;">
                         <button type="submit" class="button_login">Login</button>
                     </div>
                 </form>

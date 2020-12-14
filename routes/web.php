@@ -53,6 +53,8 @@ Route::get('/lock_attendance','AdminController@lock_attendance');
 Route::get('/lock_open_attendance','AdminController@lock_open_attendance');
 Route::get('/lock_mark','AdminController@lock_mark');
 Route::get('/lock_open_mark','AdminController@lock_open_mark');
+Route::match(['get','post'],'/edit_student_info/{id?}','AdminController@edit_student_info');
+Route::post('/edit_student_info_update','AdminController@edit_student_info_update');
 
 
 Route::get('resultsecondsemester', function () {

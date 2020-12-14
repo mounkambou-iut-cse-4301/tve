@@ -1,5 +1,5 @@
 <!--================card start =================-->
-<div  style="font-family: Arial, Helvetica, sans-serif; margin:1%; background-color:Beige;">
+<div  style="font-family: Arial, Helvetica, sans-serif; margin:1%;">
         <div style="text-align: center"><br><br>
             <h3 style="color:#004B49"><b>Welcome to the Department of CSE</b> </h3>
             <p>We are delighted to welcome you to the Department of Computer Science and Engineering (CSE) at the

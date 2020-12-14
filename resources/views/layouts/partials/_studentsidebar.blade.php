@@ -17,7 +17,7 @@
 					<td><a href="/studentmark" class="link_studentsidebar">Marks</a></td>
 				</tr>
 				<tr class="table-primary">
-					<td><a href="/studentresult" class="link_studentsidebar">CGPA</a></td>
+					<td><a href="/studentresult" class="link_studentsidebar">Grade Sheet</a></td>
 				</tr>
 				<tr class="table-success">
 					<td><a href="/studentsetting" class="link_studentsidebar">Personnal Info</a></td>	

@@ -322,9 +322,6 @@ class AdminController extends Controller
                 }
              $status='success';
            }
-           
-          
-           
 
            return view('pages/admin/attendances_result')->with('sel_percentage',$sel_percentage)
                                                         ->with('status',$status)
@@ -423,5 +420,31 @@ class AdminController extends Controller
        
       }
 
+      function edit_student_info (Request $req, $id){
+        if($req->isMethod('get')){
+          $student_info=student::where('student_id',$id)->get();
+          // dd($student_info->student_id);
+           return view('pages/admin/edit_student_info')->with('student_info',$student_info);
+        }
+         
+      
+     }
+     function edit_student_info_update (Request $req){
+      $id=$req->input('id');
+      $name=$req->input('name');
+      $email=$req->input('email');
+      $sem=$req->input('semester');
+      $id=(int) $id;
+      $sem=(int) $sem;
+      // dd($sem);
+      $student_info_update=DB::table('students')->where('student_id',$id)->update([
+        'student_name'=>$name,
+        'student_email'=>$email,
+        'student_sem'=>$sem
+
+    ]);
+
+        return redirect('/studentinfo');
+     }
 
 }

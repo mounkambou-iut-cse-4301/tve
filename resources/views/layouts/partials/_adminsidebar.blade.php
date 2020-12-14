@@ -64,7 +64,7 @@
         <a href="/teachcourses"><i class="fas fa-book-open"></i>&nbsp;Teach Courses</a>
       </li>
        <li>
-        <a href="/unassignecourses"><i class="fas fa-book-open"></i>&nbsp;Unassigned courses</a>
+        <a href="/unassignecourses"><i class="fas fa-book-open"></i>&nbsp;Non Assigned courses</a>
       </li>
         <li>
         <a href="/manage_access"><i class="fas fa-info"></i>&nbsp; Manage Access</a>

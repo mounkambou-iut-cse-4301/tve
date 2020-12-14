@@ -20,7 +20,7 @@
         <td>{{$st_info->student_name}}</td>
         <td>{{$st_info->student_email}}</td>
         <td>{{$st_info->student_sem}}</td>
-        <td><button class="btn btn_edit"><i class="fa fa-edit"></i></button></td>
+        <td><button class="btn btn_edit"><a href="/edit_student_info/{{$st_info->student_id}}"><i class="fa fa-edit"></i></a></button></td>
       </tr>
       @endforeach
       

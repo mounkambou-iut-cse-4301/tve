@@ -14,9 +14,11 @@
                         {{csrf_field()}}
                         <p><span class="badge badge-danger" style="text-align: center ">{{ session('message') }}</span></p>
                         <label for="teacher_id"><b>UserId</b></label><br>
-                        <input type="number" placeholder="Enter UserId" name="teacher_id" id="teacher_id" required style="width: 100%;"><br><br>
+                        <input type="number" placeholder="Enter UserId" name="teacher_id" id="teacher_id" required style="width: 100%; height:40px !important;"><br><br>
                         <label for="teacher_pass"><b>Password</b></label><br>
-                        <input type="password" placeholder="Enter Password" name="teacher_pass" id="teacher_pass" required>
+                        <input type="password" placeholder="Enter Password" name="teacher_pass" id="teacher_pass" 
+                        style="width: 100%; height:40px !important;"
+                        required>
                         <button type="submit" class="button_login">Login</button>
                         
                     </div>
