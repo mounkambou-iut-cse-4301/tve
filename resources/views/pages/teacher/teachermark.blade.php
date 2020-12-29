@@ -15,13 +15,14 @@
                             <thead>
                                 <tr>
                                     <th>Student Id</th>
-                                    <th>Quiz 1</th>
+                                    <th >Quiz 1</th>
                                     <th>Quiz 2</th>
                                     <th>Quiz 3</th>
                                     <th>Quiz 4</th>
                                     <th>Mid</th>
                                     <th>Final</th>
                                     <th>Att</th>
+                                    <th>(%)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,13 +33,14 @@
                                        
                                         <td><input type="number" class="form-control" name="st_id[]" value="{{$stu->student_fk_take}}" readonly style="width: 155%; padding-left: 0%; padding-right: 0%;"></td>
                                         
-                                        <td><input type="number" step=".01" class="form-control" name="quiz1[]" style="margin-left: 20%;"></td>
-                                        <td><input type="number" min="0" step=".01" class="form-control" name="quiz2[]"></td>
-                                        <td><input type="number" min="0" step=".01" class="form-control" name="quiz3[]"></td>
-                                        <td><input type="number" min="0" step=".01" class="form-control" name="quiz4[]"></td>
-                                        <td><input type="number" min="0" step=".01" class="form-control" name="mid[]"></td>
-                                        <td><input type="number"  min="0" class="form-control" step=".01" name="final[]"></td>
-                                        <td><input type="number" min="0" step=".01" class="form-control" name="attendance[]"></td>
+                                        <td><input type="number" min="0" step=".01" class="form-control" name="quiz1[]" style="margin-left: 30%;"></td>
+                                        <td><input type="number" min="0" step=".01" class="form-control" name="quiz2[]" style="margin-left: 5%;"></td>
+                                        <td><input type="number" min="0" step=".01" class="form-control" name="quiz3[]" style="margin-left: 5%;"></td>
+                                        <td><input type="number" min="0" step=".01" class="form-control" name="quiz4[]" style="margin-left: 5%;"></td>
+                                        <td><input type="number" min="0" step=".01" class="form-control" name="mid[]" style="margin-left: 5%;width: 140%;"></td>
+                                        <td><input type="number"  min="0" class="form-control" step=".01" name="final[]" style="margin-left: 10%;width: 140%;"></td>
+                                        <td><input type="number" min="0" step=".01" class="form-control" name="attendance[]" style="margin-left: 25%;"></td>
+                                        <td style="margin-left: 100%;">{{Percentage($stu->course_fk_take, $stu->student_fk_take)}} %</td>
                                     </div>
                                 </tr>
                                 @endforeach

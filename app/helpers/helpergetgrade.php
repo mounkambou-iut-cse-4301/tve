@@ -2,6 +2,7 @@
 use App\course;
 use App\student;
 use App\teacher;
+use App\attendance;
 if(!function_exists('getGrade')){
 	function getGrade($sum,$grade){
 		$cal=$sum/$grade;
@@ -103,6 +104,33 @@ if(!function_exists('teacherName')){
 	}
  }
 
+ if(!function_exists('Percentage')){
+	function Percentage($course, $student){
+
+
+    	   $att_count=attendance::where('course_fk_att',$course)
+    		                       ->where('student_fk_att',$student)->get();
+
+    		$att_pre=attendance::where('course_fk_att',$course)
+    		                     ->where('student_fk_att',$student)
+								 ->where('att_presence',1)->get();
+								 
+	    
+            $att_coun=count($att_count);
+			$att_pr=count($att_pre);
+			if($att_coun==0){
+				$percentage=0.00;
+			}else{
+              
+            $percentage=($att_pr*100)/$att_coun;
+            
+            $percentage=number_format($percentage,2);
+			}
+
+		return $percentage;
+     
+	}
+}
 
  
 ?>

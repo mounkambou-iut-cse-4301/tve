@@ -78,12 +78,15 @@ class TeacherController extends Controller
         return view('pages/teacher/teacherattendance')->with('status',$status);
       }
       else{
-         $st=coursetake::where('course_fk_take',$req->session()->get('course'))->get();
+        
+         $st=coursetake::where('course_fk_take', $req->session()->get('course'))->first();
+        //  dd($st->take_sem);
+         $st_a=student::where('student_sem',$st->take_sem)->get();
+        // dd($st_a);
          $status=0;
-         return view('pages/teacher/teacherattendance')->with('stu',$st)
+         return view('pages/teacher/teacherattendance')->with('stu',$st_a)
                                                        ->with('status',$status);
-      } 	
-       
+      } 	     
     }
 
     function teacher_attendance (Request $req){
@@ -112,11 +115,13 @@ class TeacherController extends Controller
     function teacherattendance_select(Request $req){
     	if($req->isMethod('get')){
     		$st_sort=attendance::where('course_fk_att',$req->session()->get('course'))->groupBy('att_date')->get();
-    		$st=coursetake::where('course_fk_take',$req->session()->get('course'))->get();
+        $st=coursetake::where('course_fk_take',$req->session()->get('course'))->first();
+        // dd($st->take_sem);
+        $st_a=student::where('student_sem',$st->take_sem)->get();
             
 
     	 return view('pages/teacher/teacherattendance_select')->with('st_sort',$st_sort)
-    	                                                      ->with('st',$st); 
+    	                                                      ->with('st',$st_a); 
     	}
     	if($req->isMethod('post')){
     		$sort_st_id=(int)$req->input('sort_st_id');
@@ -167,12 +172,9 @@ class TeacherController extends Controller
 
         if(count($st)>0){
 
-
-
     	    if($req->isMethod('get')){
-
     		
-    		      $st_att=attendance::where('course_fk_att',$req->session()->get('course'))->get();
+              $st_att=attendance::where('course_fk_att',$req->session()->get('course'))->get();
     		     
     		      return view('pages/teacher/teachermark')->with('st',$st);
     	    }
@@ -276,28 +278,102 @@ class TeacherController extends Controller
     }
 
     function teacher_statistic(Request $req){
-      $Aplus=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','A+')->get());
-      $Aminus=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','A-')->get());
-      $A=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','A')->get());
+      $course=course::where('course_id',$req->session()->get('course'))->first();
+      $sem=$course->course_sem;
 
-     $Bplus=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','B+')->get());
-     $Bminus=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','B-')->get());
-     $B=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','B')->get());
+      // dd($req->session()->get('course'));
+      $Aplus=grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','A+')->get();
+      // dd($Aplus[4]->student_fk_grade);
+      $count1=0;
+     for($i=0;$i<count($Aplus);$i++){
+       $student=student::where('student_id',$Aplus[$i]->student_fk_grade)->where('student_sem',$sem)->get();
+        if(count($student)!=0){
+          $count1 = $count1+1;
+        }
+     }
 
-     $Cplus=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','C+')->get());
-     $C=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','C')->get());
-     $D=count(grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','D')->get());
+      $Aminus=grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','A-')->get();
+      $count2=0;
+      for($i=0;$i<count($Aminus);$i++){
+        $student=student::where('student_id',$Aminus[$i]->student_fk_grade)->where('student_sem',$sem)->get();
+         if(count($student)!=0){
+           $count2 = $count2+1;
+         }
+      }
+
+      $A=grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','A')->get();
+      $count3=0;
+      for($i=0;$i<count($A);$i++){
+        $student=student::where('student_id',$A[$i]->student_fk_grade)->where('student_sem',$sem)->get();
+         if(count($student)!=0){
+           $count3 = $count3+1;
+         }
+      }
+
+     $Bplus=grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','B+')->get();
+     $count4=0;
+     for($i=0;$i<count($Bplus);$i++){
+       $student=student::where('student_id',$Bplus[$i]->student_fk_grade)->where('student_sem',$sem)->get();
+        if(count($student)!=0){
+          $count4 = $count4+1;
+        }
+     }
+
+     $Bminus=grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','B-')->get();
+     $count5=0;
+     for($i=0;$i<count($Bminus);$i++){
+       $student=student::where('student_id',$Bminus[$i]->student_fk_grade)->where('student_sem',$sem)->get();
+        if(count($student)!=0){
+          $count5 = $count5+1;
+        }
+     }
+
+     $B=grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','B')->get();
+     $count6=0;
+     for($i=0;$i<count($B);$i++){
+       $student=student::where('student_id',$B[$i]->student_fk_grade)->where('student_sem',$sem)->get();
+        if(count($student)!=0){
+          $count6 = $count6+1;
+        }
+     }
+
+     $Cplus=grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','C+')->get();
+     $count7=0;
+     for($i=0;$i<count($Cplus);$i++){
+       $student=student::where('student_id',$Cplus[$i]->student_fk_grade)->where('student_sem',$sem)->get();
+        if(count($student)!=0){
+          $count7 = $count7+1;
+        }
+     }
+
+     $C=grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','C')->get();
+     $count8=0;
+     for($i=0;$i<count($C);$i++){
+       $student=student::where('student_id',$C[$i]->student_fk_grade)->where('student_sem',$sem)->get();
+        if(count($student)!=0){
+          $count8 = $count8+1;
+        }
+     }
+
+     $D=grade::where('course_fk_grade',$req->session()->get('course'))->where('grade_store','D')->get();
+     $count9=0;
+     for($i=0;$i<count($D);$i++){
+       $student=student::where('student_id',$D[$i]->student_fk_grade)->where('student_sem',$sem)->get();
+        if(count($student)!=0){
+          $count9 = $count9+1;
+        }
+     }
         
      
-      return view('pages/teacher/teacher_statistic')->with('Aplus',$Aplus)
-                                                    ->with('A',$A)
-                                                    ->with('Aminus',$Aminus)
-                                                    ->with('Bplus',$Bplus)
-                                                    ->with('B',$B)
-                                                    ->with('Bminus',$Bminus)
-                                                    ->with('Cplus',$Cplus)
-                                                    ->with('C',$C)
-                                                    ->with('D',$D);
+      return view('pages/teacher/teacher_statistic')->with('Aplus',$count1)
+                                                    ->with('A',$count2)
+                                                    ->with('Aminus',$count3)
+                                                    ->with('Bplus',$count4)
+                                                    ->with('B',$count5)
+                                                    ->with('Bminus',$count6)
+                                                    ->with('Cplus',$count7)
+                                                    ->with('C',$count8)
+                                                    ->with('D',$count9);
     }
 
    

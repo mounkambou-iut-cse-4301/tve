@@ -94,7 +94,9 @@ class StudentController extends Controller
     
 
     function studentatendance(Request $re){
+      
         $st_log=student::where('user_fk_student',Auth::user()->id)->first();
+      
     	$student_att=attendance::where('student_fk_att',$st_log->student_id)->orderBy('att_date', 'DESC')->paginate(6);
     	
     	return view('pages/student/studentatendance')->with('student_att',$student_att);
@@ -103,9 +105,12 @@ class StudentController extends Controller
 
     function studentatendance_select(Request $req){
          $student=student::where('user_fk_student',Auth::user()->id)->first();
+        
         if($req->isMethod('get')){
+          $student_sem=$student->student_sem;
            
            $course_sort=attendance::where('student_fk_att', $student->student_id)
+                                 ->where('sem',$student_sem)
                                   ->groupBy('course_fk_att')->get();
 
             $date_sort=attendance::where('student_fk_att', $student->student_id)
@@ -156,88 +161,10 @@ class StudentController extends Controller
 
     
     function studentresult(Request $req){
-     $check=result::where('block_result',1)->get();
-     if(count($check)>0){
 
         $status=1;
         return view('pages/student/studentresult')->with('status',$status);
-     }
-     else{
-
-      $st=student::where('user_fk_student',Auth::user()->id)->first();
-      
-      $take=coursetake::where('student_fk_take',$st->student_id)
-                               ->where('take_sem',$st->student_sem)->get();
-                            
-              
-              $data=array();
-            
-              foreach($take as $tk){
-                 $highest= highest($tk);
-                 $mfa = $tk->mid + $tk->final + $tk->att_mark;
-                 $sum = $highest + $mfa;
-
-                 $grade = course::where('course_id',$tk->course_fk_take)->first();
-                 $data = array_merge($data, array($tk->course_fk_take=>getGrade($sum,$grade->course_credit)));
-                 
-                 
-              }
-
-             $gpa=grade::where('student_fk_grade',$st->student_id)
-                        ->where('grade_sem',$st->student_sem)->get();
-
-             $grade_credit=0;
-             $total_credit=grade::where('student_fk_grade',$st->student_id)
-                        ->where('grade_sem',$st->student_sem)->sum('credit');
-
-              
-
-             foreach ($gpa as $gp) {
-               $grade_credit=$grade_credit+calgpa($gp->grade_store,$gp->credit);
-             }
-            
-            $gpa=($grade_credit/$total_credit);
-            
-            $gpa=number_format($gpa,2);
-            
-            $check=result::where('student_fk_result',$st->student_id)
-                         ->where('sem_result',$st->student_sem)->first();
-
-            if($check==null){
-               $check_again=result::where('student_fk_result',$st->student_id)->get();
-              $cpga=0;
-               if(count($check_again)>0){
-                
-                 foreach ($check_again as $check_ag) {
-                    $cpga=$cgpa+$check_ag->gpa_result;
-                 }
-                
-               }
-               $cgpa=($cpga+ $gpa)/(count($check_again)+1);
-
-                 $insert=result::create([
-                    'student_fk_result'=> $st->student_id,
-                    'gpa_result'  =>$gpa,
-                    'cgpa_result' =>$cgpa,
-                    'sem_result'=>$st->student_sem,
-                    'block_result'=>0,
-                 ]);
-
-                 $update=result::where('student_fk_result',$st->student_id)
-                              ->update([
-                                'cgpa_result' =>$cgpa,
-                              ]);
-             
-            }
-
-             $student_gpa=result::where('student_fk_result',$st->student_id)
-                        ->where('sem_result',$st->student_sem)->first();
-              
-            $status=0;
-                  return view('pages/student/studentresult')->with('data',$data)
-                                                            ->with('status',$status)
-                                                            ->with('student_gpa',$student_gpa);
-      }
+     
     }
 
 
