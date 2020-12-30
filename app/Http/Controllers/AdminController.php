@@ -199,12 +199,24 @@ class AdminController extends Controller
        function resultfistsemester(Request $req){
  
         $st=student::where('student_sem',1)->get();
+        $check_course_take=coursetake::whereNull('quiz1')
+        ->whereNull('quiz2')
+        ->whereNull('quiz3')
+        ->whereNull('quiz4')
+        ->whereNull('mid')
+        ->whereNull('final')
+        ->whereNull('att_mark')
+        ->where('take_sem',1)->get();
+
+        if(count($check_course_take)==0){
+       
         
           foreach ($st as $stu) {
             $grade_credit=0;
             $gpa=0;
             $grade=grade::where('student_fk_grade',$stu->student_id)
                          ->where('grade_sem',1)->get();
+          
 
             $total_credit=grade::where('student_fk_grade',$stu->student_id)
                          ->where('grade_sem',1)->sum('credit');
@@ -238,10 +250,76 @@ class AdminController extends Controller
             
            
           }
-          $array_gpa=result::where('sem_result',1)->paginate(6);
+          $array_gpa=result::where('sem_result',1)->where('update_result',0)->paginate(6);
 
             return view('pages/admin/resultfistsemester')->with('array_gpa',$array_gpa);
+       }else{
+            return view('pages/admin/empty_result');
+        }
+      }
+
+       function resultsecondsemester(Request $req){
+ 
+        $st=student::where('student_sem',2)->get();
+
+        $check_course_take=coursetake::whereNull('quiz1')
+                                     ->whereNull('quiz2')
+                                     ->whereNull('quiz3')
+                                     ->whereNull('quiz4')
+                                     ->whereNull('mid')
+                                     ->whereNull('final')
+                                     ->whereNull('att_mark')
+                                     ->where('take_sem',2)->get();
+        
+        if(count($check_course_take)==0){
+
+          foreach ($st as $stu) {
+            $grade_credit=0;
+            $gpa=0;
+            $grade=grade::where('student_fk_grade',$stu->student_id)
+                         ->where('grade_sem',2)->get();
+          
+
+            $total_credit=grade::where('student_fk_grade',$stu->student_id)
+                         ->where('grade_sem',2)->sum('credit');
+
+
+            
+            count($grade);
+
+            for($i=0;$i<count($grade);$i++){
+              
+               $grade_credit=$grade_credit+calgpa($grade[$i]->grade_store,$grade[$i]->credit);
+            }
+            
+            $gpa=($grade_credit/$total_credit); 
+            $gpa=number_format($gpa,2);
+            
+            $check=result::where('student_fk_result',$stu->student_id)
+                          ->where('sem_result',2)->first();
+
+            if($check==null){
+
+              $inser_gpa=result::create([
+                  'student_fk_result'=>$stu->student_id,
+                  'gpa_result'=> $gpa,
+                  'cgpa_result'=>$gpa,
+                  'sem_result'=>2,
+                  'block_result'=>0,
+
+              ]);
+            }
+            
+           
+          }
+          $array_gpa=result::where('sem_result',2)->where('update_result',0)->paginate(6);
+
+            return view('pages/admin/resultsecondsemester')->with('array_gpa',$array_gpa);
+
+       }else{
+        return view('pages/admin/empty_result');
        }
+     }
 
      
 
@@ -442,7 +520,18 @@ class AdminController extends Controller
       $sem=$req->input('semester');
       $id=(int) $id;
       $sem=(int) $sem;
-      // dd($sem);
+      $student=student::where('student_id',$id)->first();
+      $check_result=DB::table('results')->where('student_fk_result',$id)
+                                        ->where('sem_result',$student->student_sem)->first();
+      if( $check_result!=null){
+        $update_result=DB::table('results')->where('student_fk_result',$id)
+        ->where('sem_result',$student->student_sem)
+        ->update([
+             'update_result'=>'1',
+             ]);
+      }
+
+
       $student_info_update=DB::table('students')->where('student_id',$id)->update([
         'student_name'=>$name,
         'student_email'=>$email,

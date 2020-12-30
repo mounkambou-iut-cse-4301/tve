@@ -46,7 +46,7 @@ Route::get('/teachcourses','AdminController@teachcourse');
 Route::get('/deletecourse_assign/{id?}','AdminController@deletecourse_assign');
 Route::match(['get','post'],'/attendances','AdminController@attendances');
 
-Route::get('/resultfistsemester','AdminController@resultfistsemester');
+
 Route::get('/manage_access','AdminController@manage_access');
 Route::get('/lock_result','AdminController@lock_result');
 Route::get('/lock_open_result','AdminController@lock_open_result');
@@ -57,10 +57,9 @@ Route::get('/lock_open_mark','AdminController@lock_open_mark');
 Route::match(['get','post'],'/edit_student_info/{id?}','AdminController@edit_student_info');
 Route::post('/edit_student_info_update','AdminController@edit_student_info_update');
 
+Route::get('/resultfistsemester','AdminController@resultfistsemester');
+Route::get('/resultsecondsemester','AdminController@resultsecondsemester');
 
-Route::get('resultsecondsemester', function () {
-return view('pages/admin/resultsecondsemester');
-});
 Route::get('resultthirdsemester', function () {
 return view('pages/admin/resultthirdsemester');
 });
