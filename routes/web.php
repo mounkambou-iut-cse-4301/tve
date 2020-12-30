@@ -43,6 +43,7 @@ Route::get('/studentinfo','AdminController@studentinfo');
 Route::post('/insertNewStudent','AdminController@insertNewStudent');
 Route::get('/unassignecourses','AdminController@unassignecourses');
 Route::get('/teachcourses','AdminController@teachcourse');
+Route::get('/deletecourse_assign/{id?}','AdminController@deletecourse_assign');
 Route::match(['get','post'],'/attendances','AdminController@attendances');
 
 Route::get('/resultfistsemester','AdminController@resultfistsemester');

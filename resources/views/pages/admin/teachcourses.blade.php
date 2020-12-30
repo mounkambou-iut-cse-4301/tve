@@ -2,6 +2,7 @@
 @section('content')
 <div class="container">
   <div class="card form_addteacher">
+  <span class="badge badge-danger" style="text-align: center ">{{ session('message') }}</span>
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -17,7 +18,7 @@
           <td>{{$tch_cse->teacher_fk_teach}}</td>
           <td>{{teacherName($tch_cse->teacher_fk_teach)}}</td>
           <td>{{$tch_cse->course_fk_teach}}</td>
-           <td><button class="btn btn_trash"><i class="fa fa-trash"></i></button></td>
+           <td><button class="btn btn_trash"><a href="/deletecourse_assign/{{$tch_cse->course_fk_teach}}"><i class="fa fa-trash"></i></a></button></td>
         </tr>
         @endforeach
       </tbody>

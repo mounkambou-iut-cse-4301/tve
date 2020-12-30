@@ -114,7 +114,7 @@ class AdminController extends Controller
        	    if($re->isMethod('get'))
 
              	{
-                	$sel_courses=course::all();
+                	$sel_courses=course::where('course_select','0')->get();
                 	$sel_t=teacher::all();
        	            return view('pages/admin/assigncourses')
                       	->with('sel_courses',$sel_courses)
@@ -134,8 +134,6 @@ class AdminController extends Controller
                           ->update(['course_select'=>'1']);
 
 
-
-
                     return redirect('\assigncourses')->with('message','New course assigned successfully');
 
         	}
@@ -153,9 +151,19 @@ class AdminController extends Controller
       function teachcourse(Request $re)
       {
       	
-      	$teach_course=DB::table('teachs')->paginate(10);
+        $teach_course=DB::table('teachs')->orderByRaw('teacher_fk_teach ASC')->paginate(15);
+        
 
       	return view('pages/admin/teachcourses')->with('tch_course',$teach_course);
+      }
+      
+      function deletecourse_assign(Request $re,$id){
+        $deletecourse_assign=DB::table('teachs')->where('course_fk_teach',$id)->delete();
+
+        $update_course=DB::table('courses')->where('course_id',$id)->update(['course_select'=>'0']);
+
+        return redirect('\teachcourses')->with('message','Course deleted');
+
       }
 
 
@@ -189,9 +197,7 @@ class AdminController extends Controller
       
 
        function resultfistsemester(Request $req){
-
-        
-       
+ 
         $st=student::where('student_sem',1)->get();
         
           foreach ($st as $stu) {
