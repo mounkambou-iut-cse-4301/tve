@@ -279,7 +279,7 @@ class AdminController extends Controller
             $grade=grade::where('student_fk_grade',$stu->student_id)
                          ->where('grade_sem',2)->get();
           
-
+            // dd($grade);
             $total_credit=grade::where('student_fk_grade',$stu->student_id)
                          ->where('grade_sem',2)->sum('credit');
 
@@ -300,10 +300,18 @@ class AdminController extends Controller
 
             if($check==null){
 
+              // dd( $gpa);
+              $frst_sem=result::where('student_fk_result',$stu->student_id)
+                              ->where('sem_result',1)->first();
+              
+              $cgpa=($gpa+$frst_sem->gpa_result)/2;
+              $cgpa=number_format($cgpa,2);
+              // dd($cgpa);
+
               $inser_gpa=result::create([
                   'student_fk_result'=>$stu->student_id,
                   'gpa_result'=> $gpa,
-                  'cgpa_result'=>$gpa,
+                  'cgpa_result'=>$cgpa,
                   'sem_result'=>2,
                   'block_result'=>0,
 
@@ -541,5 +549,6 @@ class AdminController extends Controller
 
         return redirect('/studentinfo');
      }
+
 
 }

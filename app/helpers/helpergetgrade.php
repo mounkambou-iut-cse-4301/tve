@@ -3,6 +3,7 @@ use App\course;
 use App\student;
 use App\teacher;
 use App\attendance;
+use App\coursetake;
 if(!function_exists('getGrade')){
 	function getGrade($sum,$grade){
 		$cal=$sum/$grade;
@@ -131,6 +132,12 @@ if(!function_exists('teacherName')){
      
 	}
 }
+
+// if(!function_exists('getProperId')){
+// 	function getProperId($student_id){
+       
+// 	}
+// }
 
  
 ?>

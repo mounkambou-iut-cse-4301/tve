@@ -27,7 +27,7 @@
                                 @foreach($stu as $st_id)
                                 <tr>
                                     <div class="form-group">
-                                        <td><input type="number" class="form-control" name="st_id[]" value="{{$st_id->student_id}}" readonly></td>
+                                        <td><input type="number" class="form-control" name="st_id[]" value="{{$st_id}}" readonly></td>
                                         <td><input type="number" min="0" max="1" class="form-control"  name="attendance[]"></td>
                                     </div>
                                 </tr>

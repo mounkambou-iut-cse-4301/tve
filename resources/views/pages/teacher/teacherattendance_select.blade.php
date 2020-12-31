@@ -14,7 +14,7 @@
                             <label for="sort_st_id">Sort By Id:</label>
                             
                             <select class="form-control" id="sort_st_id" name="sort_st_id">       @foreach($st as $stu)
-                                <option value="{{$stu->student_id}}">{{$stu->student_id}}</option> @endforeach
+                                <option value="{{$stu}}">{{$stu}}</option> @endforeach
                             </select>
                             
                         </div>

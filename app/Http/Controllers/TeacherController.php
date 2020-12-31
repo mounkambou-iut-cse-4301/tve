@@ -79,11 +79,21 @@ class TeacherController extends Controller
       else{
         
          $st=coursetake::where('course_fk_take', $req->session()->get('course'))->first();
-        //  dd($st->take_sem);
          $st_a=student::where('student_sem',$st->take_sem)->get();
-        // dd($st_a);
+     
          $status=0;
-         return view('pages/teacher/teacherattendance')->with('stu',$st_a)
+         $store_id= Array();
+        
+        for($i=0;$i<count($st_a);$i++){
+          
+          $course=coursetake::where('course_fk_take', $req->session()->get('course'))
+                            ->where('student_fk_take',$st_a[$i]->student_id)->first();
+          if($course!=null){
+            array_push($store_id, $st_a[$i]->student_id);
+          }
+        }
+     
+         return view('pages/teacher/teacherattendance')->with('stu',$store_id)
                                                        ->with('status',$status);
       } 	     
     }
@@ -114,13 +124,22 @@ class TeacherController extends Controller
     function teacherattendance_select(Request $req){
     	if($req->isMethod('get')){
     		$st_sort=attendance::where('course_fk_att',$req->session()->get('course'))->groupBy('att_date')->get();
-        $st=coursetake::where('course_fk_take',$req->session()->get('course'))->first();
-        // dd($st->take_sem);
-        $st_a=student::where('student_sem',$st->take_sem)->get();
-            
+        $st=coursetake::where('course_fk_take', $req->session()->get('course'))->first();
+         $st_a=student::where('student_sem',$st->take_sem)->get();
+    
+         $store_id= Array();
+        
+         for($i=0;$i<count($st_a);$i++){
+           
+           $course=coursetake::where('course_fk_take', $req->session()->get('course'))
+                             ->where('student_fk_take',$st_a[$i]->student_id)->first();
+           if($course!=null){
+             array_push($store_id, $st_a[$i]->student_id);
+           }
+         }
 
     	 return view('pages/teacher/teacherattendance_select')->with('st_sort',$st_sort)
-    	                                                      ->with('st',$st_a); 
+    	                                                      ->with('st',$store_id); 
     	}
     	if($req->isMethod('post')){
     		$sort_st_id=(int)$req->input('sort_st_id');
@@ -140,8 +159,12 @@ class TeacherController extends Controller
     		
             $att_coun=count($att_count);
             $att_pr=count($att_pre);
-
-            $percentage=($att_pr*100)/$att_coun;
+            if($att_coun>0){
+              $percentage=($att_pr*100)/$att_coun;
+            }else{
+              $percentage=0;
+            }
+            
             
             $percentage=number_format($percentage,2);
 
@@ -227,6 +250,15 @@ class TeacherController extends Controller
                                   'grade_store'=>getGrade($sum,$course->course_credit),
 
                               ]);
+
+                          //     $insert_grade=grade::create([
+                          //       'course_fk_grade'=> $req->session()->get('course'),
+                          //       'student_fk_grade'=>(int)$st_id[$i],
+                          //       'grade_store'=>getGrade($sum,$course->course_credit),
+                          //       'grade_sem'=>$comment,
+                          //       'filename'=>$filename,
+                 
+                          // ]);
       
 
                     }

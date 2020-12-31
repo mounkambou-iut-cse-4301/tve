@@ -73,6 +73,7 @@ class StudentController extends Controller
         
         	for($i=0; $i<$count; $i++){
             $credit=course::where('course_id',$re->input('select_course')[$i])->first();
+           
                 $select_course= coursetake::create([
                   'student_fk_take'=>$st_log->student_id,
                   'course_fk_take'=>$re->input('select_course')[$i],
