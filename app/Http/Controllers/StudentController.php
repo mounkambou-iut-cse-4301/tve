@@ -162,10 +162,38 @@ class StudentController extends Controller
 
     
     function studentresult(Request $req){
+        $result=result::where('block_result',0)->get();
+        $st=student::where('user_fk_student',Auth::user()->id)->first();
+        
+        if(count($result)>0){
+          if($req->isMethod('get')){
+            $check_exist=result::where('student_fk_result',$st->student_id)->first();
+            if( $check_exist==null){
+              $status=1;
+              return view('pages/student/studentresult')->with('status',$status);
+            }else{
+              $sel_student=result::where('student_fk_result',$st->student_id)->orderByRaw('sem_result DESC')->first();
+              return view('pages/student/student_result_input')->with('sel_student',$sel_student);
+            }
+                      
+          }if($req->isMethod('post')){
+            $st_sem=(int)$req->input('sort_st_sem');
+            $take_result=result::where('student_fk_result',$st->student_id)
+                           ->where('sem_result',$st_sem)->first();
 
-        $status=1;
-        return view('pages/student/studentresult')->with('status',$status);
-     
+            $take_grade=grade::where('student_fk_grade',$st->student_id)
+                             ->where('grade_sem',$st_sem)->get();
+           
+            $status=0;
+            return view('pages/student/studentresult')->with('status',$status)
+                                                      ->with('data',$take_grade)
+                                                      ->with('student_gpa',$take_result); 
+          }
+
+        }else{
+          $status=1;
+          return view('pages/student/studentresult')->with('status',$status);
+        }
     }
 
 

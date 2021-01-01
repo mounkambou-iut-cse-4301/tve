@@ -133,11 +133,13 @@ if(!function_exists('teacherName')){
 	}
 }
 
-// if(!function_exists('getProperId')){
-// 	function getProperId($student_id){
-       
-// 	}
-// }
 
+if(!function_exists('getCourseName')){
+	function getCourseName($key){
+		
+		$course = course::where('course_id',$key)->first();
+		return $course->course_name;
+	}
+}
  
 ?>

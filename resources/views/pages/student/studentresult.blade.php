@@ -23,12 +23,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($data as $key => $dt)
+                            @foreach($data as $grade)
                             <tr>
-                                <td>{{ $key }}</td>
-                                <td>{{courseName($key)}}</td>
-                                <td>{{coursecredit($key)}}</td>
-                                <td>{{$dt}}</td>
+                                <td>{{ $grade->course_fk_grade }}</td>
+                                <td>{{getCourseName($grade->course_fk_grade)}}</td>
+                                <td>{{$grade->credit}}</td>
+                                <td>{{$grade->grade_store}}</td>
                             </tr>
                             @endforeach
                             

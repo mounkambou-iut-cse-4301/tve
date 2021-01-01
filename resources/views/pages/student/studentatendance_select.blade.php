@@ -12,9 +12,9 @@
                     <form action="/studentatendance_select" method="post" class="validated">
                         {{csrf_field()}}
                         <div class="form-group">
-                            <label for="sort_st_course">Sort By Course:</label>
+                            <label for="sort_st_sem">Sort By Course:</label>
                             
-                            <select class="form-control" id="sort_st_course" name="sort_st_course">
+                            <select class="form-control" id="sort_st_sem" name="sort_st_sem">
                                 @foreach($course_sort as $cours_sort)
                                 <option value="{{$cours_sort->course_fk_att}}">{{$cours_sort->course_fk_att}}</option>
                                 @endforeach

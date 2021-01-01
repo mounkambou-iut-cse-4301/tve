@@ -101,7 +101,7 @@ Route::match(['get','post'],'/studentdashboard','StudentController@studentdashbo
 
 Route::get('/studentmark','StudentController@studentmark');
 
-Route::get('/studentresult','StudentController@studentresult');
+Route::match(['get','post'],'/studentresult','StudentController@studentresult');
 Route::get('/studentsetting','StudentController@studentsetting');
 Route::match(['get','post'],'/student_changepassword','StudentController@student_changepassword');
 Route::match(['get','post'],'/lecturematerials','StudentController@lecturematerials');
