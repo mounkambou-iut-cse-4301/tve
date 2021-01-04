@@ -12,6 +12,7 @@
 use App\course;
 use App\student;
 use App\teach;
+use PDF\Article as BA;
 Route::get('/', function () {
 return view('welcome');
 });
@@ -105,6 +106,13 @@ Route::match(['get','post'],'/studentresult','StudentController@studentresult');
 Route::get('/studentsetting','StudentController@studentsetting');
 Route::match(['get','post'],'/student_changepassword','StudentController@student_changepassword');
 Route::match(['get','post'],'/lecturematerials','StudentController@lecturematerials');
+
+// Route::post('/invoice', function () {
+//     $pdf=PDF::loadView('pages/student/studentresult');
+//     // $pdf= \PDF::loadView('customer.customer');
+//     // return $pdf->stream('studentmark.pdf', array('Attachment' => 0));
+//     return $pdf->download('studentresult.pdf');
+//     });
 
 
 

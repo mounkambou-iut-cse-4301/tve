@@ -3,16 +3,18 @@
 <br><br><br><br><br><br><br>
 <div class="container mt-3">
     <div class="row">
-        @include('layouts/partials/_studentsidebar')
         <div class="col-lg-9">
             <div class="card">
-                <div class="card-header"><h4>Student Result</h4></div>
+                <!-- <div class="card-header"><h4>Student Result</h4></div> -->
                 <div class="card-body stdent_result">
                     @if($status==1)
                     <div class="alert alert-info" style="text-align: center;">
                         <strong>Whoops, Sorry but you can not see yet your results.</strong>
                     </div>
                     @elseif($status==0)
+                    
+
+                    <div id="printpage">
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -47,9 +49,21 @@
 
                     </div>
                     @endif
+                    <div>
+                    <a class="btn btn-default"><i class="fa fa-print"> <input type="button" onclick="printDiv()" value="print"></i></a>
+                    </div>
+                 </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+function printDiv(){
+    var value1=document.getElementById('printpage').innerHTML;
+    var value2=document.body.innerHTML;
+    window.print();
+    document.body.innerHTML=value2;
+}
+</script>
 @endsection
