@@ -256,7 +256,23 @@ class StudentController extends Controller
       }
     }
 
+    function student_forum_post(Request $req){
+      if($req->isMethod('get')){
+         return view('pages/student/student_forum_post');
+      }
 
+      if($req->isMethod('post')){
+
+      }
+    }
+
+    function student_forum(Request $req){
+      return view('pages/student/student_forum');
+    }
+
+    function student_post(Request $req){
+      return view('pages/student/student_post');
+    }
 
 
 }

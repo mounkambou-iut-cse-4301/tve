@@ -434,4 +434,23 @@ class TeacherController extends Controller
        return redirect('\teachermaterial')->with('message','File Uploaded successfully');
       }
     }
+
+    function teacher_forum_post(Request $req){
+      if($req->isMethod('get')){
+         return view('pages/teacher/teacher_forum_post');
+      }
+
+      if($req->isMethod('post')){
+
+      }
+    }
+
+    function teacher_forum(Request $req){
+      return view('pages/teacher/teacher_forum');
+    }
+
+    function teacher_post(Request $req){
+      return view('pages/teacher/teacher_post');
+    }
+    
 }

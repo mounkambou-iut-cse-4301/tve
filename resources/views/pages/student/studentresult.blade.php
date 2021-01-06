@@ -3,7 +3,7 @@
 <br><br><br><br><br><br><br>
 <div class="container mt-3">
     <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-12">
             <div class="card">
                 <!-- <div class="card-header"><h4>Student Result</h4></div> -->
                 <div class="card-body stdent_result">
@@ -13,8 +13,11 @@
                     </div>
                     @elseif($status==0)
                     
-
+                   <div>
                     <div id="printpage">
+                    <div style="text-align: center;">
+                        <h2><strong>{{getName($student_gpa->student_fk_result)}}</strong></h2>
+                    </div>
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -48,10 +51,12 @@
                         </table>
 
                     </div>
-                    @endif
                     <div>
                     <a class="btn btn-default"><i class="fa fa-print"> <input type="button" onclick="printDiv()" value="print"></i></a>
                     </div>
+                    </div>
+                    @endif
+
                  </div>
                 </div>
             </div>

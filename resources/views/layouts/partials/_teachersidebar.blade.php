@@ -23,12 +23,19 @@
 					
 				</tr>
 				<tr class="table-primary">
+					<td><a href="/teacher_forum_post" class="link_studentsidebar">Post on Forum</a></td>
+					
+				</tr>
+				<tr class="table-success">
+					<td><a href="/teacher_forum" class="link_studentsidebar">Forum</a></td>
+					
+				</tr>
+				<tr class="table-primary">
 					<td><a href="/teachersetting" class="link_studentsidebar">Personal Info</a></td>
 					
 				</tr>
 				<tr class="table-success">
 					<td><a href="teacher_changepassword" class="link_studentsidebar">Change Password</a></td>
-					
 				</tr>
 			</tbody>
 		</table>

@@ -20,6 +20,12 @@
 					<td><a href="/studentresult" class="link_studentsidebar">Grade Sheet</a></td>
 				</tr>
 				<tr class="table-success">
+					<td><a href="/student_forum_post" class="link_studentsidebar">Post on Forum</a></td>	
+				</tr>
+				<tr class="table-primary">
+					<td><a href="/student_forum" class="link_studentsidebar">Forum</a></td>	
+				</tr>
+				<tr class="table-success">
 					<td><a href="/studentsetting" class="link_studentsidebar">Personnal Info</a></td>	
 				</tr>
 				<tr class="table-primary">

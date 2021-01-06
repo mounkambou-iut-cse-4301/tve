@@ -107,12 +107,13 @@ Route::get('/studentsetting','StudentController@studentsetting');
 Route::match(['get','post'],'/student_changepassword','StudentController@student_changepassword');
 Route::match(['get','post'],'/lecturematerials','StudentController@lecturematerials');
 
-// Route::post('/invoice', function () {
-//     $pdf=PDF::loadView('pages/student/studentresult');
-//     // $pdf= \PDF::loadView('customer.customer');
-//     // return $pdf->stream('studentmark.pdf', array('Attachment' => 0));
-//     return $pdf->download('studentresult.pdf');
-//     });
+Route::match(['get','post'],'student_forum_post','StudentController@student_forum_post');
+
+Route::get('/student_forum','StudentController@student_forum');
+
+Route::get('/student_post','StudentController@student_post');
+
+
 
 
 
@@ -147,6 +148,12 @@ Route::match(['get','post'],'teacher_changepassword','TeacherController@teacher_
 Route::get('/teacher_statistic','TeacherController@teacher_statistic');
 
 Route::match(['get','post'],'teachermaterial','TeacherController@teachermaterial');
+
+Route::match(['get','post'],'teacher_forum_post','TeacherController@teacher_forum_post');
+
+Route::get('/teacher_forum','TeacherController@teacher_forum');
+
+Route::get('/teacher_post','TeacherController@teacher_post');
 
 
 
