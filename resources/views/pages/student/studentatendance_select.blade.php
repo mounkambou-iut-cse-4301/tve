@@ -9,30 +9,25 @@
             <div class="card">
                 <div class="card-header"><h4>Registered courses</h4></div>
                 <div class="card-body">
+                @if($status==0)
+                   <div class="alert alert-info" style="text-align: center;">
+                        <strong>Whoops, Sorry but any teacher didn't take the attendance yet.</strong>
+                    </div>
+                    @elseif($status==1)
                     <form action="/studentatendance_select" method="post" class="validated">
                         {{csrf_field()}}
                         <div class="form-group">
-                            <label for="sort_st_sem">Sort By Course:</label>
+                            <label for="sort_st_course">Sort By Course:</label>
                             
-                            <select class="form-control" id="sort_st_sem" name="sort_st_sem">
+                            <select class="form-control" id="sort_st_course" name="sort_st_course">
                                 @foreach($course_sort as $cours_sort)
                                 <option value="{{$cours_sort->course_fk_att}}">{{$cours_sort->course_fk_att}}</option>
                                 @endforeach
                             </select>
-                            
-                        </div>
-                        <div class="form-group">
-                            <label for="sort_course_date">Sort By Date:</label>
-                            
-                            <select class="form-control" id="sort_course_date" name="sort_course_date">
-                                @foreach($date_sort as $dat_sort)
-                                <option value="{{$dat_sort->att_date}}">{{$dat_sort->att_date}}</option>
-                                @endforeach
-                            </select>
-                            
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    @endif
                 </div>
             </div>
         </div>

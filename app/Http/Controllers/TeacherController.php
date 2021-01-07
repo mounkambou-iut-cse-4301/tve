@@ -145,12 +145,8 @@ class TeacherController extends Controller
     	}
     	if($req->isMethod('post')){
     		$sort_st_id=(int)$req->input('sort_st_id');
-    		$sort_st_date=$req->input('sort_st_date');
-    		
-
     		$att_details=attendance::where('course_fk_att',$req->session()->get('course'))
-    		                       ->where('student_fk_att',$sort_st_id)
-    		                       ->where('att_date',$sort_st_date)->paginate(5);
+    		                       ->where('student_fk_att',$sort_st_id)->paginate(5);
 
     	   $att_count=attendance::where('course_fk_att',$req->session()->get('course'))
     		                       ->where('student_fk_att',$sort_st_id)->get();
