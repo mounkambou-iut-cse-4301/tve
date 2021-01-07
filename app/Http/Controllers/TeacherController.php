@@ -21,6 +21,8 @@ use App\coursetake;
 use App\grade;
 use App\percentage_attendance;
 use App\material;
+use App\message;
+use App\comment;
 
 class TeacherController extends Controller
 {
@@ -441,16 +443,61 @@ class TeacherController extends Controller
       }
 
       if($req->isMethod('post')){
-
+        $title=$req->input('title');
+        $message=$req->input('message');
+        $req->session()->get('course');
+        $teacher_id=teacher::where('user_fk_teacher',Auth::user()->id)->first();
+    
+        if($title !=null && $message !=null){
+          $insert_messae=message::create([
+            'course_fk_message'=>$req->session()->get('course'),
+            'title'=> $title,
+            'content'=>$message,
+            'person_message'=>$teacher_id->teacher_name,
+         ]);
+         return redirect('/teacher_forum_post')->with('message','Done');
+        }else{
+          return redirect('/teacher_forum_post')->with('message','Enter all the inputs');
+        }
+      
       }
     }
 
     function teacher_forum(Request $req){
-      return view('pages/teacher/teacher_forum');
+      $message=message::where('course_fk_message',$req->session()->get('course'))->orderBy('updated_at', 'DESC')->get();
+      
+      return view('pages/teacher/teacher_forum')->with('message',$message);
     }
 
-    function teacher_post(Request $req){
-      return view('pages/teacher/teacher_post');
+    function teacher_post(Request $req,$id){
+      if($req->isMethod('get')){
+        $message=message::where('message_id',$id)->first();
+        $comment=comment::where('message_fk_comment',$id)->get();
+        $other_message=message::where('course_fk_message',$message->course_fk_message)
+                              ->where('message_id','!=',$id)->orderBy('updated_at', 'DESC')->get();
+       
+
+        return view('pages/teacher/teacher_post')->with('message',$message)
+                                                 ->with('comment',$comment)
+                                                 ->with('other_message',$other_message);
+     }
+     if($req->isMethod('post')){
+      $message=$req->input('message');
+      $teacher_name=teacher::where('user_fk_teacher',Auth::user()->id)->first();
+      $insert_comment=comment::create([
+        'message_fk_comment'=>$id,
+        'person_comment'=> $teacher_name->teacher_name,
+        'comment'=>$message,
+     ]);
+     $message=message::where('message_id',$id)->first();
+     $comment=comment::where('message_fk_comment',$id)->get();
+     $other_message=message::where('course_fk_message',$message->course_fk_message)
+                            ->where('message_id','!=',$id)->orderBy('updated_at', 'DESC')->get();    
+
+     return view('pages/teacher/teacher_post')->with('message',$message)
+                                              ->with('comment',$comment)
+                                              ->with('other_message',$other_message);
+    }
     }
     
 }

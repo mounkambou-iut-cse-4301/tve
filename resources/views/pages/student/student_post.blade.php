@@ -3,34 +3,32 @@
 <br><br><br><br><br><br><br>
 <div class="container mt-3">
     <div class="row">
-        <div class="col-lg-8">
+    @include('layouts/partials/_studentsidebar')
+        <div class="col-lg-6">
             <div class="card" style="margin-bottom: 1%;">
                 <div class="card-body">
                     <div class="card">
                         <div class="card-header">
-                            <p class="card-text">Abdel Karim</p>
-                            <p class="card-text" style="text-align: center;"><strong>Some example text some example
-                                    text.</strong></p>
+                            <p class="card-text"><strong>{{$message->person_message}}</strong></p>
+                            <p class="card-text" style="text-align: center;">{{$message->title}}</p>
                             <div class="card-body">
-                                <p class="card-text">Some example text some example text. John Doe is an architect and
-                                    engineer. Some example text some example text. John Doe is an architect and
-                                    engineer.Some example text some example text. John Doe is an architect and engineer.
+                                <p class="card-text">{{$message->content}}
                                 </p>
                             </div>
-                            <p style="text-align: right;">12/02/2018</p>
+                            <p style="text-align: right;">{{$message->updated_at}}</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card"  style="margin-bottom: 1%;">
                 <div class="card-body">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="/student_post/{{$message->message_id}}" method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="form-group">
-                            <textarea class="form-control" rows="5" id="message" placeholder="Your comment"></textarea>
+                            <textarea class="form-control" rows="5" id="message" name="message" placeholder="Your comment"></textarea>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" style="width: 100%">Publish</button>
+                            <button type="submit" class="btn btn-primary" style="width: 100%">Comment</button>
                         </div>
                     </form>
                 </div>
@@ -39,57 +37,32 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-text" style="text-align: center;"><strong>Comments</strong></p>
+                      @foreach($comment as $comment)
                         <div class="card-header"> 
                             <div class="card-body">
-                            <p class="card-text">Abdel Karim</p>
-                                <p class="card-text">Some example text some example text. John Doe is an architect and
-                                    engineer. Some example text some example text. John Doe is an architect and
-                                    engineer.Some example text some example text. John Doe is an architect and engineer.
-                                </p>
+                            
+                            <p class="card-text"><strong>{{$comment->person_comment}}</strong></p>
+                                <p class="card-text">{{$comment->comment}}</p>
                             </div>
-                            <p style="text-align: right;">12/02/2018</p>
+                            <p style="text-align: right;">{{$comment->updated_at}}</p>
                         </div>
-                        <div class="card-header"> 
-                            <div class="card-body">
-                            <p class="card-text">Amadou Olabi</p>
-                                <p class="card-text">Some example text some example text. John Doe is an architect and
-                                    engineer. Some example text some example text. John Doe is an architect and
-                                    engineer.Some example text some example text. John Doe is an architect and engineer.
-                                </p>
-                            </div>
-                            <p style="text-align: right;">12/02/2018</p>
-                        </div>
-                        <div class="card-header"> 
-                            <div class="card-body">
-                            <p class="card-text">Mikayilou Namba</p>
-                                <p class="card-text">Some example text some example text. John Doe is an architect and
-                                    engineer. Some example text some example text. John Doe is an architect and
-                                    engineer.Some example text some example text. John Doe is an architect and engineer.
-                                </p>
-                            </div>
-                            <p style="text-align: right;">12/02/2018</p>
-                        </div>
+                        @endforeach
                 </div>
+                
             </div>
 
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <div class="card-header">
                 <h4> Other Posts </h4>
             </div>
             <div class="card-body">
+            @foreach($other_message as $other_message)
                 <div class="card-header" style="margin-bottom:2% !important;">
-                    <a href="/teacher_post" class="link_studentsidebar">Some example text some example
-                                    text.</a>
+                <a href="/student_post/{{$other_message->message_id}}" class="link_studentsidebar">{{$other_message->title}},({{$other_message->course_fk_message}})</a>
                 </div>
-                <div class="card-header" style="margin-bottom:2% !important;">
-                    <a href="/teacher_post" class="link_studentsidebar">lick2</a>
-                </div>
-                <div class="card-header" style="margin-bottom:2% !important;">
-                    <a href="/teacher_post" class="link_studentsidebar">Some example text some example
-                                    text.</a>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

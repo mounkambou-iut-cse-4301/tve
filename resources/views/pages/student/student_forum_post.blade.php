@@ -7,19 +7,19 @@
         <div class="col-lg-9">
             <div class="card">
                 <div class="card-header">
-                    <h4>Post Your Message</h4>
+                    <h4>Posting on Forum</h4>
                 </div>
                 <div class="card-body">
-                    <form action="/teachermaterial" method="post" enctype="multipart/form-data">
+                    <form action="/student_forum_post" method="post" enctype="multipart/form-data">
+                        
+                        <p><span class="badge badge-success" style="text-align: center ">{{ session('message') }}</span></p><br>
                         {{csrf_field()}}
-                        <p><span class="badge badge-success" style="text-align: center ">succes</span></p><br>
                         <div class="form-group">
                             <label for="sel_course"><b>Select course:</b></label>
                             <select class="form-control" id="sel_course" name="sel_course">
-                                <option>CSE 4343</option>
-                                <option>CSE 4344</option>
-                                <option>CSE 4345</option>
-                                <option>CSE 4349</option>
+                               @foreach($course as $cours_sort)
+                                 <option value="{{$cours_sort->course_fk_take}}">{{$cours_sort->course_fk_take}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -27,8 +27,8 @@
                             <input type="text" class="form-control" id="title" name="title" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message:</label>
-                            <textarea class="form-control" rows="5" id="message"></textarea>
+                            <label for="message"><b>Message:</b></label>
+                            <textarea class="form-control" rows="5" id="message" name="message" required></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary" style="width: 100%">Publish</button>

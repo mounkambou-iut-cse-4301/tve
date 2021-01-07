@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class coursetake extends Model
 {
 	public $timestamps=false;
-protected $guarded = [];
+    protected $guarded = [];
 }

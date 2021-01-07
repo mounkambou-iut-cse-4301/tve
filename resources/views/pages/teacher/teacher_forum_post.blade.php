@@ -7,22 +7,23 @@
         <div class="col-lg-9">
             <div class="card">
                 <div class="card-header">
-                    <h4>Post Your Message</h4>
+                    <h4>Posting on Forum</h4>
                 </div>
                 <div class="card-body">
-                    <form action="/teachermaterial" method="post" enctype="multipart/form-data">
+                    <form action="/teacher_forum_post" method="post" enctype="multipart/form-data">
+                        
+                        <p><span class="badge badge-success" style="text-align: center ">{{ session('message') }}</span></p><br>
                         {{csrf_field()}}
-                        <p><span class="badge badge-success" style="text-align: center ">succes</span></p><br>
                         <div class="form-group">
                             <label for="lecture"><b>Title:</b></label>
                             <input type="text" class="form-control" id="title" name="title" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message:</label>
-                            <textarea class="form-control" rows="5" id="message"></textarea>
+                            <label for="message"><b>Message:</b></label>
+                            <textarea class="form-control" rows="5" id="message" name="message" required></textarea>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" style="width: 100%">Publish</button>
+                            <button type="submit" class="btn btn-primary" style="width: 100%">Comment</button>
                         </div>
                     </form>
                 </div>

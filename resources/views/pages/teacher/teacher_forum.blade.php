@@ -10,17 +10,11 @@
                     <h4> Your Posts </h4>
                 </div>
                 <div class="card-body">
-                   
+                    @foreach($message as $post)
                         <div class="card-header" style="margin-bottom:2% !important;">
-                            <a href="/teacher_post" class="link_studentsidebar">lick1</a>
-                        </div>
-                        <div class="card-header" style="margin-bottom:2% !important;">
-                            <a href="/teacher_post" class="link_studentsidebar">lick2</a>
-                        </div>
-                        <div class="card-header" style="margin-bottom:2% !important;">
-                            <a href="/teacher_post" class="link_studentsidebar">lick3</a>
-                        </div>
-                    
+                            <a href="/teacher_post/{{$post->message_id}}" class="link_studentsidebar">{{$post->title}},({{$post->course_fk_message}})</a>
+                        </div> 
+                    @endforeach
                 </div>
             </div>
         </div>

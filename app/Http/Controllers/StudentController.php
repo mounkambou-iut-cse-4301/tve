@@ -22,6 +22,8 @@ use App\attendance;
 use App\grade;
 use App\result;
 use App\material;
+use App\message;
+use App\comment;
 
 class StudentController extends Controller
 {
@@ -258,20 +260,70 @@ class StudentController extends Controller
 
     function student_forum_post(Request $req){
       if($req->isMethod('get')){
-         return view('pages/student/student_forum_post');
+        $student=student::where('user_fk_student',Auth::user()->id)->first();
+        $course=coursetake::where('take_sem', $student->student_sem)
+                          ->where('student_fk_take',$student->student_id)->get();
+         return view('pages/student/student_forum_post')->with('course',$course);
       }
 
       if($req->isMethod('post')){
-
+        $title=$req->input('title');
+        $message=$req->input('message');
+        $course=$req->input('sel_course');
+        $student_id=student::where('user_fk_student',Auth::user()->id)->first();
+     
+        if($title !=null && $message !=null){
+          $insert_messae=message::create([
+            'course_fk_message'=>$course,
+            'title'=> $title,
+            'content'=>$message,
+            'person_message'=>$student_id->student_name,
+         ]);
+         return redirect('/student_forum_post')->with('message','Done');
+        }else{
+          return redirect('/student_forum_post')->with('message','Enter all the inputs');
+        }
+      
       }
     }
 
     function student_forum(Request $req){
-      return view('pages/student/student_forum');
+      $message=message::orderBy('updated_at', 'DESC')->get();
+      return view('pages/student/student_forum')->with('message',$message);
     }
 
-    function student_post(Request $req){
-      return view('pages/student/student_post');
+    function student_post(Request $req,$id){
+      if($req->isMethod('get')){
+   
+         $message=message::where('message_id',$id)->first();
+         $comment=comment::where('message_fk_comment',$id)->get();
+         $other_message=message::where('message_id','!=',$id)->orderBy('updated_at', 'DESC')->get();
+        
+
+         return view('pages/student/student_post')->with('message',$message)
+                                                  ->with('comment',$comment)
+                                                  ->with('other_message',$other_message);
+      }
+      if($req->isMethod('post')){
+        $message=$req->input('message');
+        $course=message::where('message_id',$id)->first();
+        $student_name=student::where('user_fk_student',Auth::user()->id)->first();
+        // dd($course->course_fk_message);
+        // dd($id);
+        $insert_comment=comment::create([
+          'message_fk_comment'=>$id,
+          'person_comment'=> $student_name->student_name,
+          'comment'=>$message,
+       ]);
+       $message=message::where('message_id',$id)->first();
+       $comment=comment::where('message_fk_comment',$id)->get();
+       $other_message=message::where('message_id','!=',$id)->orderBy('updated_at', 'DESC')->get();
+      
+
+       return view('pages/student/student_post')->with('message',$message)
+                                                ->with('comment',$comment)
+                                                ->with('other_message',$other_message);
+      }
     }
 
 
