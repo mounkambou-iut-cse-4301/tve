@@ -304,7 +304,7 @@ class StudentController extends Controller
       if($req->isMethod('get')){
    
          $message=message::where('message_id',$id)->first();
-         $comment=comment::where('message_fk_comment',$id)->get();
+         $comment=comment::where('message_fk_comment',$id)->orderBy('updated_at', 'DESC')->get();
          $other_message=message::where('message_id','!=',$id)->orderBy('updated_at', 'DESC')->get();
         
 
@@ -324,7 +324,7 @@ class StudentController extends Controller
           'comment'=>$message,
        ]);
        $message=message::where('message_id',$id)->first();
-       $comment=comment::where('message_fk_comment',$id)->get();
+       $comment=comment::where('message_fk_comment',$id)->orderBy('updated_at', 'DESC')->get();
        $other_message=message::where('message_id','!=',$id)->orderBy('updated_at', 'DESC')->get();
       
 
