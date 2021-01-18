@@ -402,6 +402,7 @@ class StudentController extends Controller
           'person_comment'=> $student_name->student_name,
           'comment'=>$message,
        ]);
+       
        $message=message::where('message_id',$id)->first();
        $comment=comment::where('message_fk_comment',$id)->orderBy('updated_at', 'DESC')->get();
        $other_message=message::where('message_id','!=',$id)->orderBy('updated_at', 'DESC')->get();
