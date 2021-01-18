@@ -26,9 +26,12 @@
 					<td><a href="/student_forum" class="link_studentsidebar">Forum</a></td>	
 				</tr>
 				<tr class="table-success">
-					<td><a href="/studentsetting" class="link_studentsidebar">Personnal Info</a></td>	
+					<td><a href="/student_message" class="link_studentsidebar">Message</a></td>	
 				</tr>
 				<tr class="table-primary">
+					<td><a href="/studentsetting" class="link_studentsidebar">Personnal Info</a></td>	
+				</tr>
+				<tr class="table-success">
 					<td><a href="/student_changepassword" class="link_studentsidebar">Change Password</a></td>	
 				</tr>
 			</tbody>

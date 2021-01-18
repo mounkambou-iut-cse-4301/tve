@@ -31,10 +31,14 @@
 					
 				</tr>
 				<tr class="table-primary">
-					<td><a href="/teachersetting" class="link_studentsidebar">Personal Info</a></td>
+					<td><a href="/teacher_send_message" class="link_studentsidebar">Send a Notification</a></td>
 					
 				</tr>
 				<tr class="table-success">
+					<td><a href="/teachersetting" class="link_studentsidebar">Personal Info</a></td>
+					
+				</tr>
+				<tr class="table-primary">
 					<td><a href="teacher_changepassword" class="link_studentsidebar">Change Password</a></td>
 				</tr>
 			</tbody>

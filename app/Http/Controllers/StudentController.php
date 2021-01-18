@@ -24,6 +24,7 @@ use App\result;
 use App\material;
 use App\message;
 use App\comment;
+use App\notification;
 
 class StudentController extends Controller
 {
@@ -44,6 +45,7 @@ class StudentController extends Controller
           	Auth::login($user);
           	$sudent_sel=coursetake::where('student_fk_take',$student_id)->where('take_sem',$st_log->student_sem)->first();
             if($sudent_sel !=null){
+               
                 return view('pages/student/welcome_studentdashboard')->with('st_log',$st_log);
             }else{
             	$courses=  course::where('course_sem',$st_log->student_sem)->get();
@@ -110,19 +112,48 @@ class StudentController extends Controller
          $student=student::where('user_fk_student',Auth::user()->id)->first();
         
         if($req->isMethod('get')){
+          $check_seen=notification::where('receiver_id',$student->student_id)->where('seen',0)->get();
+
           $student_sem=$student->student_sem;
-           
            $course_sort=attendance::where('student_fk_att', $student->student_id)
                                  ->where('sem',$student_sem)
                                   ->groupBy('course_fk_att')->get();
              if(count($course_sort)>0){
-               $status=1;
-              return view('pages/student/studentatendance_select')->with('course_sort',$course_sort)
-                                                                  ->with('status',$status);
-             } else{
-              $status=0;
-              return view('pages/student/studentatendance_select')->with('course_sort',$course_sort)
-                                                                  ->with('status',$status);
+              if(count($check_seen)>0){
+                $notification_status=1;
+                $student_seen=count($check_seen);
+                $status=1;
+                return view('pages/student/studentatendance_select')->with('course_sort',$course_sort)
+                                                                    ->with('status',$status)
+                                                                    ->with('student_seen',$student_seen)
+                                                                    ->with('notification_status',$notification_status);
+              }else{
+                $notification_status=0;
+                $student_seen=0;
+                $status=1;
+                return view('pages/student/studentatendance_select')->with('course_sort',$course_sort)
+                                                                    ->with('status',$status)
+                                                                    ->with('student_seen',$student_seen)
+                                                                    ->with('notification_status',$notification_status);
+              }
+             }
+             else{
+              if(count($check_seen)>0){
+                $notification_status=1;
+                $student_seen=count($check_seen);
+                $status=0;
+               return view('pages/student/studentatendance_select')->with('course_sort',$course_sort)
+                                                                  ->with('status',$status)
+                                                                  ->with('student_seen',$student_seen)
+                                                                  ->with('notification_status',$notification_status);
+              }else{
+                $notification_status=0;
+                $status=0;
+                return view('pages/student/studentatendance_select')->with('course_sort',$course_sort)
+                                                                   ->with('status',$status)
+                                                                   ->with('student_seen',$student_seen)
+                                                                   ->with('notification_status',$notification_status);
+              }
              }             
 
            
@@ -162,12 +193,24 @@ class StudentController extends Controller
     
     function studentmark(Request $req){
 
+
       $st=student::where('user_fk_student',Auth::user()->id)->first();
 
       $student_mark=coursetake::where('student_fk_take',$st->student_id)
                                ->where('take_sem',$st->student_sem)->paginate(6);
-      // dd($student_mark);
-      return view('pages/student/studentmark')->with('student_mark',$student_mark);
+
+      $check_seen=notification::where('receiver_id',$st->student_id)->where('seen',0)->get();
+      if(count($check_seen)>0){
+         $notification_status=1;
+         $student_seen=count($check_seen);
+         return view('pages/student/studentmark')->with('student_mark',$student_mark)
+                                                 ->with('student_seen',$student_seen)
+                                                 ->with('notification_status',$notification_status);
+      }else{
+        $notification_status=0;
+        return view('pages/student/studentmark')->with('student_mark',$student_mark)
+                                                ->with('notification_status',$notification_status);
+      }
     }
 
     
@@ -211,7 +254,6 @@ class StudentController extends Controller
 
   
          $stu=student::where('user_fk_student',Auth::user()->id)->first();
-         
          return view('pages/student/studentsetting')->with('stu',$stu);
       
     }
@@ -249,7 +291,20 @@ class StudentController extends Controller
       if($req->isMethod('get')){
          $stu=student::where('user_fk_student',Auth::user()->id)->first();
          $course=coursetake::where('student_fk_take',$stu->student_id)->where('take_sem',$stu->student_sem)->get();
-        return view('pages/student/lecturematerials_select')->with('course',$course);
+         $check_seen=notification::where('receiver_id',$stu->student_id)->where('seen',0)->get();
+         
+         if(count($check_seen)>0){
+           $status=1;
+           $student_seen=count($check_seen);
+           return view('pages/student/lecturematerials_select')->with('course',$course)
+                                                               ->with('student_seen',$student_seen)
+                                                               ->with('status',$status);
+         }else{
+          $status=0;
+          return view('pages/student/lecturematerials_select')->with('course',$course)
+                                                              ->with('status',$status);
+         }
+       
       }
       if($req->isMethod('post')){
         $course=$req->input('sort_st_course');
@@ -271,7 +326,19 @@ class StudentController extends Controller
         $student=student::where('user_fk_student',Auth::user()->id)->first();
         $course=coursetake::where('take_sem', $student->student_sem)
                           ->where('student_fk_take',$student->student_id)->get();
-         return view('pages/student/student_forum_post')->with('course',$course);
+        $check_seen=notification::where('receiver_id',$student->student_id)->where('seen',0)->get();
+         
+        if(count($check_seen)>0){
+            $notification_status=1;
+            $student_seen=count($check_seen);
+            return view('pages/student/student_forum_post')->with('course',$course)
+                                                           ->with('student_seen',$student_seen)
+                                                           ->with('notification_status',$notification_status);
+        }else{
+          $notification_status=0;
+          return view('pages/student/student_forum_post')->with('course',$course)
+                                                         ->with('notification_status',$notification_status);
+        }
       }
 
       if($req->isMethod('post')){
@@ -296,8 +363,22 @@ class StudentController extends Controller
     }
 
     function student_forum(Request $req){
-      $message=message::orderBy('updated_at', 'DESC')->get();
-      return view('pages/student/student_forum')->with('message',$message);
+      $student=student::where('user_fk_student',Auth::user()->id)->first();
+      $check_seen=notification::where('receiver_id',$student->student_id)->where('seen',0)->get();
+         
+      if(count($check_seen)>0){
+          $notification_status=1;
+          $student_seen=count($check_seen);
+         $message=message::orderBy('updated_at', 'DESC')->get();
+         return view('pages/student/student_forum')->with('message',$message)
+                                                   ->with('student_seen',$student_seen)
+                                                   ->with('notification_status',$notification_status);
+      }else{
+        $notification_status=0;
+        $message=message::orderBy('updated_at', 'DESC')->get();
+        return view('pages/student/student_forum')->with('message',$message)
+                                                 ->with('notification_status',$notification_status);
+      }
     }
 
     function student_post(Request $req,$id){
@@ -332,6 +413,16 @@ class StudentController extends Controller
                                                 ->with('comment',$comment)
                                                 ->with('other_message',$other_message);
       }
+    }
+
+    function student_message(Request $req){
+      $student=student::where('user_fk_student',Auth::user()->id)->first();
+      $update=notification::where('receiver_id',$student->student_id)
+           ->update([
+              'seen'=>1,
+           ]);
+      $notification=notification::where('receiver_id',$student->student_id)->orderBy('updated_at', 'DESC')->get();
+      return view('pages/student/student_message')->with('notification',$notification);
     }
 
 

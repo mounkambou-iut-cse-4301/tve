@@ -23,6 +23,7 @@ use App\percentage_attendance;
 use App\material;
 use App\message;
 use App\comment;
+use App\notification;
 
 class TeacherController extends Controller
 {
@@ -494,6 +495,49 @@ class TeacherController extends Controller
                                               ->with('comment',$comment)
                                               ->with('other_message',$other_message);
     }
+    }
+
+    function teacher_send_message(Request $req){
+        $st=coursetake::where('course_fk_take', $req->session()->get('course'))->first();
+         $st_a=student::where('student_sem',$st->take_sem)->get();
+         $store_id= Array();
+        
+        for($i=0;$i<count($st_a);$i++){
+          
+          $course=coursetake::where('course_fk_take', $req->session()->get('course'))
+                            ->where('student_fk_take',$st_a[$i]->student_id)->first();
+          if($course!=null){
+            array_push($store_id, $st_a[$i]->student_id);
+          }
+        }
+      if($req->isMethod('get')){
+        return view('pages/teacher/teacher_send_message')->with('student',$store_id);
+      }
+      if($req->isMethod('post')){
+        $sel_id=$req->input('sel_id');
+        $message=$req->input('message');
+        $teacher=teacher::where('user_fk_teacher',Auth::user()->id)->first();
+        if( $sel_id=="all"){
+          for($i=0;$i<count($store_id);$i++){
+            $insert_notif=notification::create([
+              'course_fk_notification'=>$req->session()->get('course'),
+              'sender_id'=>$teacher->teacher_id,
+              'receiver_id'=>$store_id[$i],
+              'content'=>$message,
+              'seen'=>0,
+           ]);
+          }
+        }else{
+          $insert_notif=notification::create([
+            'course_fk_notification'=>$req->session()->get('course'),
+            'sender_id'=>$teacher->teacher_id,
+            'receiver_id'=> $sel_id,
+            'content'=>$message,
+            'seen'=>0,
+         ]);
+        }
+        return redirect('/teacher_send_message')->with('message','Done');
+      }
     }
     
 }

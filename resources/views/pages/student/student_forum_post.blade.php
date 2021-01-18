@@ -7,7 +7,19 @@
         <div class="col-lg-9">
             <div class="card">
                 <div class="card-header">
-                    <h4>Posting on Forum</h4>
+                    <div class="row">
+                            <div class="col-lg-10">
+                              <h4>Posting on Forum</h4>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="/student_message" class="notification" style="float:left;">
+                                    <span><i class="fa fa-bell" style="font-size:24px"></i></span>
+                                    @if($notification_status==1)
+                                    <span class="badge">{{$student_seen}}</span>
+                                    @endif
+                                </a>
+                            </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <form action="/student_forum_post" method="post" enctype="multipart/form-data">

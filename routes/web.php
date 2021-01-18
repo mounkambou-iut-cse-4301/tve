@@ -113,6 +113,9 @@ Route::get('/student_forum','StudentController@student_forum');
 
 Route::match(['get','post'],'/student_post/{id?}','StudentController@student_post');
 
+Route::get('/student_message','StudentController@student_message');
+
+
 
 
 
@@ -155,6 +158,8 @@ Route::get('/teacher_forum','TeacherController@teacher_forum');
 
 
 Route::match(['get','post'],'/teacher_post/{id?}','TeacherController@teacher_post');
+
+Route::match(['get','post'],'teacher_send_message','TeacherController@teacher_send_message');
 
 
 
