@@ -397,8 +397,6 @@ class StudentController extends Controller
         $message=$req->input('message');
         $course=message::where('message_id',$id)->first();
         $student_name=student::where('user_fk_student',Auth::user()->id)->first();
-        // dd($course->course_fk_message);
-        // dd($id);
         $insert_comment=comment::create([
           'message_fk_comment'=>$id,
           'person_comment'=> $student_name->student_name,
