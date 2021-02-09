@@ -57,18 +57,19 @@ class TeacherController extends Controller
     
     function teacherdashboard (Request $req){
     	$select_course=$req->input('select_course');
-    	// dd($select_course);
-    	$req->session()->put('course',$select_course);
-   
+      $req->session()->put('course',$select_course);
 
-    	$t_log=teacher::where('user_fk_teacher',Auth::user()->id)->first();
-    	$course_log=DB::table('teachs')->where('teacher_fk_teach',$t_log->teacher_id)
-    	                               ->where('course_fk_teach',$select_course)->first();
-    	  $pass=$course_log->course_fk_teach;                             
-    	 // $this->teacherattendance($pass);
-    	return view('pages/teacher/teacher_welcome')->with('course_log',$course_log)
-    	                                            ->with('t_log',$t_log);
-
+      $check=course::where('course_id',	$select_course)->first();
+      if($check->block_course==0){
+        $t_log=teacher::where('user_fk_teacher',Auth::user()->id)->first();
+        $course_log=DB::table('teachs')->where('teacher_fk_teach',$t_log->teacher_id)
+                                       ->where('course_fk_teach',$select_course)->first();
+          $pass=$course_log->course_fk_teach;                             
+        return view('pages/teacher/teacher_welcome')->with('course_log',$course_log)
+                                                    ->with('t_log',$t_log);
+      }else{
+       return view('pages/teacher/course_block_message');
+      }
     }
 
 

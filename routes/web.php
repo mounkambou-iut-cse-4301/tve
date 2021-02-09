@@ -55,11 +55,15 @@ Route::get('/lock_attendance','AdminController@lock_attendance');
 Route::get('/lock_open_attendance','AdminController@lock_open_attendance');
 Route::get('/lock_mark','AdminController@lock_mark');
 Route::get('/lock_open_mark','AdminController@lock_open_mark');
+Route::get('/lock_course','AdminController@lock_course');
+Route::get('/lock_specifique_course/{id?}','AdminController@lock_specifique_course');
+Route::get('/course_block_message','AdminController@course_block_message');
 Route::match(['get','post'],'/edit_student_info/{id?}','AdminController@edit_student_info');
 Route::post('/edit_student_info_update','AdminController@edit_student_info_update');
 
 Route::get('/resultfistsemester','AdminController@resultfistsemester');
 Route::get('/resultsecondsemester','AdminController@resultsecondsemester');
+
 
 Route::get('resultthirdsemester', function () {
 return view('pages/admin/resultthirdsemester');

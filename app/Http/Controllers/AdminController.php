@@ -512,6 +512,30 @@ class AdminController extends Controller
        
       }
 
+      
+      function lock_course (Request $req){
+        $course=DB::table('courses')->orderByRaw('course_sem ASC')->paginate(10);
+        return view('pages/admin/lock_course')->with('course',$course);
+      }
+
+      function lock_specifique_course(Request $req, $id){
+        
+        $check=course::where('course_id',$id)->first();
+        if($check->block_course==0){
+          DB::table('courses')->where('course_id',$id)->update([
+            'block_course'=>1,
+ 
+           ]);
+        }else{
+          DB::table('courses')->where('course_id',$id)->update([
+            'block_course'=>0,
+ 
+           ]);
+        }
+          
+          return redirect('/lock_course');
+      }
+
       function edit_student_info (Request $req, $id){
         if($req->isMethod('get')){
           $student_info=student::where('student_id',$id)->get();

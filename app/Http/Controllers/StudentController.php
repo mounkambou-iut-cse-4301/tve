@@ -420,7 +420,7 @@ class StudentController extends Controller
            ->update([
               'seen'=>1,
            ]);
-      $notification=notification::where('receiver_id',$student->student_id)->orderBy('updated_at', 'DESC')->get();
+      $notification=notification::where('receiver_id',$student->student_id)->orderBy('created_at', 'DESC')->get();
       return view('pages/student/student_message')->with('notification',$notification);
     }
 

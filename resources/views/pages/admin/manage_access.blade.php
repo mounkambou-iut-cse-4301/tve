@@ -39,6 +39,12 @@
               @endif
             </td>
           </tr>
+          <tr>
+            <th><h4>Lock Access to Course</h4></th>
+            <td>
+              <a href="/lock_course"><button class="btn btn_edit"><i class="fa fa-edit"> </i></button></a>    
+            </td>
+          </tr>
           
         </thead>
         
