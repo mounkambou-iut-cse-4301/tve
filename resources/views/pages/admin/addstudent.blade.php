@@ -17,10 +17,6 @@
               <input type="number" class="form-control" id="student_id" placeholder="Enter Student's Id" name="student_id" required>
             </div>
             <div class="form-group">
-              <label for="student_pass"><b>Password:</b></label>
-              <input type="password" class="form-control" id="student_pass" placeholder="Enter Student's Password" name="student_pass" required>
-            </div>
-            <div class="form-group">
               <label for="student_name"><b>Name:</b></label>
               <input type="text" class="form-control" id="student_name" placeholder="Enter Student's Name" name="student_name" required>
             </div>

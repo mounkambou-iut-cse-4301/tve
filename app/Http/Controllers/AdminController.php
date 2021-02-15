@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 use Illuminate\Support\Facades\Auth;
 
+use App\Mail\TestMail;
+use Mail;
+
 use DB;
 use App\teach;
 use App\student;
@@ -72,7 +75,7 @@ class AdminController extends Controller
 
 
 
-	function insertNewStudent(Request $req)
+	public function insertNewStudent(Request $req)
      {
 	
 	  $user = User::create([
@@ -85,11 +88,18 @@ class AdminController extends Controller
         	'user_fk_student'=> $user->id,
         	'student_name' => $req->input('student_name'),
         	'student_email'=>$req->input('student_email'),
-        	'student_pass'=>$req->input('student_pass'),
+        	'student_pass'=>$req->input('student_id'),
         	'student_sem'=>$req->input('student_sem'),
 
         ]);
-	return redirect('\addstudent')->with('message','New student inserted successfully');
+
+        $details=[
+          'title'=>'Mail from IUT',
+          'name'=>$req->input('student_name'),
+          'body'=>$req->input('student_id')
+        ];  
+        Mail::to($req->input('student_email'))->send(new TestMail($details));
+        	return redirect('\addstudent')->with('message','New student inserted successfully');
       }
 
 
