@@ -8,7 +8,6 @@
 </head>
 
 <body>
-   <h3> {{$details['title']}}</h3>
    <p>Dear {{$details['name']}},</p>
    <p> Here below are your following details.</p>
    <p>Your ID: {{$details['body']}}</p>

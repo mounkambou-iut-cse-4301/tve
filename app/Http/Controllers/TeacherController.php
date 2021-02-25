@@ -518,6 +518,7 @@ class TeacherController extends Controller
         $sel_id=$req->input('sel_id');
         $message=$req->input('message');
         $teacher=teacher::where('user_fk_teacher',Auth::user()->id)->first();
+      
         if( $sel_id=="all"){
           for($i=0;$i<count($store_id);$i++){
             $insert_notif=notification::create([
@@ -526,6 +527,7 @@ class TeacherController extends Controller
               'receiver_id'=>$store_id[$i],
               'content'=>$message,
               'seen'=>0,
+              'updated_at'=>date('Y-m-d H:i:s'),
            ]);
           }
         }else{
@@ -535,6 +537,7 @@ class TeacherController extends Controller
             'receiver_id'=> $sel_id,
             'content'=>$message,
             'seen'=>0,
+            'updated_at'=>date('Y-m-d H:i:s'),
          ]);
         }
         return redirect('/teacher_send_message')->with('message','Done');

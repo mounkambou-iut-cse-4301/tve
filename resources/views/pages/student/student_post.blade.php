@@ -44,7 +44,7 @@
                             <p class="card-text"><strong>{{$comment->person_comment}}</strong></p>
                                 <p class="card-text">{{$comment->comment}}</p>
                             </div>
-                            <p style="text-align: right;">{{$comment->updated_at}}</p>
+                            <p style="text-align: right;">{{$comment->created_at}}</p>
                         </div>
                         @endforeach
                 </div>

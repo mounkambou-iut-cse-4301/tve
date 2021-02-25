@@ -15,7 +15,7 @@
                             <p class="card-text"><strong>{{$notif->course_fk_notification}}, {{teacherName($notif->sender_id)}}</strong></p>
                                 <p class="card-text">{{$notif->content}}</p>
                             </div>
-                            <p style="text-align: right;">{{$notif->updated_at}}</p>
+                            <p style="text-align: right;">{{$notif->created_at}}</p>
                         </div>  
                     @endforeach
                 </div>

@@ -369,13 +369,13 @@ class StudentController extends Controller
       if(count($check_seen)>0){
           $notification_status=1;
           $student_seen=count($check_seen);
-         $message=message::orderBy('updated_at', 'DESC')->get();
+         $message=message::orderBy('created_at', 'DESC')->get();
          return view('pages/student/student_forum')->with('message',$message)
                                                    ->with('student_seen',$student_seen)
                                                    ->with('notification_status',$notification_status);
       }else{
         $notification_status=0;
-        $message=message::orderBy('updated_at', 'DESC')->get();
+        $message=message::orderBy('created_at', 'DESC')->get();
         return view('pages/student/student_forum')->with('message',$message)
                                                  ->with('notification_status',$notification_status);
       }
