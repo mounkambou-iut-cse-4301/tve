@@ -6,6 +6,8 @@
       <thead>
         <tr>
           <th>Course Id</th>
+          <th>Course Name</th>
+          <th>Credit</th>
           <th>semester</th>
         </tr>
       </thead>
@@ -13,6 +15,8 @@
         @foreach($un_course as $u_course)
         <tr>
           <td>{{$u_course->course_id}}</td>
+          <td>{{$u_course->course_name}}</td>
+          <td>{{$u_course->course_credit}}</td>
           <td>{{$u_course->course_sem}}</td>
         </tr>
         @endforeach

@@ -57,6 +57,7 @@ Route::get('/lock_mark','AdminController@lock_mark');
 Route::get('/lock_open_mark','AdminController@lock_open_mark');
 Route::get('/lock_course','AdminController@lock_course');
 Route::get('/lock_specifique_course/{id?}','AdminController@lock_specifique_course');
+Route::get('/lock_all/{id?}','AdminController@lock_all');
 Route::get('/course_block_message','AdminController@course_block_message');
 Route::match(['get','post'],'/edit_student_info/{id?}','AdminController@edit_student_info');
 Route::post('/edit_student_info_update','AdminController@edit_student_info_update');

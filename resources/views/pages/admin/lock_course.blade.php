@@ -2,6 +2,24 @@
     @section('content')
     <div class="container">
         <div class="card form_addteacher">
+           <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <h4>Lock Access to all courses</h4>
+                            </th>
+                            <td>
+                                @if($status_all==0)
+                                <a href="/lock_all/{{0}}"><button class="btn btn_edit"><i
+                                            class="fa fa-lock-open"></i></button></a>
+                                @elseif($status_all==1)
+                                <a href="/lock_all/{{1}}"><button class="btn btn-danger"><i
+                                            class="fa fa-lock"></i></button></a>
+                                @endif
+                            </td>
+                        </tr>
+                    </thead>
+            </table>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>

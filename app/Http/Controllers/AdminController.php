@@ -525,7 +525,13 @@ class AdminController extends Controller
       
       function lock_course (Request $req){
         $course=DB::table('courses')->orderByRaw('course_sem ASC')->paginate(10);
-        return view('pages/admin/lock_course')->with('course',$course);
+        $course_all=course::where('block_course',0)->first();
+        if( $course_all != null){
+          $status_all=0;
+        }else{
+          $status_all=1;
+        }
+        return view('pages/admin/lock_course')->with('course',$course)->with('status_all',$status_all);
       }
 
       function lock_specifique_course(Request $req, $id){
@@ -545,6 +551,24 @@ class AdminController extends Controller
           
           return redirect('/lock_course');
       }
+
+      function lock_all (Request $req, $id){
+        $id=(int)$id;
+        if($id==0){
+          DB::table('courses')->update([
+            'block_course'=>1,
+ 
+           ]);
+        }else{
+          DB::table('courses')->update([
+            'block_course'=>0,
+ 
+           ]);
+        }
+        return redirect('/lock_course');
+      }
+
+
 
       function edit_student_info (Request $req, $id){
         if($req->isMethod('get')){
