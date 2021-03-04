@@ -73,12 +73,7 @@
         <a href="/attendances"><i class="fas fa-book-reader"></i>&nbsp;Attendances</a>
       </li>
      
-      <li>
-        <a href="#"><i class="fas fa-info"></i>&nbsp;Info About Student</a>
-      </li>
-      <li>
-        <a href="#"><i class="fas fa-mail-bulk"></i>&nbsp;Email</a>
-      </li>
+
       
       
     </ul>
